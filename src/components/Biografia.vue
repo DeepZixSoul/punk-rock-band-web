@@ -18,7 +18,7 @@
       <div class="integrantes-list">
         <div class="integrante">
           <img
-            src="/src/assets/miembros/bateria.png"
+            src="/public/miembros/bateria.png"
             alt="Dani Mestre"
             class="integrante-img"
           />
@@ -33,7 +33,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/src/assets/miembros/guita1.png"
+            src="/public/miembros/guita1.png"
             alt="Mendonça"
             class="integrante-img"
           />
@@ -49,7 +49,7 @@
 
         <div class="integrante">
           <img
-            src="/src/assets/miembros/nacho.png"
+            src="/public/miembros/nacho.png"
             alt="Nacho Brökoly"
             class="integrante-img"
           />
@@ -64,7 +64,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/src/assets/miembros/tupa.png"
+            src="/public/miembros/tupa.png"
             alt="Alex Tupá"
             class="integrante-img"
           />
@@ -80,7 +80,7 @@
 
         <div class="integrante">
           <img
-            src="/src/assets/miembros/guita2.png"
+            src="/public/miembros/guita2.png"
             alt="Jayden"
             class="integrante-img"
           />
