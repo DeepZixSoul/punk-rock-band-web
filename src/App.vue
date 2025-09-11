@@ -1,27 +1,37 @@
 <template>
   <div class="top-bar">
+    <button v-if="isMobile" class="menu-btn" @click="menuOpen = !menuOpen">
+      <span class="menu-icon">&#9776;</span>
+    </button>
     <div class="top-logo">
       <img id="gayola-logo-navbar" src="./assets/logo.png" alt="Gayola logo" class="logo-navbar" />
     </div>
-    <div class="top-fill">
-      <img v-for="n in 8" :key="n" src="/public/gayola-blanco.png" alt="Gayola blanco" class="logo-blanco" />
-    </div>
-    <div id="social-bar" class="social-bar">
-      <a href="https://www.instagram.com/gayolaseriopunk" target="_blank" class="social-link" id="instagram-link">
-        <img src="/public/instagram.svg" alt="Instagram" class="social-icon" />
-      </a>
-      <a href="https://open.spotify.com/intl-es/artist/2UiHDGxR9uKIOfOTvUcZF9" target="_blank" class="social-link" id="spotify-link">
-        <img src="/public/spotify.svg" alt="Spotify" class="social-icon" />
-      </a>
-      <a href="https://www.facebook.com/Gayolaseriopunk/" target="_blank" class="social-link" id="facebook-link">
-        <img src="/public/facebook.png" alt="Facebook" class="social-icon" />
-      </a>
-      <a href="https://www.youtube.com/@gayolaseriopunk" target="_blank" class="social-link" id="youtube-link">
-        <img src="/public/youtube.png" alt="YouTube" class="social-icon" />
-      </a>
-    </div>
   </div>
-  <nav id="main-navbar" class="navbar">
+  <transition name="menu-fade">
+    <div v-if="isMobile && menuOpen" class="mobile-menu">
+      <ul class="mobile-navbar-list">
+        <li v-for="item in menuItems" :key="item.href" class="mobile-navbar-item">
+          <a class="mobile-navbar-link" :href="item.href" @click="menuOpen = false">{{ item.label }}</a>
+        </li>
+      </ul>
+      <div class="mobile-social-bar">
+        <a href="https://www.instagram.com/gayolaseriopunk" target="_blank" class="social-link">
+          <img src="/public/instagram.svg" alt="Instagram" class="social-icon" />
+        </a>
+        <a href="https://open.spotify.com/intl-es/artist/2UiHDGxR9uKIOfOTvUcZF9" target="_blank" class="social-link">
+          <img src="/public/spotify.svg" alt="Spotify" class="social-icon" />
+        </a>
+        <a href="https://www.facebook.com/Gayolaseriopunk/" target="_blank" class="social-link">
+          <img src="/public/facebook.png" alt="Facebook" class="social-icon" />
+        </a>
+        <a href="https://www.youtube.com/@gayolaseriopunk" target="_blank" class="social-link">
+          <img src="/public/youtube.png" alt="YouTube" class="social-icon" />
+        </a>
+      </div>
+    </div>
+  </transition>
+  <!-- Desktop navbar y social bar -->
+  <nav v-if="!isMobile" id="main-navbar" class="navbar">
     <ul id="navbar-list" class="navbar-list">
       <li class="navbar-item"><a class="navbar-link" href="#inicio-section">INICIO</a></li>
       <li class="navbar-item"><a class="navbar-link" href="#biografia-section">BIOGRAFÍA</a></li>
@@ -32,6 +42,20 @@
       <li class="navbar-item"><a class="navbar-link" href="#tienda-section">TIENDA OFICIAL</a></li>
       <li class="navbar-item"><a class="navbar-link" href="#contacto-section">CONTACTO</a></li>
     </ul>
+    <div id="social-bar" class="social-bar">
+      <a href="https://www.instagram.com/gayolaseriopunk" target="_blank" class="social-link">
+        <img src="/public/instagram.svg" alt="Instagram" class="social-icon" />
+      </a>
+      <a href="https://open.spotify.com/intl-es/artist/2UiHDGxR9uKIOfOTvUcZF9" target="_blank" class="social-link">
+        <img src="/public/spotify.svg" alt="Spotify" class="social-icon" />
+      </a>
+      <a href="https://www.facebook.com/Gayolaseriopunk/" target="_blank" class="social-link">
+        <img src="/public/facebook.png" alt="Facebook" class="social-icon" />
+      </a>
+      <a href="https://www.youtube.com/@gayolaseriopunk" target="_blank" class="social-link">
+        <img src="/public/youtube.png" alt="YouTube" class="social-icon" />
+      </a>
+    </div>
   </nav>
   <div id="inicio-section" class="section fondo-imagen">
     <INICIO msg="Gayola Punk Rock" />
@@ -68,6 +92,33 @@ import VIDEOS from './components/Videos.vue'
 import DISCOGRAFÍA from './components/Discografia.vue'
 // import TIENDA from './components/Tienda.vue'
 // import CONTACTO from './components/Contacto.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const menuOpen = ref(false)
+const isMobile = ref(window.innerWidth <= 900)
+
+const menuItems = [
+  { label: 'INICIO', href: '#inicio-section' },
+  { label: 'BIOGRAFÍA', href: '#biografia-section' },
+  { label: 'CONCIERTOS', href: '#conciertos-section' },
+  { label: 'GALERÍA', href: '#galeria-section' },
+  { label: 'VIDEOS', href: '#videos-section' },
+  { label: 'DISCOGRAFÍA', href: '#discografia-section' },
+  { label: 'TIENDA OFICIAL', href: '#tienda-section' },
+  { label: 'CONTACTO', href: '#contacto-section' },
+]
+
+function handleResize() {
+  isMobile.value = window.innerWidth <= 900
+  if (!isMobile.value) menuOpen.value = false
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
@@ -82,27 +133,31 @@ html {
   z-index: 100;
   margin: 1em;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background: #111;
   border-radius: 0.5em;
   filter: drop-shadow(0 0 4px #FF99FF);
   padding: 0.5em 3em;
   transition: padding 0.3s, margin 0.3s;
+  justify-content: center;
+}
+.menu-btn {
+  background: none;
+  border: none;
+  color: #ff99ff;
+  font-size: 2.2em;
+  margin-right: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.menu-icon {
+  font-size: 1.5em;
 }
 .top-logo {
   display: flex;
   align-items: center;
   border-radius: 0.5em;
-}
-.top-fill {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2em;
-  min-width: 0;
-  overflow: hidden;
 }
 .logo-navbar {
   height: 3.5em;
@@ -110,17 +165,73 @@ html {
   border-radius: 0.5em;
   filter: drop-shadow(0 0 4px #FF99FF);
 }
-.logo-blanco {
-  height: 3.5em;
-  width: auto;
-  opacity: 1;
-  filter: drop-shadow(0 0 4px #FF99FF);
-}
-.social-bar {
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 20, 0.98);
+  z-index: 9999;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5em;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.menu-fade-enter-active,
+.menu-fade-leave-active {
+  transition: opacity 0.3s;
+}
+.menu-fade-enter-from,
+.menu-fade-leave-to {
+  opacity: 0;
+}
+.mobile-navbar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2em 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1em;
-  filter: drop-shadow(0 0 8px #FF99FF);
+}
+.mobile-navbar-item {
+  width: 100%;
+  text-align: center;
+}
+.mobile-navbar-link {
+  color: #ff99ff;
+  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background: #222;
+  display: block;
+  margin: 0 auto;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-navbar-link:hover,
+.mobile-navbar-link:focus {
+  background: #ff99ff33;
+  color: #fff;
+  outline: none;
+}
+.mobile-social-bar {
+  margin-top: auto;
+  padding-bottom: 2em;
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
 }
 .social-link {
   display: inline-block;
@@ -135,151 +246,20 @@ html {
   filter: drop-shadow(0 0 8px #FF99FF) brightness(1.5);
 }
 
-/* Navbar */
-.navbar {
-  position: sticky;
-  top: 5.5em;
-  z-index: 99;
-  margin: 1em;
-  background: #111;
-  padding: 1em 0;
-  display: flex;
-  width: auto;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5em;
-  filter: drop-shadow(0 0 4px #FF99FF);
-  transition: padding 0.3s, margin 0.3s;
-}
-.navbar-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 0.5em;
-}
-.navbar-item {
-  margin: 0 1em;
-}
-.navbar-link {
-  color: #FF99FF;
-  text-decoration: none;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
-  font-size: 1.32em;
-  transition: color 0.2s, background 0.2s;
-  padding: 0.3em 0.8em;
-  border-radius: 0.3em;
-  background: transparent;
-}
-.navbar-link:hover,
-.navbar-link:focus {
-  color: #fff;
-  background: #ff99ff33;
-  outline: none;
-}
-
-/* Secciones */
-.section {
-  min-height: 60vh;
-  padding: 2em 0;
-  width: 100%;
-  box-sizing: border-box;
-  transition: padding 0.3s;
-}
-
-/* Responsive */
-@media (max-width: 1100px) {
-  .top-bar {
-    padding: 0.5em 1em;
-    margin: 0.5em;
-    gap: 1em;
-  }
-  .top-fill {
-    gap: 1em;
-  }
-  .logo-navbar,
-  .logo-blanco {
-    height: 2.5em;
-  }
-  .navbar {
-    top: 7em;
-    margin: 0.5em;
-    padding: 0.5em 0;
-  }
-  .navbar-list {
-    gap: 0.2em;
-  }
-  .navbar-item {
-    margin: 0 0.5em;
-  }
-  .navbar-link {
-    font-size: 1.1em;
-    padding: 0.2em 0.5em;
-  }
-}
-
+/* Ocultar navbar y social bar en móvil */
 @media (max-width: 900px) {
+  .navbar,
+  .social-bar,
+  .top-fill {
+    display: none !important;
+  }
   .top-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.5em 0.5em;
+    justify-content: flex-start;
+    padding: 0.5em 1em;
     margin: 0.5em 0.2em;
-    gap: 0.5em;
   }
-  .top-logo,
-  .top-fill,
-  .social-bar {
-    justify-content: center;
-    margin-bottom: 0.5em;
-  }
-  .logo-navbar,
-  .logo-blanco {
-    height: 2em;
-  }
-  .navbar {
-    top: 8em;
-    margin: 0.5em 0.2em;
-    padding: 0.5em 0;
-  }
-  .navbar-list {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3em;
-  }
-  .navbar-item {
-    margin: 0.3em 0;
-  }
-  .navbar-link {
-    font-size: 1em;
-    padding: 0.2em 0.5em;
-  }
-  .section {
-    padding: 1em 0.2em;
-    min-height: 40vh;
-  }
-}
-
-@media (max-width: 600px) {
-  .top-bar {
-    padding: 0.2em 0.2em;
-    gap: 0.2em;
-  }
-  .logo-navbar,
-  .logo-blanco {
-    height: 1.2em;
-  }
-  .navbar {
-    top: 9em;
-    padding: 0.2em 0;
-  }
-  .navbar-link {
-    font-size: 0.95em;
-    padding: 0.15em 0.3em;
-  }
-  .section {
-    padding: 0.5em 0.1em;
-    min-height: 30vh;
+  .logo-navbar {
+    height: 2.5em;
   }
 }
 </style>
