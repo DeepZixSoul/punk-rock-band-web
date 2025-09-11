@@ -18,7 +18,7 @@
       <div class="integrantes-list">
         <div class="integrante">
           <img
-            src="/public/miembros/bateria.png"
+            src="/miembros/bateria.png"
             alt="Dani Mestre"
             class="integrante-img"
           />
@@ -33,7 +33,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/public/miembros/guita1.png"
+            src="/miembros/guita1.png"
             alt="Mendonça"
             class="integrante-img"
           />
@@ -46,10 +46,9 @@
             clave en el sonido de Gayola.
           </p>
         </div>
-
         <div class="integrante">
           <img
-            src="/public/miembros/nacho.png"
+            src="/miembros/nacho.png"
             alt="Nacho Brökoly"
             class="integrante-img"
           />
@@ -64,7 +63,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/public/miembros/tupa.png"
+            src="/miembros/tupa.png"
             alt="Alex Tupá"
             class="integrante-img"
           />
@@ -77,13 +76,8 @@
             cada concierto.
           </p>
         </div>
-
         <div class="integrante">
-          <img
-            src="/public/miembros/guita2.png"
-            alt="Jayden"
-            class="integrante-img"
-          />
+          <img src="/miembros/guita2.png" alt="Jayden" class="integrante-img" />
           <h3 class="integrante-nombre">
             JAYDEN <span class="rol">(GUITARRA)</span>
           </h3>
@@ -103,7 +97,7 @@
 
 <style scoped>
 .biografia-bg {
-  background: #111;
+  background: rgba(20, 20, 20, 0.9);
   padding: 3em 1em;
   border-radius: 1em;
   box-shadow: 0 0 40px #000a;
@@ -130,7 +124,7 @@
 }
 .integrantes-section {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 1em;
   box-shadow: 0 0 20px #ff99ff;
@@ -148,13 +142,16 @@
 }
 .integrantes-list {
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: row;
   gap: 2em;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
 }
 .integrante {
-  flex: 1;
+  flex: 1 1 180px;
+  min-width: 180px;
+  max-width: 220px;
   background: #fff;
   border-radius: 0.5em;
   box-shadow: 0 0 10px #ff99ff44;
@@ -163,16 +160,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.integrante:hover {
+  box-shadow: 0 0 20px #ff99ff88;
+  transform: translateY(-4px) scale(1.03);
 }
 .integrante-img {
   width: 100%;
-  height: 500px;
   max-width: 160px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  height: 260px;
+  object-fit: contain;
   border-radius: 0.5em;
   box-shadow: 0 0 8px #222a;
   margin-bottom: 1em;
+  background: #eee;
 }
 .integrante-nombre {
   width: 100%;
@@ -206,19 +208,42 @@
   }
   .integrante-img {
     max-width: 120px;
+    height: 180px;
   }
 }
 @media (max-width: 900px) {
   .integrantes-list {
     flex-direction: column;
     gap: 1em;
+    align-items: center;
   }
   .integrante {
     width: 100%;
+    max-width: 320px;
     align-items: center;
   }
   .integrante-img {
     max-width: 180px;
+    height: 260px;
+  }
+}
+@media (max-width: 600px) {
+  .biografia-bg {
+    padding: 1em 0.2em;
+  }
+  .biografia-main {
+    padding: 1em;
+  }
+  .integrantes-section {
+    padding: 1em 0.2em;
+  }
+  .integrante {
+    max-width: 98vw;
+    padding: 0.7em 0.2em 1em 0.2em;
+  }
+  .integrante-img {
+    max-width: 120px;
+    height: 180px;
   }
 }
 </style>
