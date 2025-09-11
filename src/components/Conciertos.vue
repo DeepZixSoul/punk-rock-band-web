@@ -11,14 +11,14 @@
 
 <script setup>
 const carteles = [
-  '/public/carteles/cartel1.jpg',
-  '/public/carteles/cartel2.jpg',
-  '/public/carteles/cartel3.jpg',
-  '/public/carteles/cartel4.jpg',
-  '/public/carteles/cartel5.jpg',
-  '/public/carteles/cartel6.jpg',
-  '/public/carteles/cartel7.jpg',
-  '/public/carteles/cartel8.jpg',
+  '/carteles/cartel1.jpg',
+  '/carteles/cartel2.jpg',
+  '/carteles/cartel3.jpg',
+  '/carteles/cartel4.jpg',
+  '/carteles/cartel5.jpg',
+  '/carteles/cartel6.jpg',
+  '/carteles/cartel7.jpg',
+  '/carteles/cartel8.jpg',
   // Añade más rutas según tus carteles
 ]
 </script>
