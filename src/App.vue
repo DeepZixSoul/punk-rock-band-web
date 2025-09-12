@@ -8,11 +8,22 @@
         class="logo-navbar"
       />
     </div>
-    <!-- Menú hamburguesa solo en móvil -->
+    <!-- Logos relleno solo en móvil/tablet -->
+    <div class="top-fill-mobile" v-if="isMobile">
+      <img
+        v-for="n in 6"
+        :key="n"
+        src="/public/gayola-blanco.png"
+        alt="Gayola relleno"
+        class="logo-gayola-mobile"
+      />
+    </div>
+    <!-- Botón hamburguesa/cerrar solo en móvil/tablet -->
     <button class="menu-btn" v-if="isMobile" @click="menuOpen = !menuOpen">
-      <span class="menu-icon">&#9776;</span>
+      <span class="menu-icon">
+        {{ menuOpen ? '✕' : '☰' }}
+      </span>
     </button>
-    <!-- Relleno y redes solo en escritorio -->
     <div class="top-fill" v-if="!isMobile">
       <img
         v-for="n in 8"
@@ -86,9 +97,10 @@
       </li>
     </ul>
   </nav>
-  <!-- Menú desplegable en móvil -->
-  <transition name="slide">
-    <nav v-if="isMobile && menuOpen" class="mobile-navbar">
+  <!-- Menú móvil y overlay -->
+  <div v-if="isMobile && menuOpen">
+    <div class="mobile-overlay"></div>
+    <nav class="mobile-navbar">
       <ul class="mobile-navbar-list">
         <li
           class="mobile-navbar-item"
@@ -138,7 +150,7 @@
         </a>
       </div>
     </nav>
-  </transition>
+  </div>
   <!-- Secciones -->
   <div id="inicio-section" class="section fondo-imagen">
     <INICIO msg="Gayola Punk Rock" />
@@ -174,14 +186,14 @@ import CONCIERTOS from "./components/Conciertos.vue";
 import GALERÍA from "./components/Galeria.vue";
 import VIDEOS from "./components/Videos.vue";
 import DISCOGRAFÍA from "./components/Discografia.vue";
-// import TIENDA from './components/Tienda.vue'
-// import CONTACTO from './components/Contacto.vue'
+import TIENDA from './components/Tienda.vue'
+import CONTACTO from './components/Contacto.vue'
 
 const menuOpen = ref(false);
-const isMobile = ref(window.innerWidth <= 600);
+const isMobile = ref(window.innerWidth <= 900);
 
 function checkMobile() {
-  isMobile.value = window.innerWidth <= 600;
+  isMobile.value = window.innerWidth <= 900;
 }
 
 // Actualiza al montar y al cambiar tamaño
@@ -207,9 +219,9 @@ const menuItems = [
   { label: "CONCIERTOS", href: "#conciertos-section" },
   { label: "GALERÍA", href: "#galeria-section" },
   { label: "VIDEOS", href: "#videos-section" },
-  { label: "DISCOGRAFÍA", href: "#discografia-section" },
+  { label: "DISCOGRAFÍA", href: "#discografia-section" }, // <-- Añadido
   { label: "TIENDA OFICIAL", href: "#tienda-section" },
-  { label: "CONTACTO", href: "#contacto-section" },
+  { label: "CONTACTO", href: "#contacto-section" },        // <-- Añadido
 ];
 </script>
 
@@ -317,145 +329,144 @@ html {
 
 @media (max-width: 900px) {
   .top-bar {
-    flex-direction: column;
-    padding: 0.5em 1em;
-    margin: 0.5em;
-    gap: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5em;
+    padding: 0.7em 1em;
+    margin: 0.3em 0.1em;
   }
-  .top-logo,
-  .top-fill,
-  .social-bar {
-    justify-content: center;
-    margin-bottom: 0.5em;
+  .top-logo {
+    margin-right: 0.5em;
   }
-  .logo-navbar,
-  .logo-blanco {
-    height: 2.2em;
+  .top-fill-mobile {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.4em;
+    min-width: 0;
+    overflow: hidden;
   }
-  .navbar {
-    top: 7.5em;
-    margin: 0.5em;
-    padding: 0.5em 0;
+  .logo-gayola-mobile {
+    height: 1.7em;
+    width: auto;
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #ff99ff);
   }
-  .navbar-list {
+  .menu-btn {
+    margin-left: auto;
+  }
+  .mobile-overlay {
+    position: fixed;
+    top: calc(var(--topbar-height, 4em));
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--topbar-height, 4em));
+    background: rgba(20, 20, 20, 0.7);
+    z-index: 9998;
+    pointer-events: none;
+  }
+  .mobile-navbar {
+    position: fixed;
+    top: calc(var(--topbar-height, 4em));
+    left: 0;
+    width: 95vw;
+    height: calc(85vh - var(--topbar-height, 4em));
+    background: #111;
+    z-index: 9999;
+    border-radius: 0 0 1em 1em;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5em;
+    justify-content: flex-start; /* <-- Añade esto */
+    padding: 0.5em;  /* Reduce el padding superior */
+    box-shadow: 0 0 40px #000a;
+    overflow: hidden;
   }
-  .navbar-item {
-    margin: 0.5em 0;
+  .mobile-navbar-list {
+    gap: 1.2em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+    list-style: none;
+    padding: 0;
   }
-  .navbar-link {
-    font-size: 1.1em;
+  .mobile-navbar-item {
+    width: 100%;
+    text-align: center;
+  }
+  .mobile-navbar-link {
+    font-size: 1.2em;
+    padding: 0.8em 0;
+    color: #ff99ff;
+    text-decoration: none;
+    font-family: "Permanent Marker", cursive, Arial, sans-serif;
+    background: #222;
+    border-radius: 0.5em;
+    box-shadow: 0 0 8px #ff99ff44;
+    width: 100%;
+    display: block;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-navbar-link:hover,
+  .mobile-navbar-link:focus {
+    background: #ff99ff33;
+    color: #fff;
+  }
+  .mobile-social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 1em;
+    width: 100%;
+  }
+  .social-icon {
+    width: 2.2em;
+    height: 2.2em;
   }
 }
 
 @media (max-width: 600px) {
+  /* Mejoras extra para móviles pequeños */
   .top-bar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 0.7em;
-    margin: 0.2em 0.1em;
-    gap: 0;
-  }
-  .top-logo {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
+    padding: 0.5em 0.5em;
+    margin: 0.1em 0.05em;
   }
   .logo-navbar {
-    height: 2.2em;
+    height: 1.7em;
   }
-  .top-fill,
-  .social-bar {
-    display: none !important;
+  .menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.3em;
   }
-  .navbar {
-    display: none !important;
+  .menu-icon {
+    font-size: 2em;
+    padding: 0.2em;
   }
-}
-
-/* Menú móvil */
-.menu-btn {
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-.menu-icon {
-  font-size: 2em;
-  color: #ff99ff;
-  padding: 0.2em;
-  border-radius: 0.3em;
-  background: #222;
-  box-shadow: 0 0 8px #ff99ff88;
-}
-.mobile-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background: #111;
-  z-index: 9999;
-  box-shadow: 0 0 40px #000a;
-  border-radius: 0 0 1em 1em;
-  padding-top: 4em;
-  padding-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: slideDown 0.3s;
-}
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
+  .mobile-navbar {
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0 0 0.7em 0.7em;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  .mobile-navbar-link {
+    font-size: 1em;
+    padding: 0.6em 0;
   }
-}
-.mobile-navbar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2em 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-}
-.mobile-navbar-item {
-  width: 100%;
-  text-align: center;
-}
-.mobile-navbar-link {
-  color: #ff99ff;
-  text-decoration: none;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
-  font-size: 1.3em;
-  padding: 0.7em 0;
-  display: block;
-  width: 100%;
-  background: #222;
-  border-radius: 0.5em;
-  box-shadow: 0 0 8px #ff99ff44;
-  transition: background 0.2s, color 0.2s;
-}
-.mobile-navbar-link:hover,
-.mobile-navbar-link:focus {
-  background: #ff99ff33;
-  color: #fff;
-}
-.mobile-social-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1.5em;
-  margin-top: 2em;
+  .mobile-social-bar {
+    gap: 1em;
+    margin-top: 1.2em;
+  }
+  .social-icon {
+    width: 1.7em;
+    height: 1.7em;
+  }
 }
 </style>
