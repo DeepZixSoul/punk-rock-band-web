@@ -3,60 +3,57 @@
     <h2 class="galeria-title">Galería</h2>
     <div class="galeria-grid">
       <div
-        v-for="(foto, i) in fotos"
+        v-for="(foto, i) in images"
         :key="i"
         class="foto-item"
-        @click="abrirModal(foto)"
+        @click="showImg(i)"
       >
         <img :src="foto" alt="Foto Gayola" class="foto-img" />
       </div>
     </div>
-    <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal">
-      <div class="modal-content">
-        <button class="modal-cerrar" @click="cerrarModal">✕</button>
-        <img :src="fotoModal" alt="Foto ampliada" class="modal-img" />
-      </div>
-    </div>
+    <VueEasyLightbox
+      :visible="visible"
+      :imgs="images"
+      :index="index"
+      @hide="hideImg"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const fotos = [
-  '/galeria/foto1.jpeg',
-  '/galeria/foto2.jpeg',
-  '/galeria/foto3.jpeg',
-  '/galeria/foto4.jpeg',
-  '/galeria/foto5.jpeg',
-  '/galeria/foto6.jpeg',
-  '/galeria/foto7.jpeg',
-  '/galeria/foto8.jpeg',
-  '/galeria/foto9.jpeg',
-  '/galeria/foto10.jpeg',
-  '/galeria/foto11.jpeg',
-  '/galeria/foto12.jpeg',
-  '/galeria/foto13.jpeg',
-  '/galeria/foto14.jpeg',
-  '/galeria/foto15.jpeg',
-  '/galeria/foto16.jpeg',
-  '/galeria/foto17.jpeg',
-  '/galeria/foto18.jpeg',
-  '/galeria/foto19.jpeg',
-  '/galeria/foto20.jpeg',
-  '/galeria/foto21.jpeg',
-  // Añade más fotos si lo necesitas
-]
-const modalAbierto = ref(false)
-const fotoModal = ref('')
+import { ref } from "vue";
+import VueEasyLightbox from "vue-easy-lightbox";
+const images = [
+  "/galeria/foto1.jpeg",
+  "/galeria/foto2.jpeg",
+  "/galeria/foto3.jpeg",
+  "/galeria/foto4.jpeg",
+  "/galeria/foto5.jpeg",
+  "/galeria/foto6.jpeg",
+  "/galeria/foto7.jpeg",
+  "/galeria/foto8.jpeg",
+  "/galeria/foto9.jpeg",
+  "/galeria/foto10.jpeg",
+  "/galeria/foto11.jpeg",
+  "/galeria/foto12.jpeg",
+  "/galeria/foto13.jpeg",
+  "/galeria/foto14.jpeg",
+  "/galeria/foto15.jpeg",
+  "/galeria/foto16.jpeg",
+  "/galeria/foto17.jpeg",
+  "/galeria/foto18.jpeg",
+];
+const visible = ref(false);
+const index = ref(0);
 
-function abrirModal(foto) {
-  fotoModal.value = foto
-  modalAbierto.value = true
+function showImg(i) {
+  index.value = i;
+  visible.value = true;
 }
-function cerrarModal() {
-  modalAbierto.value = false
-  fotoModal.value = ''
+function hideImg() {
+  visible.value = false;
 }
+visible.value = false;
 </script>
 
 <style scoped>
@@ -71,8 +68,10 @@ function cerrarModal() {
   align-items: center;
 }
 .galeria-title {
+  padding-top: 1em;
+
   color: #ff99ff;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
   letter-spacing: 2px;
@@ -109,58 +108,9 @@ function cerrarModal() {
   box-shadow: 0 0 8px #000a;
   background: #181818;
   transition: box-shadow 0.2s;
-}
-
-/* Modal estilos */
-.modal-bg {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.modal-content {
-  position: relative;
+  /* Modal estilos */
+  /* Eliminado: estilos del modal personalizado, ya que solo se usa VueEasyLightbox */
   background: #222;
-  border-radius: 1em;
-  box-shadow: 0 0 40px #ff99ff88;
-  padding: 1em;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-img {
-  max-width: 80vw;
-  max-height: 80vh;
-  border-radius: 0.7em;
-  box-shadow: 0 0 20px #ff99ff88;
-  background: #181818;
-  object-fit: contain;
-}
-.modal-cerrar {
-  position: absolute;
-  top: 0.5em;
-  right: 0.7em;
-  background: #ff99ff;
-  color: #222;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5em;
-  cursor: pointer;
-  width: 2em;
-  height: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 8px #ff99ff88;
-  transition: background 0.2s;
-}
-.modal-cerrar:hover {
-  background: #fff;
 }
 
 /* Responsive */

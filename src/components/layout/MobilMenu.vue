@@ -9,13 +9,13 @@
           v-for="item in menuItems"
           :key="item.href"
         >
-          <a
+          <router-link
             class="mobile-navbar-link"
-            :href="item.href"
-            @click="$emit('close')"
+            :to="item.href"
+            @click.native="$emit('close')"
           >
             {{ item.label }}
-          </a>
+          </router-link>
         </li>
       </ul>
       <div class="mobile-social-bar">
@@ -27,6 +27,7 @@
 
 <script setup>
 import SocialBar from "./SocialBar.vue";
+import { RouterLink } from 'vue-router';
 
 defineProps({
   menuOpen: Boolean,
@@ -58,11 +59,11 @@ defineEmits(["close"]);
 
 .mobile-navbar {
   position: fixed;
-  top: 1.8em; /* Ajusta según el alto real del topbar */
+  top: 1.7em; /* Ajusta según el alto real del topbar */
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: #181818 url('/public/punk-texture.png') repeat;
+  background: #181818 url("/public/punk-texture.png") repeat;
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;
@@ -74,7 +75,7 @@ defineEmits(["close"]);
   overflow: hidden;
   transform: translateY(-40px);
   opacity: 0;
-  transition: transform 0.35s cubic-bezier(.77,0,.18,1), opacity 0.35s;
+  transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.35s;
 }
 
 .mobilmenu-wrapper[aria-open="true"] .mobile-navbar {
@@ -84,6 +85,7 @@ defineEmits(["close"]);
 
 .mobile-navbar-list {
   gap: 0.7em;
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -103,12 +105,16 @@ defineEmits(["close"]);
   padding: 0.4em 0.7em;
   color: #ff99ff;
   text-decoration: none;
-  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-family: "Montserrat", "Arial", sans-serif;
   border-left: 3px solid transparent;
   width: 100%;
   display: block;
   text-align: left;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+/* El primer elemento tiene más espacio arriba */
+.mobile-navbar-item:first-child .mobile-navbar-link {
+  padding-top: 0.9em;
 }
 
 .mobile-navbar-link:hover,
@@ -138,9 +144,10 @@ defineEmits(["close"]);
     height: 55vh;
     padding: 0.2em 0.5em;
   }
+
   .mobile-navbar-link {
     font-size: 0.9em;
-    padding: 0.3em 0.5em;
+    padding: 0.5em 0.5em;
   }
 }
 </style>

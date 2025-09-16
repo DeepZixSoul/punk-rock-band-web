@@ -3,13 +3,22 @@
     <h2 class="conciertos-title">Próximos Conciertos</h2>
     <div class="carteles-grid">
       <div v-for="(cartel, i) in carteles" :key="i" class="cartel-item">
-        <img :src="cartel" alt="Cartel de concierto" class="cartel-img" />
+        <img :src="cartel" alt="Cartel de concierto" class="cartel-img" @click="showCartel(i)" />
       </div>
     </div>
+    <VueEasyLightbox
+      :visible="visible"
+      :imgs="carteles"
+      :index="index"
+      @hide="hideCartel"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import VueEasyLightbox from 'vue-easy-lightbox';
+
 const carteles = [
   "/carteles/cartel1.jpg",
   "/carteles/cartel2.jpg",
@@ -21,6 +30,16 @@ const carteles = [
   "/carteles/cartel8.jpg",
   // Añade más rutas según tus carteles
 ];
+const visible = ref(false);
+const index = ref(0);
+
+function showCartel(i) {
+  index.value = i;
+  visible.value = true;
+}
+function hideCartel() {
+  visible.value = false;
+}
 </script>
 
 <style scoped>
@@ -35,10 +54,36 @@ const carteles = [
   align-items: center;
 }
 .conciertos-title {
+  padding-top: 1em;
   color: #ff99ff;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  margin-bottom: 1em;
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+  .conciertos-bg {
+    background: #181818;
+    padding: 2em 0.5em;
+    min-height: 60vh;
+    border-radius: 0.3em;
+    box-shadow: 0 0 40px #ff99ff44;
+    animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .conciertos-title {
+    color: #ff99ff;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  @keyframes topbarFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   letter-spacing: 2px;
   text-align: center;
 }

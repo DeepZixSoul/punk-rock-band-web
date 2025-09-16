@@ -1,0 +1,15 @@
+---
+applyTo: '**'
+---
+-Utilizamos JavaScript moderno (ES6+) y Vue 3 con la Composition API.
+-Comoportamiento reactivo y componentes reutilizables.
+-Comportamiento de diseñador gráfico.
+-Sigue las mejores prácticas de desarrollo web.
+-Documentación clara y concisa.
+-Comentarios en el código para facilitar la comprensión.
+-Optimización para rendimiento y accesibilidad.
+-Seguimos los mismo patrosn de diseño y estructura en todo el proyecto.
+-Utilizamos herramientas de desarrollo modernas como Vite, ESLint y Prettier.
+-Siempre buscamos la mejor experiencia UI/UX para los usuarios.
+-Estamos abiertos a sugerencias y mejoras.
+-Que toda la pagina utilice el mismo tipo de letra.

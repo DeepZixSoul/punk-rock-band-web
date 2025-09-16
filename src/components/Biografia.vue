@@ -1,5 +1,6 @@
 <template>
   <div class="biografia-bg">
+    <h2 class="biografia-title">Biografía</h2>
     <div class="biografia-main">
       <p class="biografia-text">
         “SOMOS GAYOLA, PRIMO, NO LOS STONES” VENIDOS DESDE DISTINTOS PUNTOS DE
@@ -96,55 +97,65 @@
 </script>
 
 <style scoped>
+/* Título de la biografía */
+.biografia-title {
+  padding-top: 1em;
+  color: #ff99ff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 2em;
+  margin-bottom: 0.7em;
+  text-align: center;
+  letter-spacing: 1px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
 .biografia-bg {
-  background: rgba(20, 20, 20, 0.9);
-  padding: 3em 1em;
-  border-radius: 1em;
-  box-shadow: 0 0 40px #000a;
+  background: #181818;
+  padding: 2em 0.5em;
   min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .biografia-main {
   width: 100%;
   max-width: 900px;
   margin-bottom: 2em;
-  background: rgba(20, 20, 20, 0.85);
-  border-radius: 1em;
-  box-shadow: 0 0 20px #000a;
-  padding: 2em;
+  background: transparent;
+  box-shadow: none;
+  padding: 1.2em 0.7em;
 }
 .biografia-text {
   color: #fff;
-  font-size: 1.2em;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-size: 1.1em;
+  font-family: "Montserrat", Arial, sans-serif;
   text-align: justify;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 .integrantes-section {
   width: 100%;
   max-width: 1200px;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 1em;
-  box-shadow: 0 0 20px #ff99ff;
-  padding: 2em 1em;
+  background: #181818;
+  box-shadow: 0 0 20px #ff99ff44;
+  padding: 1.2em 0.7em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 0.3em;
 }
 .integrantes-title {
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   color: #ff99ff;
-  font-size: 2em;
-  margin-bottom: 1em;
-  letter-spacing: 2px;
+  font-size: 1.7em;
+  margin-bottom: 0.7em;
+  letter-spacing: 1px;
 }
 .integrantes-list {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: row;
-  gap: 2em;
+  gap: 1.2em;
   width: 100%;
   justify-content: center;
 }
@@ -152,15 +163,15 @@
   flex: 1 1 180px;
   min-width: 180px;
   max-width: 220px;
-  background: #fff;
-  border-radius: 0.5em;
+  background: #222;
   box-shadow: 0 0 10px #ff99ff44;
-  padding: 1em 1em 2em 1em;
+  padding: 0.7em 0.7em 1.2em 0.7em;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: box-shadow 0.2s, transform 0.2s;
+  border-radius: 0.3em;
 }
 .integrante:hover {
   box-shadow: 0 0 20px #ff99ff88;
@@ -168,53 +179,63 @@
 }
 .integrante-img {
   width: 100%;
-  max-width: 160px;
-  height: 260px;
+  max-width: 140px;
+  height: 220px;
   object-fit: contain;
-  border-radius: 0.5em;
-  box-shadow: 0 0 8px #222a;
-  margin-bottom: 1em;
-  background: #eee;
+  border-radius: 0.3em;
+  box-shadow: 0 0 8px #ff99ff44;
+  margin-bottom: 0.7em;
+  background: #181818;
 }
 .integrante-nombre {
   width: 100%;
-  background: rgba(255, 153, 255, 0.25);
-  color: #222;
-  font-size: 1.1em;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
-  letter-spacing: 1px;
-  margin: 0 0 0.5em 0;
-  padding: 0.5em 0.2em;
-  border-radius: 0.3em;
+  background: rgba(255, 153, 255, 0.12);
+  color: #fff;
+  font-size: 1em;
+  font-family: "Montserrat", Arial, sans-serif;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.3em 0;
+  padding: 0.3em 0.1em;
+  border-radius: 0.2em;
   text-align: center;
-  box-shadow: 0 0 6px #ff99ff44;
+  box-shadow: 0 0 6px #ff99ff22;
 }
 .rol {
   font-size: 0.9em;
   color: #ff99ff;
   font-weight: bold;
-  margin-left: 0.5em;
+  margin-left: 0.3em;
 }
 .integrante p {
-  margin: 0.5em 0 0 0;
-  color: #333;
+  margin: 0.3em 0 0 0;
+  color: #eee;
   font-size: 0.95em;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   text-align: left;
+}
+@keyframes topbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (max-width: 1100px) {
   .integrantes-list {
-    gap: 1em;
+    gap: 0.7em;
   }
   .integrante-img {
-    max-width: 120px;
-    height: 180px;
+    max-width: 100px;
+    height: 140px;
   }
 }
 @media (max-width: 900px) {
   .integrantes-list {
     flex-direction: column;
-    gap: 1em;
+    gap: 0.7em;
     align-items: center;
   }
   .integrante {
@@ -223,27 +244,27 @@
     align-items: center;
   }
   .integrante-img {
-    max-width: 180px;
-    height: 260px;
+    max-width: 140px;
+    height: 220px;
   }
 }
 @media (max-width: 600px) {
   .biografia-bg {
-    padding: 1em 0.2em;
+    padding: 0.7em 0.1em;
   }
   .biografia-main {
-    padding: 1em;
+    padding: 0.7em;
   }
   .integrantes-section {
-    padding: 1em 0.2em;
+    padding: 0.7em 0.1em;
   }
   .integrante {
     max-width: 98vw;
-    padding: 0.7em 0.2em 1em 0.2em;
+    padding: 0.5em 0.1em 0.7em 0.1em;
   }
   .integrante-img {
-    max-width: 120px;
-    height: 180px;
+    max-width: 100px;
+    height: 140px;
   }
 }
 </style>

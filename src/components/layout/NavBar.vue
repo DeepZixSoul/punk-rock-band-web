@@ -3,35 +3,35 @@
   <nav id="main-navbar" class="navbar">
     <ul id="navbar-list" class="navbar-list">
       <li class="navbar-item">
-        <a class="navbar-link" href="#inicio-section">INICIO</a>
+        <router-link class="navbar-link" to="/">INICIO</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#biografia-section">BIOGRAFÍA</a>
+        <router-link class="navbar-link" to="/biografia">BIOGRAFÍA</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#conciertos-section">CONCIERTOS</a>
+        <router-link class="navbar-link" to="/conciertos">CONCIERTOS</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#galeria-section">GALERÍA</a>
+        <router-link class="navbar-link" to="/galeria">GALERÍA</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#videos-section">VIDEOS</a>
+        <router-link class="navbar-link" to="/videos">VIDEOS</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#discografia-section">DISCOGRAFÍA</a>
+        <router-link class="navbar-link" to="/discografia">DISCOGRAFÍA</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#tienda-section">TIENDA OFICIAL</a>
+        <router-link class="navbar-link" to="/tienda">TIENDA OFICIAL</router-link>
       </li>
       <li class="navbar-item">
-        <a class="navbar-link" href="#contacto-section">CONTACTO</a>
+        <router-link class="navbar-link" to="/contacto">CONTACTO</router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-// No es necesario por ahora
+import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
@@ -49,7 +49,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 0;
-  /* box-shadow: 0 0 40px #000a; */
+  box-shadow: 0 0 40px #000a;
   animation: navbarFadeIn 0.7s cubic-bezier(.77,0,.18,1);
 }
 

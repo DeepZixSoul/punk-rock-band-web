@@ -38,8 +38,9 @@ const videos = [
   align-items: center;
 }
 .videos-title {
+  padding-top: 1em;
   color: #ff99ff;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
   letter-spacing: 2px;

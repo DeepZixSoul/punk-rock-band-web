@@ -7,25 +7,15 @@
         src="/src/assets/logo.png"
         alt="Gayola logo"
         class="logo-navbar"
+        @click="goHome"
+        style="cursor:pointer"
       />
     </div>
-    <!-- Logos relleno solo en móvil/tablet -->
-    <!-- <div class="top-fill-mobile" v-if="isMobile"> -->
-    <!-- <img
-        v-for="n in 6"
-        :key="n"
-        src="/public/gayola-blanco.png"
-        alt="Gayola relleno"
-        class="logo-gayola-mobile"
-      /> -->
-    <!-- </div> -->
-    <!-- Botón hamburguesa/cerrar solo en móvil/tablet -->
     <button class="menu-btn" v-if="isMobile" @click="handleMenuClick">
       <span class="menu-icon">
         {{ menuOpen ? "✕" : "☰" }}
       </span>
     </button>
-    <!-- Logos relleno en escritorio -->
     <div class="top-fill" v-if="!isMobile">
       <img
         v-for="n in 8"
@@ -35,7 +25,6 @@
         class="logo-blanco"
       />
     </div>
-    <!-- Redes sociales solo en escritorio -->
     <SocialBar v-if="!isMobile" />
   </div>
 </template>
@@ -43,15 +32,21 @@
 <script setup>
 import SocialBar from "./SocialBar.vue";
 
-defineProps({
+const props = defineProps({
   isMobile: Boolean,
   menuOpen: Boolean,
 });
 const emit = defineEmits(["toggle-menu"]);
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 function handleMenuClick() {
-  console.log("Botón hamburguesa pulsado");
-  // Emitir el evento para abrir/cerrar el menú
   emit("toggle-menu");
+}
+
+function goHome() {
+  router.push("/");
+  if (props.menuOpen) emit("toggle-menu");
 }
 </script>
 
@@ -71,8 +66,8 @@ function handleMenuClick() {
   background: #181818;
   padding: 0.3em 1em;
   min-height: 3em;
-  transition: background 0.3s;
-  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  /* transition: background 0.3s; */
+  /* animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1); */
 }
 .mobile-navbar {
   position: sticky;

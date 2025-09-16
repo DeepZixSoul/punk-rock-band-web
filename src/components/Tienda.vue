@@ -8,7 +8,11 @@
         class="producto-item"
         @click="abrirModal(producto)"
       >
-        <img :src="producto.imagen" :alt="producto.nombre" class="producto-img" />
+        <img
+          :src="producto.imagen"
+          :alt="producto.nombre"
+          class="producto-img"
+        />
         <h3 class="producto-nombre">{{ producto.nombre }}</h3>
         <p class="producto-precio">{{ producto.precio }} €</p>
       </div>
@@ -17,14 +21,15 @@
     <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal">
       <div class="modal-content">
         <button class="modal-cerrar" @click="cerrarModal">✕</button>
-        <img :src="productoModal.imagen" :alt="productoModal.nombre" class="modal-img" />
+        <img
+          :src="productoModal.imagen"
+          :alt="productoModal.nombre"
+          class="modal-img"
+        />
         <h3 class="modal-nombre">{{ productoModal.nombre }}</h3>
         <p class="modal-descripcion">{{ productoModal.descripcion }}</p>
         <p class="modal-precio">{{ productoModal.precio }} €</p>
-        <button
-          class="modal-comprar"
-          @click="enviarEmail(productoModal)"
-        >
+        <button class="modal-comprar" @click="enviarEmail(productoModal)">
           Comprar por email
         </button>
       </div>
@@ -103,8 +108,10 @@ function enviarEmail(producto) {
   align-items: center;
 }
 .tienda-title {
+  padding-top: 1em;
+
   color: #ff99ff;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
   letter-spacing: 2px;
@@ -112,7 +119,32 @@ function enviarEmail(producto) {
 }
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+  .tienda-bg {
+    background: #181818;
+    padding: 2em 0.5em;
+    min-height: 60vh;
+    border-radius: 0.3em;
+    box-shadow: 0 0 40px #ff99ff44;
+    animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .tienda-title {
+    color: #ff99ff;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  @keyframes topbarFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   gap: 2em;
   width: 100%;
   max-width: 1200px;
@@ -144,7 +176,7 @@ function enviarEmail(producto) {
 }
 .producto-nombre {
   color: #ff99ff;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-family: "Permanent Marker", cursive, Arial, sans-serif;
   font-size: 1.1em;
   margin-bottom: 0.3em;
   text-align: center;
@@ -159,8 +191,11 @@ function enviarEmail(producto) {
 /* Modal estilos */
 .modal-bg {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.85);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,7 +225,7 @@ function enviarEmail(producto) {
 }
 .modal-nombre {
   color: #ff99ff;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-family: "Permanent Marker", cursive, Arial, sans-serif;
   font-size: 1.3em;
   margin-bottom: 0.5em;
   text-align: center;
@@ -286,4 +321,3 @@ function enviarEmail(producto) {
   }
 }
 </style>
-

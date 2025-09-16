@@ -71,7 +71,8 @@ const discos = [
 }
 .discografia-title {
   color: #ff99ff;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  padding-top: 1em;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1.5em;
   letter-spacing: 2px;
@@ -98,13 +99,15 @@ const discos = [
 .disco-info {
   flex: 1;
   color: #fff;
-  font-family: Arial, sans-serif;
+  
+  font-family: "Montserrat", Arial, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .disco-titulo {
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  
+  font-family: "Montserrat", Arial, sans-serif;
   color: #ff99ff;
   font-size: 1.5em;
   margin-bottom: 0.7em;

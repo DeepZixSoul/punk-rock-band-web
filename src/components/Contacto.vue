@@ -63,14 +63,16 @@
   align-items: center;
 }
 .contacto-title {
+  padding-top: 1em;
   color: #ff99ff;
-  font-family: 'Permanent Marker', cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
   letter-spacing: 2px;
   text-align: center;
 }
 .contacto-bienvenida {
+  font-family: "Montserrat", Arial, sans-serif;
   color: #fff;
   font-size: 1.1em;
   margin-bottom: 2em;
@@ -78,6 +80,7 @@
   max-width: 700px;
 }
 .contacto-info {
+  font-family: "Montserrat", Arial, sans-serif;
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -126,7 +129,26 @@
   cursor: pointer;
   box-shadow: 0 0 8px #ff99ff88;
   text-decoration: none;
-  display: inline-block;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+.contacto-bg {
+  background: #181818;
+  padding: 2em 0.5em;
+  min-height: 60vh;
+  border-radius: 0.3em;
+  box-shadow: 0 0 40px #ff99ff44;
+  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.contacto-title {
+  color: #ff99ff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+@keyframes topbarFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   margin-top: 0.5em;
   transition: background 0.2s;
 }
