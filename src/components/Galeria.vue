@@ -60,7 +60,6 @@ visible.value = false;
 .galeria-bg {
   background: rgba(20, 20, 20, 0.9);
   padding: 2em 1em;
-  border-radius: 1em;
   box-shadow: 0 0 40px #000a;
   min-height: 60vh;
   display: flex;
@@ -103,8 +102,7 @@ visible.value = false;
 .foto-img {
   width: 100%;
   max-height: 350px;
-  object-fit: contain; /* No recorta la imagen */
-  border-radius: 0.4em;
+  object-fit: contain;   
   box-shadow: 0 0 8px #000a;
   background: #181818;
   transition: box-shadow 0.2s;

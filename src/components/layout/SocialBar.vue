@@ -42,6 +42,9 @@
 
 <style scoped>
 .social-bar {
+  
+  justify-content: flex-start;
+  padding-right: 2em;
   display: flex;
   align-items: center;
   gap: 1em;
@@ -51,10 +54,28 @@
   display: inline-block;
 }
 .social-icon {
+  
   width: 2em;
   height: 2em;
   filter: grayscale(0.2) brightness(1.2);
   transition: filter 0.2s;
+}
+.social-link[aria-label="YouTube"] .social-icon {
+  width: 2.6em;
+  height: 2.6em;
+}
+
+@media (max-width: 900px) {
+  .social-link[aria-label="YouTube"] .social-icon {
+    width: 2em;
+    height: 2em;
+  }
+}
+@media (max-width: 600px) {
+  .social-link[aria-label="YouTube"] .social-icon {
+    width: 1.7em;
+    height: 1.7em;
+  }
 }
 .social-icon:hover {
   filter: drop-shadow(0 0 8px #ff99ff) brightness(1.5);

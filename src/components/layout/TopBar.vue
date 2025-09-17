@@ -98,6 +98,7 @@ function goHome() {
   align-items: center;
 }
 .logo-navbar {
+  margin-left: 0.8em;
   height: 2.5em;
   padding: 0.2em 0.3em;
   width: auto;

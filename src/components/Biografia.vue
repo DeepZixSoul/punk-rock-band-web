@@ -3,15 +3,15 @@
     <h2 class="biografia-title">Biografía</h2>
     <div class="biografia-main">
       <p class="biografia-text">
-        “SOMOS GAYOLA, PRIMO, NO LOS STONES” VENIDOS DESDE DISTINTOS PUNTOS DE
-        LA PROVINCIA DE ALICANTE, PERO CON BASE EN EL BARRIO DE “LA COCA” DE
-        ASPE, LLEGAN CON TODO A DAR UN GOLPE EN LA MESA. SUS TEMAS, DE CORTE
-        AGRESIVO Y DIRECTO TANTO EN LO LÍRICO COMO EN LO INSTRUMENTAL, Y UNA
-        DIVERTIDA Y ARROLLADORA PUESTA EN ESCENA, HACEN VER QUE ESTA BANDA VIENE
-        HAMBRIENTA Y CON LOS DIENTES AFILADOS. PESE A SU CORTA TRAYECTORIA, YA
-        HAN COMPARTIDO TABLAS CON OTROS GRANDES DEL PUNK COMO “ENVIDIA KOTXINA”,
-        “KANTE PINRELICO”, “MAMÁ LADILLA” O “LA BANDA TRAPERA DEL RÍO” ENTRE
-        OTROS.
+        “Somos Gayola, primo, no los Stones”. Venidos desde distintos puntos de
+        la provincia de Alicante, pero con base en el barrio de “La Coca” de
+        Aspe, llegan con todo a dar un golpe en la mesa. Sus temas, de corte
+        agresivo y directo tanto en lo lírico como en lo instrumental, y una
+        divertida y arrolladora puesta en escena, hacen ver que esta banda viene
+        hambrienta y con los dientes afilados. Pese a su corta trayectoria, ya
+        han compartido tablas con otros grandes del punk como “Envidia Kotxina”,
+        “Kante Pinrelico”, “Mamá Ladilla” o “La Banda Trapera del Río” entre
+        otros.
       </p>
     </div>
     <div class="integrantes-section">
@@ -108,15 +108,20 @@
   letter-spacing: 1px;
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 .biografia-bg {
   background: #181818;
   padding: 2em 0.5em;
-  min-height: 70vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  overflow-x: hidden;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, sans-serif;
 }
 .biografia-main {
   width: 100%;
@@ -125,11 +130,12 @@
   background: transparent;
   box-shadow: none;
   padding: 1.2em 0.7em;
+  box-sizing: border-box;
 }
 .biografia-text {
   color: #fff;
-  font-size: 1.1em;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 1.2em;
+  font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
   letter-spacing: 0.5px;
 }
@@ -143,6 +149,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 0.3em;
+  box-sizing: border-box;
 }
 .integrantes-title {
   font-family: "Montserrat", Arial, sans-serif;
@@ -210,7 +217,7 @@
   margin: 0.3em 0 0 0;
   color: #eee;
   font-size: 0.95em;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   text-align: left;
 }
 @keyframes topbarFadeIn {
@@ -225,46 +232,81 @@
 }
 @media (max-width: 1100px) {
   .integrantes-list {
-    gap: 0.7em;
+    gap: 1.2em;
   }
   .integrante-img {
-    max-width: 100px;
-    height: 140px;
+    max-width: 110px;
+    height: 160px;
+  }
+  .biografia-main,
+  .integrantes-section {
+    padding: 2em 1em;
   }
 }
+
 @media (max-width: 900px) {
   .integrantes-list {
     flex-direction: column;
-    gap: 0.7em;
+    gap: 1.2em;
     align-items: center;
   }
   .integrante {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
     align-items: center;
+    padding: 1.2em 0.7em 1.5em 0.7em;
   }
   .integrante-img {
-    max-width: 140px;
-    height: 220px;
+    max-width: 150px;
+    height: 230px;
+  }
+  .biografia-main,
+  .integrantes-section {
+    padding: 2em 1em;
   }
 }
+
 @media (max-width: 600px) {
   .biografia-bg {
-    padding: 0.7em 0.1em;
+    padding: 1.2em 0.3em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
   }
   .biografia-main {
-    padding: 0.7em;
+    padding: 1.2em;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
   .integrantes-section {
-    padding: 0.7em 0.1em;
+    padding: 1.2em 0.3em;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
   .integrante {
     max-width: 98vw;
-    padding: 0.5em 0.1em 0.7em 0.1em;
+    padding: 1em 0.3em 1.2em 0.3em;
+    box-sizing: border-box;
   }
   .integrante-img {
-    max-width: 100px;
-    height: 140px;
+    max-width: 120px;
+    height: 170px;
+  }
+  .biografia-title,
+  .integrantes-title {
+    font-size: 1.3em;
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .biografia-text {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+  .integrante p {
+    font-size: 0.85em;
+    line-height: 1.5;
   }
 }
 </style>

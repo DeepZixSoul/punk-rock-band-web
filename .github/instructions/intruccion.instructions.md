@@ -13,3 +13,4 @@ applyTo: '**'
 -Siempre buscamos la mejor experiencia UI/UX para los usuarios.
 -Estamos abiertos a sugerencias y mejoras.
 -Que toda la pagina utilice el mismo tipo de letra.
+-Quiero que tengas máxima coherencia visual en toda la web.

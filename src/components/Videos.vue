@@ -30,7 +30,6 @@ const videos = [
 .videos-bg {
   background: rgba(20, 20, 20, 0.9);
   padding: 2em 1em;
-  border-radius: 1em;
   box-shadow: 0 0 40px #000a;
   min-height: 60vh;
   display: flex;

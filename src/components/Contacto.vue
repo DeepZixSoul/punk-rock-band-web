@@ -53,31 +53,40 @@
 
 <style scoped>
 .contacto-bg {
-  background: #111;
+  background: #181818;
   padding: 2em 1em;
-  border-radius: 1em;
-  box-shadow: 0 0 40px #000a;
-  min-height: 50vh;
+  min-height: 60vh;
+  border-radius: 0.3em;
+  box-shadow: 0 0 40px #ff99ff44;
+  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
+  width: 100vw;
+  box-sizing: border-box;
 }
 .contacto-title {
-  padding-top: 1em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: 700;
+  background: rgba(24,24,24,0.85);
+  border-radius: 0.4em;
+  padding: 0.5em 1.5em 0.3em 1.5em;
 }
 .contacto-bienvenida {
   font-family: "Montserrat", Arial, sans-serif;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.15em;
   margin-bottom: 2em;
   text-align: center;
   max-width: 700px;
+  line-height: 1.7;
+  padding: 0.3em 0.2em;
 }
 .contacto-info {
   font-family: "Montserrat", Arial, sans-serif;
@@ -87,12 +96,16 @@
   flex-direction: column;
   gap: 1.5em;
   align-items: flex-start;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
 }
 .contacto-item {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  box-sizing: border-box;
+  padding: 0.3em 0.1em;
 }
 .contacto-label {
   color: #ff99ff;
@@ -159,26 +172,50 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .contacto-bg {
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
   .contacto-info {
-    max-width: 98vw;
+    max-width: 100vw;
     gap: 1em;
+    box-sizing: border-box;
+    padding: 0.5em 0.3em;
   }
   .contacto-bienvenida {
     font-size: 1em;
     margin-bottom: 1em;
+    padding: 0.2em 0.1em;
+  }
+  .contacto-title {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
 }
 @media (max-width: 600px) {
   .contacto-bg {
     padding: 1em 0.2em;
     border-radius: 0.5em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
   }
   .contacto-title {
     font-size: 1.2em;
     margin-bottom: 0.5em;
+    padding: 0.2em 0.3em 0.1em 0.3em;
   }
   .contacto-info {
     gap: 0.7em;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 0.3em 0.1em;
+  }
+  .contacto-bienvenida {
+    font-size: 0.95em;
+    padding: 0.1em 0.05em;
   }
   .contacto-btn {
     padding: 0.5em 1em;

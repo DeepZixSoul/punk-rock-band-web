@@ -60,23 +60,30 @@ const discos = [
 
 <style scoped>
 .discografia-bg {
-  background: rgba(20, 20, 20, 0.9);
+  background: #181818;
   padding: 2em 1em;
-  border-radius: 1em;
-  box-shadow: 0 0 40px #000a;
-  min-height: 50vh;
+  min-height: 60vh;
+  box-shadow: 0 0 40px #ff99ff44;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, sans-serif;
 }
 .discografia-title {
   color: #ff99ff;
   padding-top: 1em;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: 700;
+  background: rgba(24,24,24,0.85);
+  border-radius: 0.4em;
+  padding: 0.5em 1.5em 0.3em 1.5em;
 }
 .disco-container {
   display: flex;
@@ -92,6 +99,7 @@ const discos = [
   box-shadow: 0 0 20px #ff99ff44;
   padding: 2em;
   transition: flex-direction 0.3s;
+  box-sizing: border-box;
 }
 .disco-container.invertido {
   flex-direction: row-reverse;
@@ -99,24 +107,26 @@ const discos = [
 .disco-info {
   flex: 1;
   color: #fff;
-  
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0.5em 1em;
+  box-sizing: border-box;
 }
 .disco-titulo {
-  
   font-family: "Montserrat", Arial, sans-serif;
   color: #ff99ff;
   font-size: 1.5em;
   margin-bottom: 0.7em;
 }
 .disco-descripcion {
-  font-size: 1.1em;
-  line-height: 1.6;
-  letter-spacing: 1px;
-  margin-bottom: 1em;
+  font-size: 1.15em;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2em;
+  padding: 0.3em 0.2em;
+  font-family: "Roboto", Arial, sans-serif;
 }
 .disco-canciones {
   margin: 0 0 1em 0;
@@ -146,11 +156,23 @@ const discos = [
   object-fit: contain;
 }
 @media (max-width: 900px) {
+  .discografia-bg {
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
   .disco-container,
   .disco-container.invertido {
     flex-direction: column;
     gap: 2em;
     padding: 1em;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .disco-info {
+    padding: 0.5em 0.3em;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
   .portada-img {
     width: 220px;
@@ -158,16 +180,27 @@ const discos = [
   .discografia-title {
     font-size: 1.3em;
     margin-bottom: 1em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
 }
 @media (max-width: 600px) {
   .discografia-bg {
     padding: 1em 0.2em;
     border-radius: 0.5em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
   }
   .disco-container {
     padding: 0.7em;
     margin-bottom: 2em;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .disco-info {
+    padding: 0.5em 0.1em;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
   .portada-img {
     width: 98vw;

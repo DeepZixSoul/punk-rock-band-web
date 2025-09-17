@@ -17,7 +17,6 @@
         <p class="producto-precio">{{ producto.precio }} €</p>
       </div>
     </div>
-    <!-- Modal producto -->
     <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal">
       <div class="modal-content">
         <button class="modal-cerrar" @click="cerrarModal">✕</button>
@@ -97,54 +96,34 @@ function enviarEmail(producto) {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
 .tienda-bg {
-  background: #111;
+  background: #181818;
   padding: 2em 1em;
-  border-radius: 1em;
-  box-shadow: 0 0 40px #000a;
   min-height: 60vh;
+  border-radius: 0.3em;
+  box-shadow: 0 0 40px #ff99ff44;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .tienda-title {
-  padding-top: 1em;
-
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2em;
-  margin-bottom: 1em;
+  font-size: 2.2em;
+  margin-bottom: 1.2em;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: 700;
+  background: rgba(24,24,24,0.85);
+  border-radius: 0.4em;
+  padding: 0.5em 1.5em 0.3em 1.5em;
 }
 .productos-grid {
   display: grid;
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-  .tienda-bg {
-    background: #181818;
-    padding: 2em 0.5em;
-    min-height: 60vh;
-    border-radius: 0.3em;
-    box-shadow: 0 0 40px #ff99ff44;
-    animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-  }
-  .tienda-title {
-    color: #ff99ff;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 2em;
-    margin-bottom: 1em;
-    text-align: center;
-  }
-  @keyframes topbarFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  grid-template-columns: repeat(3, 1fr);
   gap: 2em;
   width: 100%;
   max-width: 1200px;
@@ -176,10 +155,11 @@ function enviarEmail(producto) {
 }
 .producto-nombre {
   color: #ff99ff;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.1em;
   margin-bottom: 0.3em;
   text-align: center;
+  font-weight: 600;
 }
 .producto-precio {
   color: #fff;
@@ -225,10 +205,11 @@ function enviarEmail(producto) {
 }
 .modal-nombre {
   color: #ff99ff;
-  font-family: "Permanent Marker", cursive, Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.3em;
   margin-bottom: 0.5em;
   text-align: center;
+  font-weight: 600;
 }
 .modal-descripcion {
   color: #fff;
@@ -311,6 +292,7 @@ function enviarEmail(producto) {
   .tienda-title {
     font-size: 1.2em;
     margin-bottom: 0.5em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .modal-content {
     padding: 1em 0.2em 0.7em 0.2em;
@@ -318,6 +300,17 @@ function enviarEmail(producto) {
   .modal-img {
     max-width: 98vw;
     max-height: 20vh;
+  }
+}
+
+@keyframes topbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
