@@ -3,7 +3,12 @@
     <h2 class="conciertos-title">Próximos Conciertos</h2>
     <div class="carteles-grid">
       <div v-for="(cartel, i) in carteles" :key="i" class="cartel-item">
-        <img :src="cartel" alt="Cartel de concierto" class="cartel-img" @click="showCartel(i)" />
+        <img
+          :src="cartel"
+          alt="Cartel de concierto"
+          class="cartel-img"
+          @click="showCartel(i)"
+        />
       </div>
     </div>
     <VueEasyLightbox
@@ -16,9 +21,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import VueEasyLightbox from 'vue-easy-lightbox';
-import { useHead } from '@vueuse/head';
+import { ref } from "vue";
+import VueEasyLightbox from "vue-easy-lightbox";
+import { useHead } from "@vueuse/head";
 
 const carteles = [
   "/carteles/cartel1.jpg",
@@ -43,73 +48,67 @@ function hideCartel() {
 }
 
 useHead({
-  title: 'Conciertos | Gayola - Punk Rock desde Alicante',
+  title: "Conciertos | Gayola - Punk Rock desde Alicante",
   meta: [
     {
-      name: 'description',
-      content: 'Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.'
+      name: "description",
+      content:
+        "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
     },
     {
-      name: 'keywords',
-      content: 'gayola, conciertos, punk, rock, eventos, directo, Alicante, banda, España, música, fechas, entradas'
+      name: "keywords",
+      content:
+        "gayola, conciertos, punk, rock, eventos, directo, Alicante, banda, España, música, fechas, entradas",
     },
     {
-      property: 'og:title',
-      content: 'Conciertos | Gayola - Punk Rock desde Alicante'
+      property: "og:title",
+      content: "Conciertos | Gayola - Punk Rock desde Alicante",
     },
     {
-      property: 'og:description',
-      content: 'Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.'
-    }
-  ]
+      property: "og:description",
+      content:
+        "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
+    },
+  ],
 });
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
 .conciertos-bg {
-  background: rgba(20, 20, 20, 0.9);
+  background: var(--color-bg);
   padding: 2em 1em;
- 
   box-shadow: 0 0 40px #000a;
   min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Montserrat", Arial, sans-serif; /* Coherencia visual */
 }
+
 .conciertos-title {
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-  padding-top: 1em;
+  padding-top: 2em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  .conciertos-bg {
-    background: #181818;
-    padding: 2em 0.5em;
-    min-height: 60vh;
-    border-radius: 0.3em;
-    box-shadow: 0 0 40px #ff99ff44;
-    animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-  }
-  .conciertos-title {
-    color: #ff99ff;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 2em;
-    margin-bottom: 1em;
-    text-align: center;
-  }
-  @keyframes topbarFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  letter-spacing: 2px;
+  margin-bottom: 1em;
   text-align: center;
+  letter-spacing: 2px;
+  animation: topbarFadeIn 0.8s ease;
 }
+
+@keyframes topbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .carteles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -163,6 +162,11 @@ useHead({
   .conciertos-bg {
     padding: 1em 0.2em;
     border-radius: 0.5em;
+  }
+  .conciertos-title {
+    font-size: 1.5em;
+    margin-bottom: 0.7em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .carteles-grid {
     grid-template-columns: 1fr;

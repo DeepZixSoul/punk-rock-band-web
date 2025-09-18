@@ -37,7 +37,7 @@ const videos = [
   align-items: center;
 }
 .videos-title {
-  padding-top: 1em;
+  padding-top: 2em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
@@ -107,8 +107,9 @@ const videos = [
 }
 @media (max-width: 600px) {
   .videos-title {
-    font-size: 1.1em;
-    margin-bottom: 0.3em;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .video-frame {
     height: 120px;

@@ -63,7 +63,7 @@ defineEmits(["close"]);
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: #181818 url("/public/punk-texture.png") repeat;
+  background: var(--color-bg) url("/public/punk-texture.png") repeat;
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;
@@ -102,10 +102,10 @@ defineEmits(["close"]);
 
 .mobile-navbar-link {
   font-size: 1em;
-  padding: 0.4em 0.7em;
-  color: #ff99ff;
+  padding: 0.6em 0.7em;
+  color: var(--color-accent);
   text-decoration: none;
-  font-family: "Montserrat", "Arial", sans-serif;
+  font-family: var(--font-title);
   border-left: 3px solid transparent;
   width: 100%;
   display: block;
@@ -120,9 +120,9 @@ defineEmits(["close"]);
 .mobile-navbar-link:hover,
 .mobile-navbar-link:focus,
 .mobile-navbar-link.active {
-  color: #fff;
+  color: var(--color-text);
   border-left: 3px solid #ff99ff;
-  background: #222;
+  background: var(--color-card);
 }
 
 .mobile-social-bar {
@@ -139,15 +139,32 @@ defineEmits(["close"]);
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .mobile-navbar {
+    height: 55vh;
+    padding: 0.2em 0.5em;
+  }
+  .mobile-navbar-item:first-child {
+    margin-top: 1em;
+  }
+  .mobile-navbar-link {
+  
+    font-size: 0.9em;
+    padding: 0.2em 1em;
+  }
+}
 @media (max-width: 600px) {
   .mobile-navbar {
     height: 55vh;
     padding: 0.2em 0.5em;
   }
-
+  .mobile-navbar-item:first-child {
+    margin-top: 0.8em;
+  }
   .mobile-navbar-link {
+  
     font-size: 0.9em;
-    padding: 0.5em 0.5em;
+    padding: 0.2em 0.5em;
   }
 }
 </style>

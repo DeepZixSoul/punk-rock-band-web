@@ -36,7 +36,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useHead } from '@vueuse/head';
-import noticias from "../data/noticias.js";
+import noticias from "../../data/noticias.js";
 
 useHead({
   title: 'Noticias | Gayola - Punk Rock desde Alicante',
@@ -234,6 +234,11 @@ function cambiarPagina(p) {
 }
 
 @media (max-width: 600px) {
+  .noticias-title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
+  }
   .noticias-section {
     width: 90vw;
     max-width: 100vw;

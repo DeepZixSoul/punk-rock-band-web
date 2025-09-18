@@ -1,7 +1,35 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'Gayola Punk Rock',
+        short_name: 'Gayola',
+        description: 'Página oficial de Gayola, grupo de punk-rock en España. Noticias, conciertos y música.',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#181818',
+        theme_color: '#ff99ff',
+        orientation: 'portrait',
+        icons: [
+          {
+            src: '/logo.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/logo.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
+    })
+  ]
 })

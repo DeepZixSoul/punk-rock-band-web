@@ -42,7 +42,7 @@ import { RouterLink } from 'vue-router';
   top: 3em;
   z-index: 10000;
   margin: 0;
-  background: #181818;
+  background: var(--color-bg);
   padding: 0.5em 1.5em;
   display: flex;
   width: 100vw;
@@ -71,9 +71,9 @@ import { RouterLink } from 'vue-router';
 }
 
 .navbar-link {
-  color: #ff99ff;
+  color: var(--color-accent);
   text-decoration: none;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: var(--font-title);
   font-size: 1.1em;
   padding: 0.4em 1em;
   border-left: 3px solid transparent;

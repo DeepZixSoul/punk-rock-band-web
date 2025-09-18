@@ -130,7 +130,7 @@ useHead({
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 /* Título de la biografía */
 .biografia-title {
-  padding-top: 1em;
+  padding-top: 2em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
@@ -181,6 +181,7 @@ useHead({
   box-sizing: border-box;
 }
 .integrantes-title {
+  
   font-family: "Montserrat", Arial, sans-serif;
   color: #ff99ff;
   font-size: 1.7em;
@@ -323,9 +324,9 @@ useHead({
   }
   .biografia-title,
   .integrantes-title {
-    font-size: 1.3em;
-    padding-top: 0.5em;
+    font-size: 1.2em;
     margin-bottom: 0.5em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .biografia-text {
     padding-right: 0.5em;

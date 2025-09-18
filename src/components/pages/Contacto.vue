@@ -88,16 +88,13 @@ useHead({
   box-sizing: border-box;
 }
 .contacto-title {
+  padding-top: 2em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1em;
   letter-spacing: 2px;
   text-align: center;
-  font-weight: 700;
-  background: rgba(24,24,24,0.85);
-  border-radius: 0.4em;
-  padding: 0.5em 1.5em 0.3em 1.5em;
 }
 .contacto-bienvenida {
   font-family: "Montserrat", Arial, sans-serif;

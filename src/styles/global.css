@@ -1,0 +1,28 @@
+/* global.css: estilos base y reset para toda la web */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #181818;
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a {
+  color: #ff99ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #fff;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

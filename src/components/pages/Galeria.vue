@@ -67,8 +67,7 @@ visible.value = false;
   align-items: center;
 }
 .galeria-title {
-  padding-top: 1em;
-
+  padding-top: 2em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
@@ -102,7 +101,7 @@ visible.value = false;
 .foto-img {
   width: 100%;
   max-height: 350px;
-  object-fit: contain;   
+  object-fit: contain;
   box-shadow: 0 0 8px #000a;
   background: #181818;
   transition: box-shadow 0.2s;
@@ -140,8 +139,9 @@ visible.value = false;
     border-radius: 0.5em;
   }
   .galeria-title {
-    font-size: 1.2em;
-    margin-bottom: 0.5em;
+    font-size: 1.5em;
+    margin-bottom: 0.7em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .galeria-grid {
     grid-template-columns: 1fr;

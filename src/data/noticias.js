@@ -26,7 +26,7 @@ export default [
   },
   {
     titulo: "¡Gracias por el apoyo!",
-    imagen: "/public/galeria/foto1.jpeg",
+    imagen: "/galeria/foto1.jpeg",
     pie: "Más de 1000 seguidores en Instagram. ¡Sois la caña!",
     enlace: "https://www.instagram.com/gayolaseriopunk"
   },
@@ -42,11 +42,12 @@ export default [
     pie: "Este sábado, directo en el barrio de La Coca.",
     enlace: null
   },
+  
   {
-    titulo: "Gayola en la radio local",
-    imagen: "/public/gayola.png",
-    pie: "Entrevista exclusiva en Radio Aspe.",
-    enlace: "https://radioaspe.com/entrevista-gayola"
+    titulo: "¡Gracias por el apoyo!",
+    imagen: "/galeria/foto1.jpeg",
+    pie: "Más de 1000 seguidores en Instagram. ¡Sois la caña!",
+    enlace: "https://www.instagram.com/gayolaseriopunk"
   },
   {
     titulo: "Nuevo merchandising disponible",
@@ -54,11 +55,6 @@ export default [
     pie: "Camisetas, tazas y más en la tienda oficial.",
     enlace: "/tienda"
   },
-  {
-    titulo: "¡Gracias por el apoyo!",
-    imagen: "/public/galeria/foto1.jpeg",
-    pie: "Más de 1000 seguidores en Instagram. ¡Sois la caña!",
-    enlace: "https://www.instagram.com/gayolaseriopunk"
-  },
+  
   // Puedes añadir más noticias aquí
 ];

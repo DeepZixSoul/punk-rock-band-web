@@ -84,6 +84,7 @@
 /* Responsive */
 @media (max-width: 900px) {
   .social-bar {
+    padding-right: 0;
     gap: 1em;
   }
   .social-icon {
@@ -93,9 +94,12 @@
 }
 @media (max-width: 600px) {
   .social-bar {
+    padding-right: 0;
     gap: 0.9em;
   }
   .social-icon {
+    
+    margin-left: auto;
     width: 1.4em;
     height: 1.4em;
   }

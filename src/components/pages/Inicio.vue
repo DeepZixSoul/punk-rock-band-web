@@ -67,6 +67,22 @@ import Noticias from "./Noticias.vue";
     max-width: 98vw;
   }
 }
+@media (max-width: 600px) {
+  .inicio-title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    padding: 0.1em 0.5em 0.2em 0.5em;
+  }
+  .grupo-foto {
+    height: 25vh;
+    max-width: 98vw;
+  }
+  .inicio-content {
+    padding: 2em 0.5em;
+  }
+  
+
+}
 
 @keyframes topbarFadeIn {
   from {
