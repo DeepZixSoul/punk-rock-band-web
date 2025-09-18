@@ -14,3 +14,4 @@ applyTo: '**'
 -Estamos abiertos a sugerencias y mejoras.
 -Que toda la pagina utilice el mismo tipo de letra.
 -Quiero que tengas máxima coherencia visual en toda la web.
+-Siempre que proceda, cada modificación debe tener en cuenta el SEO.

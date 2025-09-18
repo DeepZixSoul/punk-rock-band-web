@@ -48,7 +48,28 @@
 </template>
 
 <script setup>
-// No es necesario por ahora
+import { useHead } from '@vueuse/head';
+useHead({
+  title: 'Contacto | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contacta con Gayola para contrataciones, prensa, colaboraciones o cualquier consulta.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, contacto, contrataciones, prensa, colaboraciones, punk, rock, Alicante, banda, España, email'
+    },
+    {
+      property: 'og:title',
+      content: 'Contacto | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Contacta con Gayola para contrataciones, prensa, colaboraciones o cualquier consulta.'
+    }
+  ]
+});
 </script>
 
 <style scoped>
@@ -142,26 +163,6 @@
   cursor: pointer;
   box-shadow: 0 0 8px #ff99ff88;
   text-decoration: none;
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-.contacto-bg {
-  background: #181818;
-  padding: 2em 0.5em;
-  min-height: 60vh;
-  border-radius: 0.3em;
-  box-shadow: 0 0 40px #ff99ff44;
-  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-}
-.contacto-title {
-  color: #ff99ff;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2em;
-  margin-bottom: 1em;
-  text-align: center;
-}
-@keyframes topbarFadeIn {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
   margin-top: 0.5em;
   transition: background 0.2s;
 }

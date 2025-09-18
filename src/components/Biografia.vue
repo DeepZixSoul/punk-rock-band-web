@@ -20,7 +20,7 @@
         <div class="integrante">
           <img
             src="/miembros/bateria.png"
-            alt="Dani Mestre"
+            alt="Dani Mestre, batería de Gayola punk rock en Alicante"
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
@@ -35,7 +35,7 @@
         <div class="integrante">
           <img
             src="/miembros/guita1.png"
-            alt="Mendonça"
+            alt="Mendonça, guitarra de Gayola punk rock en Alicante"
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
@@ -50,7 +50,7 @@
         <div class="integrante">
           <img
             src="/miembros/nacho.png"
-            alt="Nacho Brökoly"
+            alt="Nacho Brökoly, voz de Gayola punk rock en Alicante"
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
@@ -65,7 +65,7 @@
         <div class="integrante">
           <img
             src="/miembros/tupa.png"
-            alt="Alex Tupá"
+            alt="Alex Tupá, bajo de Gayola punk rock en Alicante"
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
@@ -78,12 +78,16 @@
           </p>
         </div>
         <div class="integrante">
-          <img src="/miembros/guita2.png" alt="Jayden" class="integrante-img" />
+          <img
+            src="/miembros/ian.jpeg"
+            alt="Ian Bombilla de Cuero, guitarra de Gayola punk rock en Alicante"
+            class="integrante-img"
+          />
           <h3 class="integrante-nombre">
-            JAYDEN <span class="rol">(GUITARRA)</span>
+            IAN "BOMBILLA DE CUERO" <span class="rol">(GUITARRA)</span>
           </h3>
           <p>
-            Jayden complementa el muro de guitarras con creatividad y energía en
+            Ian complementa el muro de guitarras con creatividad y energía en
             cada acorde. Su estilo aporta frescura y dinamismo a la banda.
           </p>
         </div>
@@ -93,10 +97,37 @@
 </template>
 
 <script setup>
-// No es necesario por ahora
+import { useHead } from "@vueuse/head";
+useHead({
+  title: "Biografía | Gayola - Punk Rock desde Alicante",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Conoce la historia de Gayola, grupo de punk rock con base en Aspe (Alicante). Integrantes, trayectoria y espíritu rebelde.",
+    },
+    {
+      name: "keywords",
+      content:
+        "gayola, biografía, punk, rock, grupo musical, integrantes, Alicante, Aspe, Elda, Orihuela, Murcia, historia, banda, España",
+    },
+    {
+      property: "og:title",
+      content: "Biografía | Gayola - Punk Rock desde Alicante",
+    },
+    {
+      property: "og:description",
+      content:
+        "Conoce la historia de Gayola, grupo de punk rock con base en Aspe (Alicante). Integrantes, trayectoria y espíritu rebelde.",
+    },
+  ],
+});
 </script>
 
 <style scoped>
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 /* Título de la biografía */
 .biografia-title {
   padding-top: 1em;
@@ -107,8 +138,6 @@
   text-align: center;
   letter-spacing: 1px;
 }
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 .biografia-bg {
   background: #181818;

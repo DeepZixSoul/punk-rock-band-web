@@ -1,0 +1,260 @@
+<template>
+  <section class="noticias-section">
+    <h2 class="noticias-title">Noticias del grupo</h2>
+    <transition-group name="noticia-fade" tag="div" class="noticias-list">
+      <div
+        v-for="noticia in noticiasPagina"
+        :key="noticia.titulo"
+        class="noticia-item"
+      >
+        <img :src="noticia.imagen" :alt="noticia.titulo" class="noticia-img" />
+        <div class="noticia-info">
+          <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
+          <p class="noticia-pie">{{ noticia.pie }}</p>
+          <a
+            v-if="noticia.enlace"
+            :href="noticia.enlace"
+            class="noticia-link"
+            target="_blank"
+            >Ver más</a
+          >
+        </div>
+      </div>
+    </transition-group>
+    <div class="noticias-paginacion">
+      <button
+        v-for="(p, i) in totalPaginas"
+        :key="i"
+        :class="['noticias-circulo', { activo: paginaActual === i }]"
+        @click="cambiarPagina(i)"
+        aria-label="Ir a página de noticias {{ i + 1 }}"
+      ></button>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+import { useHead } from '@vueuse/head';
+import noticias from "../data/noticias.js";
+
+useHead({
+  title: 'Noticias | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, noticias, punk, rock, grupo musical, conciertos, novedades, Alicante, Aspe, Elda, Orihuela, Murcia, banda, España'
+    },
+    {
+      property: 'og:title',
+      content: 'Noticias | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.'
+    }
+  ]
+});
+
+const paginaActual = ref(0);
+const noticiasPorPagina = 5;
+const totalPaginas = computed(() =>
+  Math.ceil(noticias.length / noticiasPorPagina)
+);
+const noticiasPagina = computed(() =>
+  noticias.slice(
+    paginaActual.value * noticiasPorPagina,
+    (paginaActual.value + 1) * noticiasPorPagina
+  )
+);
+function cambiarPagina(p) {
+  paginaActual.value = p;
+}
+</script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
+
+.noticias-section {
+  width: 100%;
+  max-width: 1170px;
+  margin: 3em auto 0 auto;
+  background: #181818;
+  border-radius: 0.5em;
+  box-shadow: 0 0 20px #ff99ff44;
+  padding: 2em 1em 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noticias-title {
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #ff99ff;
+  font-size: 1.7em;
+  margin-bottom: 1.2em;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.noticias-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.noticia-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5em;
+  background: #222;
+  border-radius: 0.4em;
+  box-shadow: 0 0 10px #ff99ff22;
+  padding: 1em;
+  font-family: "Roboto", Arial, sans-serif;
+  animation: noticiaSophisticated 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.noticia-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 0.4em;
+  box-shadow: 0 0 8px #ff99ff44;
+  background: #181818;
+}
+.noticia-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.noticia-titulo {
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #ff99ff;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+.noticia-pie {
+  color: #fff;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+.noticia-link {
+  color: #ff99ff;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 1em;
+  margin-top: 0.2em;
+  transition: color 0.2s;
+}
+.noticia-link:hover {
+  color: #fff;
+}
+.noticias-paginacion {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  margin-top: 2em;
+}
+.noticias-circulo {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff99ff44;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 4px #ff99ff22;
+}
+.noticias-circulo.activo {
+  background: #ff99ff;
+  box-shadow: 0 0 10px #ff99ff88;
+}
+
+/* Animación sofisticada para las noticias */
+@keyframes noticiaSophisticated {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-8deg);
+    filter: blur(6px) brightness(1.2);
+  }
+  60% {
+    opacity: 0.7;
+    transform: scale(1.05) rotate(2deg);
+    filter: blur(1px) brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0) brightness(1);
+  }
+}
+.noticia-fade-enter-active,
+.noticia-fade-leave-active {
+  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.noticia-fade-enter-from,
+.noticia-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.7) rotate(-8deg);
+  filter: blur(6px) brightness(1.2);
+}
+.noticia-fade-leave-active {
+  position: absolute;
+}
+
+@media (max-width: 900px) {
+  .noticias-section {
+    width: 95vw;
+    max-width: 100vw;
+    padding: 1.2em 0.5em 1em 0.5em;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .noticia-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 0.5em;
+  }
+  .noticia-img {
+    width: 98vw;
+    height: 180px;
+    margin-bottom: 0.7em;
+  }
+  .noticia-info {
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .noticias-section {
+    width: 90vw;
+    max-width: 100vw;
+    padding: 0.7em 0.2em 0.7em 0.2em;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .noticia-item {
+    padding: 0.7em 0.2em;
+    gap: 0.7em;
+  }
+  .noticia-img {
+    width: 98vw;
+    height: 120px;
+  }
+  .noticia-info {
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+</style>

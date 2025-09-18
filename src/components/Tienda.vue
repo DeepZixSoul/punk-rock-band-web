@@ -38,6 +38,30 @@
 
 <script setup>
 import { ref } from "vue";
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Tienda | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Compra merchandising oficial de Gayola: camisetas, discos, tazas y más productos punk rock.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, tienda, merchandising, camisetas, discos, tazas, punk, rock, Alicante, banda, España, productos'
+    },
+    {
+      property: 'og:title',
+      content: 'Tienda | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Compra merchandising oficial de Gayola: camisetas, discos, tazas y más productos punk rock.'
+    }
+  ]
+});
+
 const productos = [
   {
     nombre: "Camiseta Gayola",

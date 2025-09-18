@@ -29,6 +29,32 @@
 </template>
 
 <script setup>
+import { useHead } from "@vueuse/head";
+useHead({
+  title: "Discografía | Gayola - Punk Rock desde Alicante",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Descubre la discografía de Gayola: álbumes, singles y lanzamientos punk rock desde Alicante.",
+    },
+    {
+      name: "keywords",
+      content:
+        "gayola, discografía, punk, rock, álbumes, singles, lanzamientos, Alicante, banda, España, música",
+    },
+    {
+      property: "og:title",
+      content: "Discografía | Gayola - Punk Rock desde Alicante",
+    },
+    {
+      property: "og:description",
+      content:
+        "Descubre la discografía de Gayola: álbumes, singles y lanzamientos punk rock desde Alicante.",
+    },
+  ],
+});
+
 const discos = [
   {
     titulo: "Aterriza Como Puedas",

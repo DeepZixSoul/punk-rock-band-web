@@ -18,6 +18,7 @@
 <script setup>
 import { ref } from 'vue';
 import VueEasyLightbox from 'vue-easy-lightbox';
+import { useHead } from '@vueuse/head';
 
 const carteles = [
   "/carteles/cartel1.jpg",
@@ -40,6 +41,28 @@ function showCartel(i) {
 function hideCartel() {
   visible.value = false;
 }
+
+useHead({
+  title: 'Conciertos | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, conciertos, punk, rock, eventos, directo, Alicante, banda, España, música, fechas, entradas'
+    },
+    {
+      property: 'og:title',
+      content: 'Conciertos | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.'
+    }
+  ]
+});
 </script>
 
 <style scoped>
@@ -54,11 +77,11 @@ function hideCartel() {
   align-items: center;
 }
 .conciertos-title {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
   padding-top: 1em;
   color: #ff99ff;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
   .conciertos-bg {
     background: #181818;
     padding: 2em 0.5em;
