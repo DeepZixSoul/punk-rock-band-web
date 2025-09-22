@@ -146,7 +146,6 @@ useHead({
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
   overflow-x: hidden;
   width: 100vw;
   box-sizing: border-box;
@@ -249,16 +248,6 @@ useHead({
   font-size: 0.95em;
   font-family: "Roboto", Arial, sans-serif;
   text-align: left;
-}
-@keyframes topbarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 @media (max-width: 1100px) {
   .integrantes-list {

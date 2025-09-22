@@ -16,6 +16,14 @@
       :imgs="images"
       :index="index"
       @hide="hideImg"
+      :resizeDisabled="true"
+      :moveDisabled="true"
+      :downloadDisabled="true"
+      :rotateDisabled="true"
+      :zoomDisabled="true"
+      :escDisabled="true"      
+      :zoomScale="true"
+
     />
   </div>
 </template>
@@ -46,6 +54,10 @@ const images = [
 const visible = ref(false);
 const index = ref(0);
 
+// Swipe logic
+let touchStartX = 0;
+let touchEndX = 0;
+
 function showImg(i) {
   index.value = i;
   visible.value = true;
@@ -53,7 +65,51 @@ function showImg(i) {
 function hideImg() {
   visible.value = false;
 }
-visible.value = false;
+
+function handleTouchStart(e) {
+  touchStartX = e.touches[0].clientX;
+}
+function handleTouchEnd(e) {
+  touchEndX = e.changedTouches[0].clientX;
+  const deltaX = touchEndX - touchStartX;
+  if (Math.abs(deltaX) > 40) {
+    if (deltaX < 0) {
+      // Swipe left: next image
+      nextImg();
+    } else {
+      // Swipe right: previous image
+      prevImg();
+    }
+  }
+}
+
+function nextImg() {
+  index.value = (index.value + 1) % images.length;
+}
+function prevImg() {
+  index.value = (index.value - 1 + images.length) % images.length;
+}
+
+// Only attach swipe events when lightbox is visible
+import { onMounted, onUnmounted, watch } from "vue";
+let lightboxEl = null;
+watch(visible, (val) => {
+  if (val) {
+    setTimeout(() => {
+      lightboxEl = document.querySelector('.v-easy-lightbox__overlay');
+      if (lightboxEl) {
+        lightboxEl.addEventListener('touchstart', handleTouchStart);
+        lightboxEl.addEventListener('touchend', handleTouchEnd);
+      }
+    }, 100);
+  } else {
+    if (lightboxEl) {
+      lightboxEl.removeEventListener('touchstart', handleTouchStart);
+      lightboxEl.removeEventListener('touchend', handleTouchEnd);
+      lightboxEl = null;
+    }
+  }
+});
 </script>
 
 <style scoped>
@@ -83,7 +139,7 @@ visible.value = false;
   max-width: 1200px;
   margin: 0 auto;
 }
-.foto-item {
+.foto-item {  
   background: #222;
   border-radius: 0.7em;
   box-shadow: 0 0 20px #ff99ff44;
@@ -109,6 +165,7 @@ visible.value = false;
   /* Eliminado: estilos del modal personalizado, ya que solo se usa VueEasyLightbox */
   background: #222;
 }
+
 
 /* Responsive */
 @media (max-width: 1100px) {

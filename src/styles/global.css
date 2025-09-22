@@ -1,5 +1,55 @@
+/* Animación global para todos los pages excepto Noticias.vue */
+ .inicio-content,
+ .biografia-bg,
+ .galeria-bg,
+ .conciertos-bg,
+ .discografia-bg,
+ .videos-bg,
+ .tienda-bg,
+ .contacto-bg {
+  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+@keyframes topbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Ocultar el botón de resize del lightbox (VueEasyLightbox) usando clases reales */
+.toolbar-btn.toolbar-btn__resize {
+  display: none !important;
+}
+/* Ocultar el botón de resize del lightbox (VueEasyLightbox) */
+.v-easy-lightbox__footer .icon-resize {
+  display: none !important;
+}
+/* .v-easy-lightbox__img {
+  display: block;
+  margin: 0 auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 0 40px #ff99ff88;
+  background: #181818;
+  border-radius: 0.7em;
+} */
+
+.vel-img-wrapper {
+  cursor: move !important;
+  top: calc(50% + 3em) !important;
+  left: calc(50% + 0px) !important;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg) !important;
+  transition: none !important;
+  box-shadow: 0 0 40px #ff99ff88;
+  background: transparent;
+}
+
 /* global.css: estilos base y reset para toda la web */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +57,7 @@
   padding: 0;
 }
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   background: #181818;
   color: #fff;
   min-height: 100vh;
@@ -25,4 +75,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+.vel-img-wrapper {
+  top: calc(50% + 0px) !important;
+  left: calc(50% + 0px) !important;
 }

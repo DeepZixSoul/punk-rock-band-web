@@ -64,6 +64,9 @@
   width: 2.6em;
   height: 2.6em;
 }
+.social-icon:hover {
+  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.5);
+}
 
 @media (max-width: 900px) {
   .social-link[aria-label="YouTube"] .social-icon {
@@ -77,9 +80,7 @@
     height: 1.7em;
   }
 }
-.social-icon:hover {
-  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.5);
-}
+
 
 /* Responsive */
 @media (max-width: 900px) {

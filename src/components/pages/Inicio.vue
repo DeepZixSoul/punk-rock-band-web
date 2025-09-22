@@ -84,14 +84,4 @@ import Noticias from "./Noticias.vue";
 
 }
 
-@keyframes topbarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>

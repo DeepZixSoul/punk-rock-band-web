@@ -15,7 +15,14 @@
       :visible="visible"
       :imgs="carteles"
       :index="index"
-      @hide="hideCartel"
+      @hide="hideCartel"      
+      :resizeDisabled="true"
+      :moveDisabled="true"
+      :downloadDisabled="true"
+      :rotateDisabled="true"
+      :zoomDisabled="true"
+      :escDisabled="true"      
+      :zoomScale="true"
     />
   </div>
 </template>
@@ -95,19 +102,8 @@ useHead({
   margin-bottom: 1em;
   text-align: center;
   letter-spacing: 2px;
-  animation: topbarFadeIn 0.8s ease;
 }
 
-@keyframes topbarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .carteles-grid {
   display: grid;

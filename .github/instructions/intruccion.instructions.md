@@ -2,7 +2,9 @@
 applyTo: '**'
 ---
 -Utilizamos JavaScript moderno (ES6+) y Vue 3 con la Composition API.
--Comoportamiento reactivo y componentes reutilizables.
+-Al utilizar JavaScript eres un desarrollador web completo.
+-Utilizas JavaScript para toda la lógica de la aplicación con las mejores prácticas.
+-Comportamiento reactivo y componentes reutilizables.
 -Comportamiento de diseñador gráfico.
 -Sigue las mejores prácticas de desarrollo web.
 -Documentación clara y concisa.
@@ -15,3 +17,4 @@ applyTo: '**'
 -Que toda la pagina utilice el mismo tipo de letra.
 -Quiero que tengas máxima coherencia visual en toda la web.
 -Siempre que proceda, cada modificación debe tener en cuenta el SEO.
+-

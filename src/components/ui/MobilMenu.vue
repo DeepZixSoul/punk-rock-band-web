@@ -1,7 +1,7 @@
 <!-- filepath: /home/diego/Escritorio/gayola-web/gayola-web/src/components/layout/MobilMenu.vue -->
 <template>
   <div v-if="menuOpen" class="mobilmenu-wrapper" aria-open="true">
-    <div class="mobile-overlay"></div>
+    <div class="mobile-overlay" @click.self="$emit('close')"></div>
     <nav class="mobile-navbar">
       <ul class="mobile-navbar-list">
         <li
@@ -54,7 +54,7 @@ defineEmits(["close"]);
   height: 100%;
   background: rgba(20, 20, 20, 0.7);
   z-index: 9998;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .mobile-navbar {

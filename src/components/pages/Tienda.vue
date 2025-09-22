@@ -131,7 +131,6 @@ function enviarEmail(producto) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .tienda-title {
   padding-top: 2em;
@@ -324,14 +323,4 @@ function enviarEmail(producto) {
   }
 }
 
-@keyframes topbarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>
