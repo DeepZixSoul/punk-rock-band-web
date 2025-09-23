@@ -1,6 +1,6 @@
 <template>
   <div class="galeria-bg">
-    <h2 class="galeria-title">Galería</h2>
+  <h2 class="galeria-title">Galería</h2>
     <div class="galeria-grid">
       <div
         v-for="(foto, i) in images"
@@ -8,7 +8,7 @@
         class="foto-item"
         @click="showImg(i)"
       >
-        <img :src="foto" alt="Foto Gayola" class="foto-img" />
+  <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img" loading="lazy" />
       </div>
     </div>
     <VueEasyLightbox
@@ -32,24 +32,24 @@
 import { ref } from "vue";
 import VueEasyLightbox from "vue-easy-lightbox";
 const images = [
-  "/galeria/foto1.jpeg",
-  "/galeria/foto2.jpeg",
-  "/galeria/foto3.jpeg",
-  "/galeria/foto4.jpeg",
-  "/galeria/foto5.jpeg",
-  "/galeria/foto6.jpeg",
-  "/galeria/foto7.jpeg",
-  "/galeria/foto8.jpeg",
-  "/galeria/foto9.jpeg",
-  "/galeria/foto10.jpeg",
-  "/galeria/foto11.jpeg",
-  "/galeria/foto12.jpeg",
-  "/galeria/foto13.jpeg",
-  "/galeria/foto14.jpeg",
-  "/galeria/foto15.jpeg",
-  "/galeria/foto16.jpeg",
-  "/galeria/foto17.jpeg",
-  "/galeria/foto18.jpeg",
+  "/galeria/foto1.webp",
+  "/galeria/foto2.webp",
+  "/galeria/foto3.webp",
+  "/galeria/foto4.webp",
+  "/galeria/foto5.webp",
+  "/galeria/foto6.webp",
+  "/galeria/foto7.webp",
+  "/galeria/foto8.webp",
+  "/galeria/foto9.webp",
+  "/galeria/foto10.webp",
+  "/galeria/foto11.webp",
+  "/galeria/foto12.webp",
+  "/galeria/foto13.webp",
+  "/galeria/foto14.webp",
+  "/galeria/foto15.webp",
+  "/galeria/foto16.webp",
+  "/galeria/foto17.webp",
+  "/galeria/foto18.webp",
 ];
 const visible = ref(false);
 const index = ref(0);

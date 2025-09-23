@@ -1,26 +1,30 @@
 <template>
   <section class="noticias-section">
     <h2 class="noticias-title">Noticias del grupo</h2>
-    <transition-group name="noticia-fade" tag="div" class="noticias-list">
-      <div
-        v-for="noticia in noticiasPagina"
-        :key="noticia.titulo"
-        class="noticia-item"
-      >
-        <img :src="noticia.imagen" :alt="noticia.titulo" class="noticia-img" />
-        <div class="noticia-info">
-          <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
-          <p class="noticia-pie">{{ noticia.pie }}</p>
-          <a
-            v-if="noticia.enlace"
-            :href="noticia.enlace"
-            class="noticia-link"
-            target="_blank"
-            >Ver más</a
-          >
+    <!-- Slide horizontal solo en móviles, fade en desktop -->
+    <transition :name="slideTransitionName">
+      <div class="noticias-list" :key="paginaActual">
+        <div
+          v-for="noticia in noticiasPagina"
+          :key="noticia.titulo"
+          class="noticia-item"
+        >
+          <img :src="noticia.imagen" :alt="noticia.titulo" class="noticia-img" />
+          <div class="noticia-info">
+            <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
+            <p class="noticia-pie">{{ noticia.pie }}</p>
+            <a
+              v-if="noticia.enlace"
+              :href="noticia.enlace"
+              class="noticia-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Ver más</a
+            >
+          </div>
         </div>
       </div>
-    </transition-group>
+    </transition>
     <div class="noticias-paginacion">
       <button
         v-for="(p, i) in totalPaginas"
@@ -33,8 +37,9 @@
   </section>
 </template>
 
+
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { useHead } from '@vueuse/head';
 import noticias from "../../data/noticias.js";
 
@@ -71,9 +76,65 @@ const noticiasPagina = computed(() =>
     (paginaActual.value + 1) * noticiasPorPagina
   )
 );
+
+// Dirección del slide: 'slide-left' o 'slide-right'
+const slideDirection = ref('slide-left');
+const slideTransitionName = computed(() => {
+  // Solo slide en móviles, fade en desktop
+  return window.innerWidth <= 900 ? slideDirection.value : 'noticia-fade';
+});
+
 function cambiarPagina(p) {
+  if (p === paginaActual.value) return;
+  slideDirection.value = p > paginaActual.value ? 'slide-left' : 'slide-right';
   paginaActual.value = p;
 }
+
+// --- Swipe en móviles ---
+let touchStartX = null;
+let touchEndX = null;
+const minSwipeDistance = 50; // px
+
+function handleTouchStart(e) {
+  if (window.innerWidth > 900) return; // Solo móviles/tablet
+  touchStartX = e.changedTouches[0].screenX;
+}
+function handleTouchEnd(e) {
+  if (window.innerWidth > 900) return;
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipeGesture();
+}
+function handleSwipeGesture() {
+  if (touchStartX === null || touchEndX === null) return;
+  const distance = touchEndX - touchStartX;
+  if (Math.abs(distance) < minSwipeDistance) return;
+  if (distance < 0 && paginaActual.value < totalPaginas.value - 1) {
+    // Swipe left: siguiente página
+    slideDirection.value = 'slide-left';
+    paginaActual.value++;
+  } else if (distance > 0 && paginaActual.value > 0) {
+    // Swipe right: página anterior
+    slideDirection.value = 'slide-right';
+    paginaActual.value--;
+  }
+  touchStartX = null;
+  touchEndX = null;
+}
+
+let noticiasSectionEl = null;
+onMounted(() => {
+  noticiasSectionEl = document.querySelector('.noticias-section');
+  if (noticiasSectionEl) {
+    noticiasSectionEl.addEventListener('touchstart', handleTouchStart, { passive: true });
+    noticiasSectionEl.addEventListener('touchend', handleTouchEnd, { passive: true });
+  }
+});
+onBeforeUnmount(() => {
+  if (noticiasSectionEl) {
+    noticiasSectionEl.removeEventListener('touchstart', handleTouchStart);
+    noticiasSectionEl.removeEventListener('touchend', handleTouchEnd);
+  }
+});
 </script>
 
 <style scoped>
@@ -206,7 +267,34 @@ function cambiarPagina(p) {
   position: absolute;
 }
 
+/* --- Animación slide horizontal para móviles --- */
 @media (max-width: 900px) {
+  .slide-left-enter-active,
+  .slide-left-leave-active {
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    will-change: transform, opacity;
+  }
+  .slide-left-enter-from {
+    transform: translateX(100vw);
+    opacity: 0.2;
+  }
+  .slide-left-leave-to {
+    transform: translateX(-100vw);
+    opacity: 0.2;
+  }
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    will-change: transform, opacity;
+  }
+  .slide-right-enter-from {
+    transform: translateX(-100vw);
+    opacity: 0.2;
+  }
+  .slide-right-leave-to {
+    transform: translateX(100vw);
+    opacity: 0.2;
+  }
   .noticias-section {
     width: 95vw;
     max-width: 100vw;

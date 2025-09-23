@@ -5,7 +5,7 @@
     </div>
     <img
       class="grupo-foto"
-      src="/src/assets/grupo.jpeg"
+      src="/src/assets/grupo.webp"
       alt="Foto del grupo Gayola"
     />
 

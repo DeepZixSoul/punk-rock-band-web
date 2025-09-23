@@ -1,6 +1,6 @@
 <template>
   <div class="videos-bg">
-    <h2 class="videos-title">Vídeos Gayola</h2>
+  <h2 class="videos-title">Vídeos Gayola</h2>
     <div class="videos-grid">
       <div v-for="(video, i) in videos" :key="i" class="video-item">
         <iframe

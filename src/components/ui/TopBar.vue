@@ -4,7 +4,7 @@
     <div class="top-logo">
       <img
         id="gayola-logo-navbar"
-        src="/src/assets/logo.png"
+        src="/src/assets/logo.webp"
         alt="Gayola logo"
         class="logo-navbar"
         @click="goHome"
@@ -20,7 +20,7 @@
       <img
         v-for="n in 8"
         :key="n"
-        src="/public/gayola-blanco.png"
+        src="/public/logos/gayola-blanco.webp"
         alt="Gayola blanco"
         class="logo-blanco"
       />

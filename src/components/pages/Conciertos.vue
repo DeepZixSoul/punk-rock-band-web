@@ -1,13 +1,14 @@
 <template>
   <div class="conciertos-bg">
-    <h2 class="conciertos-title">Próximos Conciertos</h2>
+  <h2 class="conciertos-title">Próximos Conciertos</h2>
     <div class="carteles-grid">
       <div v-for="(cartel, i) in carteles" :key="i" class="cartel-item">
         <img
           :src="cartel"
-          alt="Cartel de concierto"
+          :alt="`Cartel de concierto número ${i+1}`"
           class="cartel-img"
           @click="showCartel(i)"
+          loading="lazy"
         />
       </div>
     </div>
@@ -33,14 +34,14 @@ import VueEasyLightbox from "vue-easy-lightbox";
 import { useHead } from "@vueuse/head";
 
 const carteles = [
-  "/carteles/cartel1.jpg",
-  "/carteles/cartel2.jpg",
-  "/carteles/cartel3.jpg",
-  "/carteles/cartel4.jpg",
-  "/carteles/cartel5.jpg",
-  "/carteles/cartel6.jpg",
-  "/carteles/cartel7.jpg",
-  "/carteles/cartel8.jpg",
+  "/carteles/cartel1.webp",
+  "/carteles/cartel2.webp",
+  "/carteles/cartel3.webp",
+  "/carteles/cartel4.webp",
+  "/carteles/cartel5.webp",
+  "/carteles/cartel6.webp",
+  "/carteles/cartel7.webp",
+  "/carteles/cartel8.webp",
   // Añade más rutas según tus carteles
 ];
 const visible = ref(false);

@@ -7,37 +7,47 @@
       formas de contactar con nosotros.
     </p>
     <div class="contacto-info">
-      <div class="contacto-item">
+      <!-- <div class="contacto-item">
         <span class="contacto-label">Email:</span>
         <a href="mailto:contacto@gayola.com" class="contacto-link"
           >contacto@gayola.com</a
         >
-      </div>
-      <div class="contacto-item">
+      </div> -->
+      <!-- <div class="contacto-item">
         <span class="contacto-label">Teléfono:</span>
         <a href="tel:+3461234567833" class="contacto-link"
           >+34 612 34 56 7833</a
         >
-      </div>
+      </div> -->
       <div class="contacto-item">
         <span class="contacto-label">Representante:</span>
-        <a
-          href="https://www.instagram.com/juan_el_avispero/"
-          target="_blank"
-          class="contacto-link"
-          >@juan_el_avispero</a
-        >
+        <div class="avispero-representante">
+          <a
+            href="https://www.instagram.com/juan_el_avispero/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="avispero-link"
+          >
+            <img
+              src="/public/logos/avispero-logo.webp"
+              alt="Logo representante Juan El Avispero"
+              class="social-icon-avispero"
+            />
+            <span class="avispero-user">@juan_el_avispero</span>
+          </a>
+        </div>
       </div>
       <div class="contacto-item">
         <span class="contacto-label">Redes sociales:</span>
-        <div class="contacto-redes">
+  <div class="contacto-redes centrado-redes">
           <a
             href="https://www.instagram.com/gayolaseriopunk"
             target="_blank"
+            rel="noopener noreferrer"
             class="social-link"
           >
             <img
-              src="/public/instagram.svg"
+              src="/public/redes-sociales/instagram.svg"
               alt="Instagram"
               class="social-icon"
             />
@@ -45,17 +55,19 @@
           <a
             href="https://open.spotify.com/intl-es/artist/2UiHDGxR9uKIOfOTvUcZF9"
             target="_blank"
+            rel="noopener noreferrer"
             class="social-link"
           >
-            <img src="/public/spotify.svg" alt="Spotify" class="social-icon" />
+            <img src="/public/redes-sociales/spotify.svg" alt="Spotify" class="social-icon" />
           </a>
           <a
             href="https://www.facebook.com/Gayolaseriopunk/"
             target="_blank"
+            rel="noopener noreferrer"
             class="social-link"
           >
             <img
-              src="/public/facebook.png"
+              src="/public/redes-sociales/facebook.webp"
               alt="Facebook"
               class="social-icon"
             />
@@ -63,9 +75,10 @@
           <a
             href="https://www.youtube.com/@gayolaseriopunk"
             target="_blank"
-            class="social-link"
+            rel="noopener noreferrer"
+            class="social-link youtube-link"
           >
-            <img src="/public/youtube.png" alt="YouTube" class="social-icon" />
+            <img src="/public/redes-sociales/youtube.webp" alt="YouTube" class="social-icon social-icon-youtube" />
           </a>
         </div>
       </div>
@@ -167,6 +180,24 @@ useHead({
 .contacto-link:hover {
   color: #fff;
 }
+
+.contacto-btn {
+  display: inline-block;
+  padding: 0.7em 1.5em;
+  background: var(--color-accent, #ff99ff);
+  color: #181818;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.7em;
+  font-size: 1.1em;
+  box-shadow: 0 0 12px #ff99ff44;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.contacto-btn:hover {
+  background: #fff;
+  color: var(--color-accent, #ff99ff);
+}
 /* Redes sociales mejoradas */
 .contacto-redes {
   display: flex;
@@ -206,42 +237,53 @@ useHead({
   filter: drop-shadow(0 0 2px #ff99ff);
   transition: filter 0.2s;
 }
+.centrado-redes {
+  justify-content: center !important;
+  align-items: center !important;
+}
+.social-icon-youtube {
+  width: 2.5em !important;
+  height: 2.5em !important;
+}
+.avispero-representante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.7em 0 0.2em 0;
+}
+.avispero-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5em;
+}
+.social-icon-avispero {
+  width: 5em;
+  height: 5em;
+  filter: drop-shadow(0 0 2px #ff99ff);
+  transition: filter 0.2s;
+  display: block;
+  border-radius: 50%;
+  background: #222;
+  box-shadow: 0 0 12px #ff99ff44;
+}
+.avispero-link:hover .social-icon-avispero {
+  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.1);
+}
+.avispero-user {
+  color: var(--color-accent, #ff99ff);
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-top: 0.3em;
+  text-align: center;
+}
 .social-link:hover .social-icon {
   filter: drop-shadow(0 0 6px #fff);
 }
-@media (max-width: 600px) {
-  .contacto-redes {
-    gap: 0.7em;
-    justify-content: center;
-    padding: 0.1em 0;
-  }
-  .social-link {
-    width: 2.1em;
-    height: 2.1em;
-    border-width: 1.5px;
-  }
-  .social-icon {
-    width: 1.1em;
-    height: 1.1em;
-  }
-}
-.contacto-btn {
-  display: inline-block;
-  padding: 0.7em 1.5em;
-  background: var(--color-accent, #ff99ff);
-  color: #181818;
-  font-weight: 700;
-  border: none;
-  border-radius: 0.7em;
-  font-size: 1.1em;
-  box-shadow: 0 0 12px #ff99ff44;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.contacto-btn:hover {
-  background: #fff;
-  color: var(--color-accent, #ff99ff);
-}
+
+
 @media (max-width: 600px) {
   .contacto-bg {
     padding: 1.2em 0.5em;
@@ -253,17 +295,35 @@ useHead({
   .contacto-item {
     padding: 0.7em 0.5em;
   }
+  
+  .contacto-btn {
+    font-size: 1em;
+    padding: 0.6em 1em;
+  }
+  .social-icon-avispero {
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .avispero-user {
+    font-size: 1em;
+  }
+  .social-icon-youtube {
+    width: 1.7em !important;
+    height: 1.7em !important;
+  }
+  .contacto-redes {
+    gap: 0.7em;
+    justify-content: center;
+    padding: 0.1em 0;
+  }
   .social-link {
-    width: 2em;
-    height: 2em;
+    width: 2.4em;
+    height: 2.4em;
+    border-width: 1.5px;
   }
   .social-icon {
     width: 1.1em;
     height: 1.1em;
-  }
-  .contacto-btn {
-    font-size: 1em;
-    padding: 0.6em 1em;
   }
 }
 </style>

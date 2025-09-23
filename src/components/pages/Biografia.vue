@@ -1,6 +1,6 @@
 <template>
   <div class="biografia-bg">
-    <h2 class="biografia-title">Biografía</h2>
+  <h2 class="biografia-title">Biografía</h2>
     <div class="biografia-main">
       <p class="biografia-text">
         “Somos Gayola, primo, no los Stones”. Venidos desde distintos puntos de
@@ -15,13 +15,14 @@
       </p>
     </div>
     <div class="integrantes-section">
-      <h2 class="integrantes-title">Integrantes</h2>
+  <h2 class="integrantes-title">Integrantes</h2>
       <div class="integrantes-list">
         <div class="integrante">
           <img
-            src="/miembros/bateria.png"
-            alt="Dani Mestre, batería de Gayola punk rock en Alicante"
+            src="/miembros/bateria.webp"
+            alt="Foto de Dani Mestre, batería de Gayola"
             class="integrante-img"
+            loading="lazy"
           />
           <h3 class="integrante-nombre">
             DANI MESTRE <span class="rol">(BATERÍA)</span>
@@ -34,9 +35,10 @@
         </div>
         <div class="integrante">
           <img
-            src="/miembros/guita1.png"
-            alt="Mendonça, guitarra de Gayola punk rock en Alicante"
+            src="/miembros/guita1.webp"
+            alt="Foto de Mendonça, guitarra de Gayola"
             class="integrante-img"
+            loading="lazy"
           />
           <h3 class="integrante-nombre">
             MENDONÇA <span class="rol">(GUITARRA)</span>
@@ -49,7 +51,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/miembros/nacho.png"
+            src="/miembros/nacho.webp"
             alt="Nacho Brökoly, voz de Gayola punk rock en Alicante"
             class="integrante-img"
           />
@@ -64,7 +66,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/miembros/tupa.png"
+            src="/miembros/tupa.webp"
             alt="Alex Tupá, bajo de Gayola punk rock en Alicante"
             class="integrante-img"
           />
@@ -79,7 +81,7 @@
         </div>
         <div class="integrante">
           <img
-            src="/miembros/ian.jpeg"
+            src="/miembros/ian.webp"
             alt="Ian Bombilla de Cuero, guitarra de Gayola punk rock en Alicante"
             class="integrante-img"
           />

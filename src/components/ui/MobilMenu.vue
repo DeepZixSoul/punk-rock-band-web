@@ -63,7 +63,7 @@ defineEmits(["close"]);
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: var(--color-bg) url("/public/punk-texture.png") repeat;
+  background: var(--color-bg) url("/public/punk-texture.webp") repeat;
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;

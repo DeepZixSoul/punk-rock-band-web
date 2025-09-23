@@ -1,6 +1,6 @@
 <template>
   <div class="tienda-bg">
-    <h2 class="tienda-title">Tienda Oficial Gayola</h2>
+  <h2 class="tienda-title">Tienda Oficial Gayola</h2>
     <div class="productos-grid">
       <div
         v-for="(producto, i) in productos"
@@ -10,10 +10,11 @@
       >
         <img
           :src="producto.imagen"
-          :alt="producto.nombre"
+          :alt="`Foto de producto: ${producto.nombre}`"
           class="producto-img"
+          loading="lazy"
         />
-        <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+  <h3 class="producto-nombre">{{ producto.nombre }}</h3>
         <p class="producto-precio">{{ producto.precio }} €</p>
       </div>
     </div>
@@ -22,10 +23,11 @@
         <button class="modal-cerrar" @click="cerrarModal">✕</button>
         <img
           :src="productoModal.imagen"
-          :alt="productoModal.nombre"
+          :alt="`Foto ampliada de producto: ${productoModal.nombre}`"
           class="modal-img"
+          loading="lazy"
         />
-        <h3 class="modal-nombre">{{ productoModal.nombre }}</h3>
+  <h3 class="modal-nombre">{{ productoModal.nombre }}</h3>
         <p class="modal-descripcion">{{ productoModal.descripcion }}</p>
         <p class="modal-precio">{{ productoModal.precio }} €</p>
         <button class="modal-comprar" @click="enviarEmail(productoModal)">
@@ -65,37 +67,37 @@ useHead({
 const productos = [
   {
     nombre: "Camiseta Gayola",
-    imagen: "/tienda/camiseta.png",
+  imagen: "/tienda/camiseta.webp",
     precio: 15,
     descripcion: "Camiseta oficial Gayola, disponible en varias tallas.",
   },
   {
     nombre: "Taza Gayola",
-    imagen: "/tienda/taza.png",
+  imagen: "/tienda/taza.webp",
     precio: 10,
     descripcion: "Taza de cerámica con el logo de Gayola.",
   },
   {
     nombre: "Vino Gayola",
-    imagen: "/tienda/vino.png",
+  imagen: "/tienda/vino.webp",
     precio: 12,
     descripcion: "Botella de vino edición especial Gayola.",
   },
   {
     nombre: "Disco Gayola",
-    imagen: "/tienda/disco.png",
+  imagen: "/tienda/disco.webp",
     precio: 10,
     descripcion: "Último disco de Gayola en formato físico.",
   },
   {
     nombre: "Mochila Gayola",
-    imagen: "/tienda/mochila.png",
+  imagen: "/tienda/mochila.webp",
     precio: 8,
     descripcion: "Mochila resistente con el logo de Gayola.",
   },
   {
     nombre: "Grinder Gayola",
-    imagen: "/tienda/grinder.png",
+  imagen: "/tienda/grinder.webp",
     precio: 2,
     descripcion: "Grinder metálico con diseño exclusivo Gayola.",
   },

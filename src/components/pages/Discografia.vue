@@ -1,6 +1,6 @@
 <template>
   <div class="discografia-bg">
-    <h2 class="discografia-title">Discografía</h2>
+  <h2 class="discografia-title">Discografía</h2>
     <div
       v-for="(disco, i) in discos"
       :key="disco.titulo"
@@ -8,7 +8,7 @@
       :class="{ invertido: i % 2 !== 0 }"
     >
       <div class="disco-info">
-        <h3 class="disco-titulo">{{ disco.titulo }}</h3>
+  <h3 class="disco-titulo">{{ disco.titulo }}</h3>
         <p class="disco-descripcion">{{ disco.descripcion }}</p>
         <ul class="disco-canciones">
           <li v-for="(cancion, idx) in disco.canciones" :key="idx">
@@ -20,8 +20,9 @@
       <div class="disco-portada">
         <img
           :src="disco.portada"
-          :alt="`Portada de ${disco.titulo}`"
+          :alt="`Portada del disco ${disco.titulo} de Gayola`"
           class="portada-img"
+          loading="lazy"
         />
       </div>
     </div>
@@ -62,7 +63,7 @@ const discos = [
       "Este disco recoge la esencia más pura de Gayola: letras directas, energía punk y una producción cuidada. Representa la evolución de la banda y su compromiso con el punk-rock nacional.",
     canciones: ["Canción 1", "Canción 2", "Canción 3"],
     fecha: "2025",
-    portada: "/discografia/aterriza-como-puedas.png",
+  portada: "/discografia/aterriza-como-puedas.webp",
   },
   {
     titulo: "Segundo Asalto",
@@ -70,7 +71,7 @@ const discos = [
       "El segundo disco de Gayola explora nuevos sonidos sin perder la actitud punk. Letras más personales y colaboraciones especiales.",
     canciones: ["Tema A", "Tema B", "Tema C"],
     fecha: "2023",
-    portada: "/discografia/aterriza-como-puedas.png",
+  portada: "/discografia/aterriza-como-puedas.webp",
   },
   {
     titulo: "Directo en La Coca",
@@ -78,7 +79,7 @@ const discos = [
       "Grabado en vivo en el barrio de La Coca, este álbum captura la energía y la conexión con el público.",
     canciones: ["Intro", "En Vivo", "Final"],
     fecha: "2022",
-    portada: "/discografia/aterriza-como-puedas.png",
+  portada: "/discografia/aterriza-como-puedas.webp",
   },
   // Añade más discos aquí
 ];
