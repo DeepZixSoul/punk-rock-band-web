@@ -88,6 +88,17 @@ function cambiarPagina(p) {
   if (p === paginaActual.value) return;
   slideDirection.value = p > paginaActual.value ? 'slide-left' : 'slide-right';
   paginaActual.value = p;
+  // Solo hacer scroll si la sección de noticias no está ya visible arriba
+  nextTick(() => {
+    const section = document.querySelector('.noticias-section');
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      // Si la parte superior de la sección está fuera de la vista (más de 40px del top)
+      if (rect.top < -40 || rect.top > 40) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
 }
 
 // --- Swipe en móviles ---
@@ -175,7 +186,6 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 10px #ff99ff22;
   padding: 1em;
   font-family: "Roboto", Arial, sans-serif;
-  animation: noticiaSophisticated 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .noticia-img {
   width: 120px;
@@ -235,37 +245,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 10px #ff99ff88;
 }
 
-/* Animación sofisticada para las noticias */
-@keyframes noticiaSophisticated {
-  0% {
-    opacity: 0;
-    transform: scale(0.7) rotate(-8deg);
-    filter: blur(6px) brightness(1.2);
-  }
-  60% {
-    opacity: 0.7;
-    transform: scale(1.05) rotate(2deg);
-    filter: blur(1px) brightness(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-    filter: blur(0) brightness(1);
-  }
-}
-.noticia-fade-enter-active,
-.noticia-fade-leave-active {
-  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.noticia-fade-enter-from,
-.noticia-fade-leave-to {
-  opacity: 0;
-  transform: scale(0.7) rotate(-8deg);
-  filter: blur(6px) brightness(1.2);
-}
-.noticia-fade-leave-active {
-  position: absolute;
-}
+
 
 /* --- Animación slide horizontal para móviles --- */
 @media (max-width: 900px) {
