@@ -19,16 +19,66 @@ export default defineConfig({
         orientation: 'portrait',
         icons: [
           {
-            src: '/logo.png',
+            src: '/logos/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/logo.png',
+            src: '/logos/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png'
+          },
+          {
+            src: '/logos/logo.webp',
+            sizes: '192x192',
+            type: 'image/webp'
+          },
+          {
+            src: '/logos/logo.webp',
+            sizes: '512x512',
+            type: 'image/webp'
           }
         ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,webp,png,svg,ico,json}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-stylesheets',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-webfonts',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 }
+            }
+          },
+          {
+            urlPattern: /\/logos\/(.*)\.(webp|png|svg|ico)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gayola-logos',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 }
+            }
+          },
+          {
+            urlPattern: /\/public\/(.*)\.(webp|png|svg|ico)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gayola-public',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 30 }
+            }
+          }
+        ]
+      },
+      devOptions: {
+        enabled: true
       }
     })
   ]
