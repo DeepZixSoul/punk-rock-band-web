@@ -4,6 +4,7 @@
     <div class="videos-list">
       <transition-group name="video-fade" tag="div">
         <div v-for="(video, i) in videos" :key="video.id" class="video-item">
+          <h3 class="video-titulo">{{ video.titulo }}</h3>
           <div
             class="video-thumb-wrapper"
             @click="openLightbox(i)"
@@ -175,6 +176,15 @@ function handleKeydown(e) {
 /* Fuente global coherente */
 :global(html) {
   font-family: "Montserrat", Arial, sans-serif;
+}
+/* Título de cada vídeo */
+.video-titulo {
+  color: #ff99ff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 /* Fondo y estructura */

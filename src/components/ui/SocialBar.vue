@@ -42,19 +42,18 @@
 
 <style scoped>
 .social-bar {
-  
   justify-content: flex-start;
   padding-right: 2em;
   display: flex;
   align-items: center;
   gap: 1em;
-  filter: drop-shadow(0 0 8px #ff99ff);
+  filter: drop-shadow(0 0 8px var(--color-shadow, #ff99ff));
+  filter: drop-shadow(0 0 8px var(--color-principal, #ff99ff));
 }
 .social-link {
   display: inline-block;
 }
 .social-icon {
-  
   width: 2em;
   height: 2em;
   filter: grayscale(0.2) brightness(1.2);
@@ -65,24 +64,8 @@
   height: 2.6em;
 }
 .social-icon:hover {
-  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.5);
+  filter: drop-shadow(0 0 8px var(--color-principal, #ff99ff)) brightness(1.5);
 }
-
-@media (max-width: 900px) {
-  .social-link[aria-label="YouTube"] .social-icon {
-    width: 2em;
-    height: 2em;
-  }
-}
-@media (max-width: 600px) {
-  .social-link[aria-label="YouTube"] .social-icon {
-    width: 1.7em;
-    height: 1.7em;
-  }
-}
-
-
-/* Responsive */
 @media (max-width: 900px) {
   .social-bar {
     padding-right: 0;
@@ -92,6 +75,10 @@
     width: 1.7em;
     height: 1.7em;
   }
+  .social-link[aria-label="YouTube"] .social-icon {
+    width: 2em;
+    height: 2em;
+  }
 }
 @media (max-width: 600px) {
   .social-bar {
@@ -99,10 +86,13 @@
     gap: 0.9em;
   }
   .social-icon {
-    
     margin-left: auto;
     width: 1.4em;
     height: 1.4em;
+  }
+  .social-link[aria-label="YouTube"] .social-icon {
+    width: 1.7em;
+    height: 1.7em;
   }
 }
 </style>

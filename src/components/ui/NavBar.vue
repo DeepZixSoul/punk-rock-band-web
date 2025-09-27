@@ -71,9 +71,9 @@ import { RouterLink } from 'vue-router';
 }
 
 .navbar-link {
-  color: var(--color-accent);
+  color: var(--color-accent, #ff99ff);
   text-decoration: none;
-  font-family: var(--font-title);
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
   font-size: 1.1em;
   padding: 0.4em 1em;
   border-left: 3px solid transparent;
@@ -83,11 +83,10 @@ import { RouterLink } from 'vue-router';
   text-align: left;
   display: block;
 }
-
 .navbar-link:hover,
 .navbar-link:focus,
 .navbar-link.active {
-  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.1);
+  filter: drop-shadow(0 0 8px var(--color-principal, #ff99ff)) brightness(1.1);
 }
 
 @media (max-width: 900px) {

@@ -30,7 +30,7 @@
 
 .vel-img-wrapper {
   cursor: move !important;
-  top: calc(50% + 3em) !important;
+  top: calc(50% + 6em) !important;
   left: calc(50% + 0px) !important;
   transform: translate(-50%, -50%) scale(1) rotate(0deg) !important;
   transition: none !important;

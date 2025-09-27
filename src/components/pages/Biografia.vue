@@ -1,6 +1,6 @@
 <template>
   <div class="biografia-bg">
-  <h2 class="biografia-title">Biografía</h2>
+    <h2 class="biografia-title">Biografía</h2>
     <div class="biografia-main">
       <p class="biografia-text">
         “Somos Gayola, primo, no los Stones”. Venidos desde distintos puntos de
@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="integrantes-section">
-  <h2 class="integrantes-title">Integrantes</h2>
+      <h2 class="integrantes-title">Integrantes</h2>
       <div class="integrantes-list">
         <div class="integrante">
           <img
@@ -28,14 +28,16 @@
             DANI MESTRE <span class="rol">(BATERÍA)</span>
           </h3>
           <p>
-            Ritmo y potencia tras la batería, Dani marca el pulso de Gayola con
-            precisión y actitud punk. Su energía en directo contagia a toda la
-            banda y al público.
+            El metrónomo de Gayola, pero con mala leche. Dani no solo marca el
+            pulso, lo revienta. Con cada golpe mete gasolina al fuego y levanta
+            al personal del suelo. Preciso como un reloj y bruto como un
+            martillo, su pegada mantiene a la banda en pie y al público con el
+            cuello a punto de partirse. Sin él, primo, no hay terremoto.
           </p>
         </div>
         <div class="integrante">
           <img
-            src="/miembros/guita1.webp"
+            src="/miembros/mendoza.webp"
             alt="Foto de Mendonça, guitarra de Gayola"
             class="integrante-img"
             loading="lazy"
@@ -44,9 +46,10 @@
             MENDONÇA <span class="rol">(GUITARRA)</span>
           </h3>
           <p>
-            Con riffs afilados y melodías potentes, Mendonça da fuerza y
-            carácter a cada tema. Su creatividad y pasión por la guitarra son
-            clave en el sonido de Gayola.
+            El cirujano de las seis cuerdas, capaz de hacer riffs que cortan más
+            que un cuchillo jamonero. Mendonça no solo da fuerza y carácter,
+            también da miedo si te acercas demasiado al ampli. Dice que practica
+            en casa, pero los vecinos ya han pedido asilo político.
           </p>
         </div>
         <div class="integrante">
@@ -59,9 +62,11 @@
             NACHO “BRÖKOLY” <span class="rol">(VOZ)</span>
           </h3>
           <p>
-            La voz de Nacho transmite el mensaje y la actitud rebelde que
-            caracteriza a Gayola. Su carisma y fuerza vocal son el sello de la
-            banda.
+            El grito que pone nombre a Gayola. Nacho no canta, escupe verdades
+            con carisma y mala baba. Su voz es la alarma de incendio de
+            cualquier garito y su apodo viene porque, igual que el brócoli, no a
+            todo el mundo le gusta, pero es necesario y jode dejarlo en el
+            plato.
           </p>
         </div>
         <div class="integrante">
@@ -71,12 +76,13 @@
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
-            ALEX “TUPÁ” <span class="rol">(BAJO)</span>
+            ALEX “TUPÁ”<span class="rol">(BAJO)</span>
           </h3>
           <p>
-            El bajo de Alex aporta la base sólida y el groove que define el
-            sonido de la banda. Su presencia escénica y su técnica hacen vibrar
-            cada concierto.
+            El bajo de Alex es el groove que emite el cosmos. Es el encargado de
+            que todo tiemble, desde el escenario hasta el corazón de tu abuela.
+            Su presencia escénica es tan potente que más de una vez ha hecho
+            sombra a los focos… y se dice que le enseñó a sumar a Jordi Hurtado
           </p>
         </div>
         <div class="integrante">
@@ -89,8 +95,11 @@
             IAN "BOMBILLA DE CUERO" <span class="rol">(GUITARRA)</span>
           </h3>
           <p>
-            Ian complementa el muro de guitarras con creatividad y energía en
-            cada acorde. Su estilo aporta frescura y dinamismo a la banda.
+            Con un mate de dinamita en una mano y domando la guitarra con los
+            pies, Ian se mueve entre el caos y la genialidad. Su creatividad es
+            tan salvaje que le brotó pelo… y eso que era calvo. Suena brutal.
+            Entre cuero y bombillas, mete la chispa que convierte cada tema en
+            un cortocircuito punk con regusto a pólvora.
           </p>
         </div>
       </div>
@@ -127,22 +136,18 @@ useHead({
 </script>
 
 <style scoped>
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
-/* Título de la biografía */
 .biografia-title {
   padding-top: 2em;
-  color: #ff99ff;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2em;
-  margin-bottom: 0.7em;
+  color: var(--color-principal, #ff99ff);
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  font-size: 2.4em;
   text-align: center;
   letter-spacing: 1px;
 }
 
 .biografia-bg {
-  background: #181818;
+  background: var(--color-bg, #181818);
   padding: 2em 0.5em;
   min-height: 90vh;
   display: flex;
@@ -151,7 +156,7 @@ useHead({
   overflow-x: hidden;
   width: 100vw;
   box-sizing: border-box;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
 }
 .biografia-main {
   width: 100%;
@@ -163,17 +168,17 @@ useHead({
   box-sizing: border-box;
 }
 .biografia-text {
-  color: #fff;
+  color: var(--color-text, #fff);
   font-size: 1.2em;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
   text-align: justify;
   letter-spacing: 0.5px;
 }
 .integrantes-section {
   width: 100%;
   max-width: 1200px;
-  background: #181818;
-  box-shadow: 0 0 20px #ff99ff44;
+  background: var(--color-bg, #181818);
+  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
   padding: 1.2em 0.7em;
   display: flex;
   flex-direction: column;
@@ -182,9 +187,8 @@ useHead({
   box-sizing: border-box;
 }
 .integrantes-title {
-  
-  font-family: "Montserrat", Arial, sans-serif;
-  color: #ff99ff;
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-principal, #ff99ff);
   font-size: 1.7em;
   margin-bottom: 0.7em;
   letter-spacing: 1px;
@@ -201,8 +205,8 @@ useHead({
   flex: 1 1 180px;
   min-width: 180px;
   max-width: 220px;
-  background: #222;
-  box-shadow: 0 0 10px #ff99ff44;
+  background: var(--color-card-bg, #222);
+  box-shadow: 0 0 10px var(--color-shadow, #ff99ff44);
   padding: 0.7em 0.7em 1.2em 0.7em;
   margin: 0;
   display: flex;
@@ -212,7 +216,7 @@ useHead({
   border-radius: 0.3em;
 }
 .integrante:hover {
-  box-shadow: 0 0 20px #ff99ff88;
+  box-shadow: 0 0 20px var(--color-shadow-hover, #ff99ff88);
   transform: translateY(-4px) scale(1.03);
 }
 .integrante-img {
@@ -221,26 +225,28 @@ useHead({
   height: 220px;
   object-fit: contain;
   border-radius: 0.3em;
-  box-shadow: 0 0 8px #ff99ff44;
+  box-shadow: 0 0 8px var(--color-shadow, #ff99ff44);
   margin-bottom: 0.7em;
-  background: #181818;
+  background: var(--color-bg, #181818);
 }
 .integrante-nombre {
   width: 100%;
   background: rgba(255, 153, 255, 0.12);
-  color: #fff;
+  color: var(--color-text, #fff);
   font-size: 1em;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
   letter-spacing: 0.5px;
   margin: 0 0 0.3em 0;
   padding: 0.3em 0.1em;
   border-radius: 0.2em;
   text-align: center;
-  box-shadow: 0 0 6px #ff99ff22;
+  box-shadow: 0 0 6px var(--color-shadow-light, #ff99ff22);
 }
 .rol {
+  display: block;
+  white-space: pre-line;
   font-size: 0.9em;
-  color: #ff99ff;
+  color: var(--color-principal, #ff99ff);
   font-weight: bold;
   margin-left: 0.3em;
 }
@@ -248,7 +254,7 @@ useHead({
   margin: 0.3em 0 0 0;
   color: #eee;
   font-size: 0.95em;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
   text-align: left;
 }
 @media (max-width: 1100px) {
@@ -266,6 +272,16 @@ useHead({
 }
 
 @media (max-width: 900px) {
+  .biografia-bg {
+    padding: 1.2em 0.3em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .biografia-title{
+    font-size: 2em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
+  }
   .integrantes-list {
     flex-direction: column;
     gap: 1.2em;

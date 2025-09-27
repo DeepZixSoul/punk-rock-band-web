@@ -9,7 +9,11 @@
           :key="noticia.titulo"
           class="noticia-item"
         >
-          <img :src="noticia.imagen" :alt="noticia.titulo" class="noticia-img" />
+          <img
+            :src="noticia.imagen"
+            :alt="noticia.titulo"
+            class="noticia-img"
+          />
           <div class="noticia-info">
             <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
             <p class="noticia-pie">{{ noticia.pie }}</p>
@@ -37,32 +41,34 @@
   </section>
 </template>
 
-
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-import { useHead } from '@vueuse/head';
+import { useHead } from "@vueuse/head";
 import noticias from "../../data/noticias.js";
 
 useHead({
-  title: 'Noticias | Gayola - Punk Rock desde Alicante',
+  title: "Noticias | Gayola - Punk Rock desde Alicante",
   meta: [
     {
-      name: 'description',
-      content: 'Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.'
+      name: "description",
+      content:
+        "Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.",
     },
     {
-      name: 'keywords',
-      content: 'gayola, noticias, punk, rock, grupo musical, conciertos, novedades, Alicante, Aspe, Elda, Orihuela, Murcia, banda, España'
+      name: "keywords",
+      content:
+        "gayola, noticias, punk, rock, grupo musical, conciertos, novedades, Alicante, Aspe, Elda, Orihuela, Murcia, banda, España",
     },
     {
-      property: 'og:title',
-      content: 'Noticias | Gayola - Punk Rock desde Alicante'
+      property: "og:title",
+      content: "Noticias | Gayola - Punk Rock desde Alicante",
     },
     {
-      property: 'og:description',
-      content: 'Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.'
-    }
-  ]
+      property: "og:description",
+      content:
+        "Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.",
+    },
+  ],
 });
 
 const paginaActual = ref(0);
@@ -78,24 +84,24 @@ const noticiasPagina = computed(() =>
 );
 
 // Dirección del slide: 'slide-left' o 'slide-right'
-const slideDirection = ref('slide-left');
+const slideDirection = ref("slide-left");
 const slideTransitionName = computed(() => {
   // Solo slide en móviles, fade en desktop
-  return window.innerWidth <= 900 ? slideDirection.value : 'noticia-fade';
+  return window.innerWidth <= 900 ? slideDirection.value : "noticia-fade";
 });
 
 function cambiarPagina(p) {
   if (p === paginaActual.value) return;
-  slideDirection.value = p > paginaActual.value ? 'slide-left' : 'slide-right';
+  slideDirection.value = p > paginaActual.value ? "slide-left" : "slide-right";
   paginaActual.value = p;
   // Solo hacer scroll si la sección de noticias no está ya visible arriba
   nextTick(() => {
-    const section = document.querySelector('.noticias-section');
+    const section = document.querySelector(".noticias-section");
     if (section) {
       const rect = section.getBoundingClientRect();
       // Si la parte superior de la sección está fuera de la vista (más de 40px del top)
       if (rect.top < -40 || rect.top > 40) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   });
@@ -121,11 +127,11 @@ function handleSwipeGesture() {
   if (Math.abs(distance) < minSwipeDistance) return;
   if (distance < 0 && paginaActual.value < totalPaginas.value - 1) {
     // Swipe left: siguiente página
-    slideDirection.value = 'slide-left';
+    slideDirection.value = "slide-left";
     paginaActual.value++;
   } else if (distance > 0 && paginaActual.value > 0) {
     // Swipe right: página anterior
-    slideDirection.value = 'slide-right';
+    slideDirection.value = "slide-right";
     paginaActual.value--;
   }
   touchStartX = null;
@@ -134,16 +140,20 @@ function handleSwipeGesture() {
 
 let noticiasSectionEl = null;
 onMounted(() => {
-  noticiasSectionEl = document.querySelector('.noticias-section');
+  noticiasSectionEl = document.querySelector(".noticias-section");
   if (noticiasSectionEl) {
-    noticiasSectionEl.addEventListener('touchstart', handleTouchStart, { passive: true });
-    noticiasSectionEl.addEventListener('touchend', handleTouchEnd, { passive: true });
+    noticiasSectionEl.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    noticiasSectionEl.addEventListener("touchend", handleTouchEnd, {
+      passive: true,
+    });
   }
 });
 onBeforeUnmount(() => {
   if (noticiasSectionEl) {
-    noticiasSectionEl.removeEventListener('touchstart', handleTouchStart);
-    noticiasSectionEl.removeEventListener('touchend', handleTouchEnd);
+    noticiasSectionEl.removeEventListener("touchstart", handleTouchStart);
+    noticiasSectionEl.removeEventListener("touchend", handleTouchEnd);
   }
 });
 </script>
@@ -151,26 +161,28 @@ onBeforeUnmount(() => {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
+/* Noticias sección */
 .noticias-section {
   width: 100%;
   max-width: 1170px;
   margin: 3em auto 0 auto;
-  background: #181818;
+  background: var(--color-bg, #181818);
   border-radius: 0.5em;
-  box-shadow: 0 0 20px #ff99ff44;
+  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
   padding: 2em 1em 1.5em 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .noticias-title {
-  font-family: "Montserrat", Arial, sans-serif;
-  color: #ff99ff;
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-principal, #ff99ff);
   font-size: 1.7em;
   margin-bottom: 1.2em;
   text-align: center;
   letter-spacing: 1px;
 }
+/* Lista y noticia item */
 .noticias-list {
   width: 100%;
   display: flex;
@@ -181,19 +193,19 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: flex-start;
   gap: 1.5em;
-  background: #222;
+  background: var(--color-card-bg, #222);
   border-radius: 0.4em;
-  box-shadow: 0 0 10px #ff99ff22;
+  box-shadow: 0 0 10px var(--color-shadow-light, #ff99ff22);
   padding: 1em;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
 }
 .noticia-img {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 0.4em;
-  box-shadow: 0 0 8px #ff99ff44;
-  background: #181818;
+  box-shadow: 0 0 8px var(--color-shadow, #ff99ff44);
+  background: var(--color-bg, #181818);
 }
 .noticia-info {
   flex: 1;
@@ -203,18 +215,18 @@ onBeforeUnmount(() => {
   min-width: 0;
 }
 .noticia-titulo {
-  font-family: "Montserrat", Arial, sans-serif;
-  color: #ff99ff;
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-principal, #ff99ff);
   font-size: 1.2em;
   margin-bottom: 0.5em;
 }
 .noticia-pie {
-  color: #fff;
+  color: var(--color-text, #fff);
   font-size: 1em;
   margin-bottom: 0.5em;
 }
 .noticia-link {
-  color: #ff99ff;
+  color: var(--color-link, #ff99ff);
   font-weight: 500;
   text-decoration: underline;
   font-size: 1em;
@@ -222,8 +234,9 @@ onBeforeUnmount(() => {
   transition: color 0.2s;
 }
 .noticia-link:hover {
-  color: #fff;
+  color: var(--color-text, #fff);
 }
+/* Paginación */
 .noticias-paginacion {
   display: flex;
   gap: 1em;
@@ -234,24 +247,23 @@ onBeforeUnmount(() => {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #ff99ff44;
+  background: var(--color-shadow-light, #ff99ff44);
   border: none;
   cursor: pointer;
   transition: background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 4px #ff99ff22;
+  box-shadow: 0 0 4px var(--color-shadow-light, #ff99ff22);
 }
 .noticias-circulo.activo {
-  background: #ff99ff;
-  box-shadow: 0 0 10px #ff99ff88;
+  background: var(--color-principal, #ff99ff);
+  box-shadow: 0 0 10px var(--color-shadow-hover, #ff99ff88);
 }
-
-
 
 /* --- Animación slide horizontal para móviles --- */
 @media (max-width: 900px) {
   .slide-left-enter-active,
   .slide-left-leave-active {
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1),
+      opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
     will-change: transform, opacity;
   }
   .slide-left-enter-from {
@@ -264,7 +276,8 @@ onBeforeUnmount(() => {
   }
   .slide-right-enter-active,
   .slide-right-leave-active {
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1),
+      opacity 0.45s cubic-bezier(0.77, 0, 0.18, 1);
     will-change: transform, opacity;
   }
   .slide-right-enter-from {
@@ -303,7 +316,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 600px) {
   .noticias-title {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 0.5em;
     padding: 0.3em 0.5em 0.2em 0.5em;
   }

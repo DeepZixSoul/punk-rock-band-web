@@ -63,7 +63,7 @@ defineEmits(["close"]);
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: var(--color-bg) url("/public/punk-texture.webp") repeat;
+  background: var(--color-bg, #181818) url("/public/punk-texture.webp") repeat;
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;
@@ -71,7 +71,7 @@ defineEmits(["close"]);
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1em 0.5em 0.5em 0.5em;
-  box-shadow: 0 0 40px #000a;
+  box-shadow: 0 0 40px var(--color-shadow, #000a);
   overflow: hidden;
   transform: translateY(-40px);
   opacity: 0;
@@ -100,12 +100,13 @@ defineEmits(["close"]);
   text-align: center;
 }
 
+  /* ...existing code... */
 .mobile-navbar-link {
   font-size: 1em;
   padding: 0.6em 0.7em;
-  color: var(--color-accent);
+  color: var(--color-accent, #ff99ff);
   text-decoration: none;
-  font-family: var(--font-title);
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
   border-left: 3px solid transparent;
   width: 100%;
   display: block;
@@ -120,9 +121,9 @@ defineEmits(["close"]);
 .mobile-navbar-link:hover,
 .mobile-navbar-link:focus,
 .mobile-navbar-link.active {
-  color: var(--color-text);
-  border-left: 3px solid #ff99ff;
-  background: var(--color-card);
+  color: var(--color-text, #fff);
+  border-left: 3px solid var(--color-principal, #ff99ff);
+  background: var(--color-card, #232323);
 }
 
 .mobile-social-bar {
