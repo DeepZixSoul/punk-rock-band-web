@@ -1,42 +1,3 @@
-<!-- filepath: /home/diego/Escritorio/gayola-web/gayola-web/src/components/layout/MobilMenu.vue -->
-<template>
-  <div v-if="menuOpen" class="mobilmenu-wrapper" aria-open="true">
-    <div class="mobile-overlay" @click.self="$emit('close')"></div>
-    <nav class="mobile-navbar">
-      <ul class="mobile-navbar-list">
-        <li
-          class="mobile-navbar-item"
-          v-for="item in menuItems"
-          :key="item.href"
-        >
-          <router-link
-            class="mobile-navbar-link"
-            :to="item.href"
-            @click.native="$emit('close')"
-          >
-            {{ item.label }}
-          </router-link>
-        </li>
-      </ul>
-      <div class="mobile-social-bar">
-        <SocialBar />
-      </div>
-    </nav>
-  </div>
-</template>
-
-<script setup>
-import SocialBar from "./SocialBar.vue";
-import { RouterLink } from 'vue-router';
-
-defineProps({
-  menuOpen: Boolean,
-  menuItems: Array,
-});
-defineEmits(["close"]);
-</script>
-
-<style scoped>
 .mobilmenu-wrapper {
   position: fixed;
   top: 4em; /* La altura real de tu topbar */
@@ -100,7 +61,6 @@ defineEmits(["close"]);
   text-align: center;
 }
 
-  /* ...existing code... */
 .mobile-navbar-link {
   font-size: 1em;
   padding: 0.6em 0.7em;
@@ -168,4 +128,3 @@ defineEmits(["close"]);
     padding: 0.2em 0.5em;
   }
 }
-</style>

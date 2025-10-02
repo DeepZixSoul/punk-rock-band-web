@@ -1,24 +1,3 @@
-<template>
-  <div class="inicio-content">
-    <div class="inicio-title-wrapper">
-      <h1 class="inicio-title">Gayola Punk Rock</h1>
-    </div>
-    <img
-      class="grupo-foto"
-      src="/src/assets/grupo.webp"
-      alt="Foto del grupo Gayola"
-    />
-
-    <!-- Noticias -->
-    <Noticias />
-  </div>
-</template>
-
-<script setup>
-import Noticias from "./Noticias.vue";
-</script>
-
-<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 .inicio-content {
@@ -80,4 +59,3 @@ import Noticias from "./Noticias.vue";
     padding: 2em 0.5em;
   }
 }
-</style>

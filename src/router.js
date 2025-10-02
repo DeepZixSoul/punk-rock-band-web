@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Inicio from './components/pages/Inicio.vue';
-import Biografia from './components/pages/Biografia.vue';
-import Conciertos from './components/pages/Conciertos.vue';
-import Discografia from './components/pages/Discografia.vue';
-import Galeria from './components/pages/Galeria.vue';
-import Tienda from './components/pages/Tienda.vue';
-import Videos from './components/pages/Videos.vue';
-import Contacto from './components/pages/Contacto.vue';
+import Inicio from './components/pages/Inicio/Inicio.vue';
+import Biografia from './components/pages/Biografia/Biografia.vue';
+import Conciertos from './components/pages/Conciertos/Conciertos.vue';
+import Discografia from './components/pages/Discografia/Discografia.vue';
+import Galeria from './components/pages/Galeria/Galeria.vue';
+import Tienda from './components/pages/Tienda/Tienda.vue';
+import Videos from './components/pages/Videos/Videos.vue';
+import Contacto from './components/pages/Contacto/Contacto.vue';
 
 const routes = [
   { path: '/', component: Inicio },

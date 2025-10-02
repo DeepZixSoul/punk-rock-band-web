@@ -18,9 +18,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import TopBar from "./components/ui/TopBar.vue";
-import NavBar from "./components/ui/NavBar.vue";
-import MobilMenu from "./components/ui/MobilMenu.vue";
+import TopBar from "./components/ui/Topbar/TopBar.vue";
+import NavBar from "./components/ui/NavBar/NavBar.vue";
+import MobilMenu from "./components/ui/MobilMenu/MobilMenu.vue";
 
 const menuOpen = ref(false);
 const isMobile = ref(false);

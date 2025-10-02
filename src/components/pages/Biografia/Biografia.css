@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
+.biografia-title {
+  padding-top: 2em;
+  color: var(--color-principal, #ff99ff);
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  font-size: 2.4em;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.biografia-bg {
+  background: var(--color-bg, #181818);
+  padding: 2em 0.5em;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+}
+.biografia-main {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2em;
+  background: transparent;
+  box-shadow: none;
+  padding: 1.2em 0.7em;
+  box-sizing: border-box;
+}
+.biografia-text {
+  color: var(--color-text, #fff);
+  font-size: 1.2em;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  text-align: justify;
+  letter-spacing: 0.5px;
+}
+.integrantes-section {
+  width: 100%;
+  max-width: 1200px;
+  background: var(--color-bg, #181818);
+  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
+  padding: 1.2em 0.7em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.3em;
+  box-sizing: border-box;
+}
+.integrantes-title {
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-principal, #ff99ff);
+  font-size: 1.7em;
+  margin-bottom: 0.7em;
+  letter-spacing: 1px;
+}
+.integrantes-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1.2em;
+  width: 100%;
+  justify-content: center;
+}
+.integrante {
+  flex: 1 1 180px;
+  min-width: 180px;
+  max-width: 220px;
+  background: var(--color-card-bg, #222);
+  box-shadow: 0 0 10px var(--color-shadow, #ff99ff44);
+  padding: 0.7em 0.7em 1.2em 0.7em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border-radius: 0.3em;
+}
+.integrante:hover {
+  box-shadow: 0 0 20px var(--color-shadow-hover, #ff99ff88);
+  transform: translateY(-4px) scale(1.03);
+}
+.integrante-img {
+  width: 100%;
+  max-width: 140px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 0.3em;
+  box-shadow: 0 0 8px var(--color-shadow, #ff99ff44);
+  margin-bottom: 0.7em;
+  background: var(--color-bg, #181818);
+}
+.integrante-nombre {
+  width: 100%;
+  background: rgba(255, 153, 255, 0.12);
+  color: var(--color-text, #fff);
+  font-size: 1em;
+  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  letter-spacing: 0.5px;
+  margin: 0 0 0.3em 0;
+  padding: 0.3em 0.1em;
+  border-radius: 0.2em;
+  text-align: center;
+  box-shadow: 0 0 6px var(--color-shadow-light, #ff99ff22);
+}
+.rol {
+  display: block;
+  white-space: pre-line;
+  font-size: 0.9em;
+  color: var(--color-principal, #ff99ff);
+  font-weight: bold;
+  margin-left: 0.3em;
+}
+.integrante p {
+  margin: 0.3em 0 0 0;
+  color: #eee;
+  font-size: 0.95em;
+  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  text-align: left;
+}
+@media (max-width: 1100px) {
+  .integrantes-list {
+    gap: 1.2em;
+  }
+  .integrante-img {
+    max-width: 110px;
+    height: 160px;
+  }
+  .biografia-main,
+  .integrantes-section {
+    padding: 2em 1em;
+  }
+}
+
+@media (max-width: 900px) {
+  .biografia-bg {
+    padding: 1.2em 0.3em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .biografia-title{
+    font-size: 2em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
+  }
+  .integrantes-list {
+    flex-direction: column;
+    gap: 1.2em;
+    align-items: center;
+  }
+  .integrante {
+    width: 100%;
+    max-width: 340px;
+    align-items: center;
+    padding: 1.2em 0.7em 1.5em 0.7em;
+  }
+  .integrante-img {
+    max-width: 150px;
+    height: 230px;
+  }
+  .biografia-main,
+  .integrantes-section {
+    padding: 2em 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .biografia-bg {
+    padding: 1.2em 0.3em;
+    overflow-x: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .biografia-main {
+    padding: 1.2em;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .integrantes-section {
+    padding: 1.2em 0.3em;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .integrante {
+    max-width: 98vw;
+    padding: 1em 0.3em 1.2em 0.3em;
+    box-sizing: border-box;
+  }
+  .integrante-img {
+    max-width: 120px;
+    height: 170px;
+  }
+  .biografia-title,
+  .integrantes-title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    padding: 0.3em 0.5em 0.2em 0.5em;
+  }
+  .biografia-text {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+  .integrante p {
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+}
