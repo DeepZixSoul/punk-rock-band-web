@@ -1,0 +1,59 @@
+# Robots.txt para Gayola - SEO Optimization
+# Última actualización: 30 de noviembre de 2025
+
+# Permitir a todos los buscadores
+User-agent: *
+Allow: /
+
+# Rutas que no queremos que indexen
+Disallow: /dev-dist/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /.netlify/
+Disallow: /.nuxt/
+Disallow: /dist/
+Disallow: /.cache/
+Disallow: /*.map
+
+# Permitir específicamente archivos de recursos
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /public/
+
+# Delay entre requests (en segundos)
+Crawl-delay: 1
+Request-rate: 30/60
+
+# Sitemap URLs
+Sitemap: https://gayola.netlify.app/sitemap.xml
+
+# Rules para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Rules para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Reglas para otros bots
+User-agent: MJ12bot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+# Bloquear bots maliciosos comunes
+User-agent: AltaVista
+Disallow: /
+
+User-agent: Baidu
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
