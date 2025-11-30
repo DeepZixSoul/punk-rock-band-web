@@ -18,18 +18,23 @@
         <p class="producto-precio">{{ producto.precio }} €</p>
       </div>
     </div>
-    <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal">
+    <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd">
       <div class="modal-content">
         <button class="modal-cerrar" @click="cerrarModal">✕</button>
+        <button v-if="indexProducto > 0" class="modal-arrow modal-arrow-left" @click.stop="productoAnterior" aria-label="Anterior">&#8592;</button>
         <img
           :src="productoModal.imagen"
           :alt="`Foto ampliada de producto: ${productoModal.nombre}`"
           class="modal-img"
           loading="lazy"
         />
+        <button v-if="indexProducto < productos.length - 1" class="modal-arrow modal-arrow-right" @click.stop="siguienteProducto" aria-label="Siguiente">&#8594;</button>
   <h3 class="modal-nombre">{{ productoModal.nombre }}</h3>
         <p class="modal-descripcion">{{ productoModal.descripcion }}</p>
         <p class="modal-precio">{{ productoModal.precio }} €</p>
+        <p class="modal-contador">{{ indexProducto + 1 }} / {{ productos.length }}</p>
         <button class="modal-comprar" @click="enviarEmail(productoModal)">
           Comprar por email
         </button>
@@ -46,7 +51,12 @@ import {
   productoModal,
   abrirModal,
   cerrarModal,
-  enviarEmail
+  enviarEmail,
+  handleTouchStart,
+  handleTouchEnd,
+  indexProducto,
+  siguienteProducto,
+  productoAnterior
 } from "./Tienda.js";
 </script>
 

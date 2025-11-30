@@ -64,7 +64,10 @@ export const productos = [
 ];
 export const modalAbierto = ref(false);
 export const productoModal = ref({});
+export const indexProducto = ref(0);
+
 export function abrirModal(producto) {
+  indexProducto.value = productos.indexOf(producto);
   productoModal.value = producto;
   modalAbierto.value = true;
 }
@@ -72,6 +75,51 @@ export function cerrarModal() {
   modalAbierto.value = false;
   productoModal.value = {};
 }
+
+export function siguienteProducto() {
+  if (indexProducto.value < productos.length - 1) {
+    indexProducto.value++;
+    productoModal.value = productos[indexProducto.value];
+  }
+}
+
+export function productoAnterior() {
+  if (indexProducto.value > 0) {
+    indexProducto.value--;
+    productoModal.value = productos[indexProducto.value];
+  }
+}
+
+let touchStartX = null;
+let touchStartY = null;
+export function handleTouchStart(e) {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}
+export function handleTouchEnd(e) {
+  if (!touchStartX || !touchStartY) return;
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+  
+  // Solo cerrar si el swipe es vertical (arriba o abajo)
+  if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 100) {
+    cerrarModal();
+  }
+  // Swipe horizontal para navegar productos
+  else if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 100) {
+    if (diffX < 0) {
+      siguienteProducto();
+    } else {
+      productoAnterior();
+    }
+  }
+  
+  touchStartX = null;
+  touchStartY = null;
+}
+
 export function enviarEmail(producto) {
   const asunto = encodeURIComponent(`Pedido: ${producto.nombre}`);
   const cuerpo = encodeURIComponent(
