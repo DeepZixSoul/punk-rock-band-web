@@ -28,11 +28,11 @@
             DANI MESTRE <span class="rol">(BATERÍA)</span>
           </h3>
           <p>
-            El metrónomo de Gayola, pero con mala leche. Dani no solo marca el
-            pulso, lo revienta. Con cada golpe mete gasolina al fuego y levanta
-            al personal del suelo. Preciso como un reloj y bruto como un
-            martillo, su pegada mantiene a la banda en pie y al público con el
-            cuello a punto de partirse. Sin él, primo, no hay terremoto.
+            A la batería tenemos a Dani: es dulce y simpático, pero peligroso en
+            las distancias cortas, como el SIDA. Toca la batería mientras sonríe
+            porque según él “es feliz”….qué desagradable. Nunca le pidas que te
+            guarde unas gafas de sol, a menos que le hayas perdido el aprecio a
+            tus córneas. Por alguna razón desconocida, odia los flanes.
           </p>
         </div>
         <div class="integrante">
@@ -46,10 +46,11 @@
             MENDONÇA <span class="rol">(GUITARRA)</span>
           </h3>
           <p>
-            El cirujano de las seis cuerdas, capaz de hacer riffs que cortan más
-            que un cuchillo jamonero. Mendonça no solo da fuerza y carácter,
-            también da miedo si te acercas demasiado al ampli. Dice que practica
-            en casa, pero los vecinos ya han pedido asilo político.
+            En una de las guitarras tenemos al Mendosa, un individuo calvo
+            carente de melena que toca la guitarra rítmica (o eso dice él); ya
+            que sus verdaderas pasiones son los carajillos y trasladar pelo de
+            su cabeza directamente hacia su culo. Sigue jodido por la muerte de
+            la peseta 25 años después.
           </p>
         </div>
         <div class="integrante">
@@ -62,11 +63,14 @@
             NACHO “BRÖKOLY” <span class="rol">(VOZ)</span>
           </h3>
           <p>
-            El grito que pone nombre a Gayola. Nacho no canta, escupe verdades
-            con carisma y mala baba. Su voz es la alarma de incendio de
-            cualquier garito y su apodo viene porque, igual que el brócoli, no a
-            todo el mundo le gusta, pero es necesario y jode dejarlo en el
-            plato.
+            🎤CONOCIENDO A LOS GAYOLA🎤 Nuestro frontman es un apolíneo bastardo
+            de cuerpo pétreo con solo un 10% de grasa corporal, un invierno o
+            una mala brisa se lo lleva por delante. Antisemita, iconoclasta y
+            tremendamente atractivo. Cantar no canta muy bien pero a quién le
+            importa, mira esos bíceps. Tiene grandes ideas de negocio que son
+            rechazadas de manera sistemática por los que dicen ser sus amigos.
+            Abrir un bar en Roquetas especializado en rebozados de marisco
+            llamado “Croquetas de Mar”…te cansas de ganar dinero, vamos.
           </p>
         </div>
         <div class="integrante">
@@ -79,10 +83,12 @@
             ALEX “TUPÁ”<span class="rol">(BAJO)</span>
           </h3>
           <p>
-            El bajo de Alex es el groove que emite el cosmos. Es el encargado de
-            que todo tiemble, desde el escenario hasta el corazón de tu abuela.
-            Su presencia escénica es tan potente que más de una vez ha hecho
-            sombra a los focos… y se dice que le enseñó a sumar a Jordi Hurtado
+            Al bajo tenemos a Álex (o Tupa, da igual, es bajista) un imbécil
+            secular de categorías bíblicas que toca una guitarra con pocas y
+            gruesas cuerdas que suenan igual que un árbol al caer en mitad de un
+            bosque sin nadie en sus inmediaciaciones (es un proverbio Chino).
+            Dice ser el inventor del refrán "cuando el río suena, agua lleva",
+            ¿pero qué sabrá de ríos siendo de Elche?
           </p>
         </div>
         <div class="integrante">
@@ -92,14 +98,14 @@
             class="integrante-img"
           />
           <h3 class="integrante-nombre">
-            IAN "BOMBILLA DE CUERO" <span class="rol">(GUITARRA)</span>
+            IAN BANGHER <span class="rol">(GUITARRA)</span>
           </h3>
           <p>
-            Con un mate de dinamita en una mano y domando la guitarra con los
-            pies, Ian se mueve entre el caos y la genialidad. Su creatividad es
-            tan salvaje que le brotó pelo… y eso que era calvo. Suena brutal.
-            Entre cuero y bombillas, mete la chispa que convierte cada tema en
-            un cortocircuito punk con regusto a pólvora.
+            En la otra guitarra tenemos a Ian, argentino con nombre
+            inglés...tremendo vendepatrias. Joven innovador con una mente
+            preclara, probable futuro especulador inmobiliario sin escrúpulos,
+            el tiempo dirá. Toca la guitarra muy bien, el hijo de puta. La
+            buena, la solista, no como el calvo ese mencionado anteriormente.
           </p>
         </div>
       </div>

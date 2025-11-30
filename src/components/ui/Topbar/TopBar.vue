@@ -7,7 +7,7 @@
         src="/src/assets/logo.webp"
         alt="Gayola logo"
         class="logo-navbar"
-        @click="goHome(props, emit)"
+        @click="goHome(router, props, emit)"
         style="cursor:pointer"
       />
     </div>
@@ -30,13 +30,18 @@
 </template>
 
 <script setup>
+
 import SocialBar from "../SocialBar/SocialBar.vue";
 import { handleMenuClick, goHome } from "./TopBar.js";
+import { useRouter } from 'vue-router';
+
 const props = defineProps({
   isMobile: Boolean,
   menuOpen: Boolean,
 });
 const emit = defineEmits(["toggle-menu"]);
+
+const router = useRouter();
 </script>
 
 <style src="./TopBar.css" scoped></style>

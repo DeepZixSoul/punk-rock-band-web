@@ -38,9 +38,9 @@
       :moveDisabled="true"
       :downloadDisabled="true"
       :rotateDisabled="true"
-      :zoomDisabled="true"
-      :escDisabled="true"      
-      :zoomScale="true"
+      :zoomDisabled="false"
+      :escDisabled="false"      
+      :zoomScale="false"
     />
   </div>
 </template>
