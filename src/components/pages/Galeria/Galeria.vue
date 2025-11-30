@@ -29,29 +29,21 @@
         <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img vel-img" loading="lazy" />
       </div>
     </div>
-    <VueEasyLightbox
-      :visible="visible"
-      :imgs="images"
-      :index="index"
-      @hide="hideImg"
-      :resizeDisabled="true"
-      :moveDisabled="true"
-      :downloadDisabled="true"
-      :rotateDisabled="true"
-      :zoomDisabled="false"
-      :escDisabled="false"      
-      :zoomScale="false"
-    />
+    <div v-if="visible" class="galeria-fullscreen" @click.self="hideImg"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd">
+      <button v-if="index > 0 && !isMobile" class="galeria-arrow galeria-arrow-left" @click.stop="prevImg" aria-label="Anterior">&#8592;</button>
+      <img :src="images[index]" class="galeria-fullscreen-img" alt="Imagen ampliada" />
+      <button v-if="index < images.length - 1 && !isMobile" class="galeria-arrow galeria-arrow-right" @click.stop="nextImg" aria-label="Siguiente">&#8594;</button>
+    </div>
   </div>
 </template>
 
 <script setup>
 // Importa la lógica JS desde archivo externo para mantener el componente limpio y modular
 import galeriaLogic from "./Galeria.js";
-import VueEasyLightbox from "vue-easy-lightbox";
-const { images, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg } = galeriaLogic();
+const { images, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg } = galeriaLogic();
  
 </script>
 
 <style src="./Galeria.css" scoped></style>
- 
