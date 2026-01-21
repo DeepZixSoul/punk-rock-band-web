@@ -1,9 +1,5 @@
-// Lógica JS separada para Contacto.vue
 import { useHead } from "@vueuse/head";
-/**
- * Lógica y controladores para el componente Contacto
- * Separa la lógica para mantener el .vue limpio y profesional
- */
+
 export default function contactoLogic() {
   useHead({
     title: "Contacto | Gayola - Punk Rock desde Alicante",

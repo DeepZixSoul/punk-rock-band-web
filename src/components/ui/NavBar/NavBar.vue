@@ -1,4 +1,3 @@
-<!-- filepath: /home/diego/Escritorio/gayola-web/gayola-web/src/components/layout/NavBar.vue -->
 <template>
   <nav id="main-navbar" class="navbar">
     <ul id="navbar-list" class="navbar-list">
@@ -25,13 +24,15 @@
       </li>
       <li class="navbar-item">
         <router-link class="navbar-link" to="/contacto">CONTACTO</router-link>
-      </li>
+      </li>      
+      <!-- <li class="navbar-item">
+        <router-link class="navbar-link" to="/blog">BLOG</router-link>
+      </li> -->
     </ul>
   </nav>
 </template>
 
 <script setup>
-// Importa la lógica JS desde archivo externo para mantener el componente limpio y modular
 import navBarLogic from "./NavBar.js";
 import { RouterLink } from 'vue-router';
 navBarLogic();

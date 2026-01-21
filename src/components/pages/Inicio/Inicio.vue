@@ -4,9 +4,11 @@
       <h1 class="inicio-title">Gayola Punk Rock</h1>
     </div>
     <img
-      class="grupo-foto"
+      class="grupo-foto loading"
       src="/src/assets/grupo.webp"
       alt="Foto del grupo Gayola"
+      loading="lazy"
+      @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
     />
 
     <!-- Noticias -->

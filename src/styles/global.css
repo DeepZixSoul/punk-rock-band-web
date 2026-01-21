@@ -1,4 +1,5 @@
-/* Animación global para todos los pages excepto Noticias.vue */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
+
 .inicio-content,
 .biografia-bg,
 .galeria-bg,
@@ -9,37 +10,6 @@
 .contacto-bg {
   animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 }
-@keyframes topbarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Ocultar el botón de resize del lightbox (VueEasyLightbox) usando clases reales */
-.toolbar-btn.toolbar-btn__resize {
-  display: none !important;
-}
-/* Ocultar el botón de resize del lightbox (VueEasyLightbox) */
-.v-easy-lightbox__footer .icon-resize {
-  display: none !important;
-}
-
-.vel-img-wrapper {
-  cursor: move !important;
-  top: calc(50% + 6em) !important;
-  left: calc(50% + 0px) !important;
-  transform: translate(-50%, -50%) scale(1) rotate(0deg) !important;
-  transition: none !important;
-  box-shadow: 0 0 40px #ff99ff88;
-  background: transparent;
-}
-
-/* global.css: estilos base y reset para toda la web */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 * {
   box-sizing: border-box;
@@ -54,18 +24,17 @@ body {
   line-height: 1.6;
 }
 a {
-  color: #ff99ff;
+  color: #ff66ff;
   text-decoration: none;
   transition: color 0.2s, text-decoration 0.2s;
   position: relative;
 }
 a:hover, a:focus {
-  color: #fff;
+  color: #ffccff;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* Contraste para textos sobre imágenes o fondos complejos */
 .text-bg-contrast {
   background: rgba(20, 20, 20, 0.72);
   color: #fff !important;
@@ -79,6 +48,23 @@ img {
   height: auto;
   display: block;
 }
+
+img.loading {
+  background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  opacity: 0.6;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+img.loaded {
+  animation: fadeIn 0.3s ease-in;
+}
+
 .vel-img-wrapper {
   top: calc(50% + 0px) !important;
   left: calc(50% + 0px) !important;

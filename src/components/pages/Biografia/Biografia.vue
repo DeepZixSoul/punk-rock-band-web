@@ -21,8 +21,9 @@
           <img
             src="/miembros/bateria.webp"
             alt="Foto de Dani Mestre, batería de Gayola"
-            class="integrante-img"
+            class="integrante-img loading"
             loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
           />
           <h3 class="integrante-nombre">
             DANI MESTRE <span class="rol">(BATERÍA)</span>
@@ -39,8 +40,9 @@
           <img
             src="/miembros/mendoza.webp"
             alt="Foto de Mendonça, guitarra de Gayola"
-            class="integrante-img"
+            class="integrante-img loading"
             loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
           />
           <h3 class="integrante-nombre">
             MENDONÇA <span class="rol">(GUITARRA)</span>
@@ -57,13 +59,15 @@
           <img
             src="/miembros/nacho.webp"
             alt="Nacho Brökoly, voz de Gayola punk rock en Alicante"
-            class="integrante-img"
+            class="integrante-img loading"
+            loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
           />
           <h3 class="integrante-nombre">
             NACHO “BRÖKOLY” <span class="rol">(VOZ)</span>
           </h3>
           <p>
-            🎤CONOCIENDO A LOS GAYOLA🎤 Nuestro frontman es un apolíneo bastardo
+            Nuestro frontman es un apolíneo bastardo
             de cuerpo pétreo con solo un 10% de grasa corporal, un invierno o
             una mala brisa se lo lleva por delante. Antisemita, iconoclasta y
             tremendamente atractivo. Cantar no canta muy bien pero a quién le
@@ -76,8 +80,10 @@
         <div class="integrante">
           <img
             src="/miembros/tupa.webp"
+            loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
             alt="Alex Tupá, bajo de Gayola punk rock en Alicante"
-            class="integrante-img"
+            class="integrante-img loading"
           />
           <h3 class="integrante-nombre">
             ALEX “TUPÁ”<span class="rol">(BAJO)</span>
@@ -94,8 +100,10 @@
         <div class="integrante">
           <img
             src="/miembros/ian.webp"
+            loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
             alt="Ian Bombilla de Cuero, guitarra de Gayola punk rock en Alicante"
-            class="integrante-img"
+            class="integrante-img loading"
           />
           <h3 class="integrante-nombre">
             IAN BANGHER <span class="rol">(GUITARRA)</span>
@@ -114,7 +122,6 @@
 </template>
 
 <script setup>
-// Importa la lógica JS desde archivo externo para mantener el componente limpio y modular
 import biografiaLogic from "./Biografia.js";
 biografiaLogic();
 </script>

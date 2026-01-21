@@ -3,6 +3,7 @@ import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useHead } from "@vueuse/head";
 import noticias from "../../../data/noticias.js";
 
+export function onNoticiasStructured() {
 useHead({
   title: "Noticias | Gayola - Punk Rock desde Alicante",
   meta: [
@@ -26,7 +27,8 @@ useHead({
         "Noticias y novedades de Gayola, grupo de punk rock en Alicante. Conciertos, lanzamientos, eventos y actualidad.",
     },
   ],
-});
+});}
+
 
 export const paginaActual = ref(0);
 const noticiasPorPagina = 5;

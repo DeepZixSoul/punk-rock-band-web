@@ -1,4 +1,4 @@
-<!-- filepath: /home/diego/Escritorio/gayola-web/gayola-web/src/components/layout/TopBar.vue -->
+
 <template>
   <div class="top-bar">
     <div class="top-logo">

@@ -11,23 +11,44 @@ export const videos = [
   { id: "wRHWZDAPmjo", titulo: "MENDIGO (VIDEOCLIP) - Gayola" },
   { id: "vkMLXJq1vPE", titulo: "PAKO EL MADERO - GAYOLA (VIDEOCLIP)" },
   { id: "SNxjRfa7yxM", titulo: "EL PUNK NO HA MUERTO (VIDEOCLIP) - Gayola" },
-  // Puedes añadir más vídeos aquí
 ];
 
 export const showLightbox = ref(false);
 export const lightboxIndex = ref(0);
+// Estado simplificado para mostrar iframes en thumbnails
 export const showIframe = reactive({});
+
+// Inicializar showIframe para cada video
+videos.forEach((_, i) => {
+  showIframe[i] = false;
+});
 
 // Devuelve la URL de la miniatura de YouTube
 export function getYoutubeThumb(id) {
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 }
 
+// Devuelve la URL de reproducción de YouTube
+export function getYoutubeUrl(id) {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
 // Devuelve la URL embebida de YouTube
 export function getYoutubeEmbed(id, autoplay = false) {
-  let params = "?rel=0&modestbranding=1&showinfo=0&color=white";
-  if (autoplay) params += "&autoplay=1";
-  return `https://www.youtube.com/embed/${id}${params}`;
+  let url = `https://www.youtube.com/embed/${id}`;
+  const params = [];
+  
+  params.push("fs=1");
+  
+  if (autoplay) {
+    params.push("autoplay=1");
+  }
+  
+  if (params.length > 0) {
+    url += "?" + params.join("&");
+  }
+  
+  return url;
 }
 
 // Abre el lightbox y muestra el iframe del vídeo seleccionado
@@ -41,9 +62,10 @@ export function openLightbox(i) {
 
 // Cierra el lightbox y oculta el iframe para liberar recursos
 export function closeLightbox() {
+  const prevIndex = lightboxIndex.value;
   showLightbox.value = false;
   setTimeout(() => {
-    showIframe[lightboxIndex.value] = false;
+    showIframe[prevIndex] = false;
   }, 300);
 }
 
@@ -66,11 +88,14 @@ export function shareVideo(id, event) {
 // Accesibilidad: cerrar lightbox con Escape
 export function onVideosMounted() {
   onMounted(() => {
+    const handleKeydown = (e) => {
+      if (showLightbox.value && e.key === "Escape") {
+        closeLightbox();
+      }
+    };
     window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
   });
-}
-function handleKeydown(e) {
-  if (showLightbox.value && e.key === "Escape") {
-    closeLightbox();
-  }
 }

@@ -1,9 +1,5 @@
-// Lógica JS separada para Discografia.vue
 import { useHead } from "@vueuse/head";
-/**
- * Lógica y controladores para el componente Discografia
- * Separa la lógica para mantener el .vue limpio y profesional
- */
+
 export default function discografiaLogic() {
   useHead({
     title: "Discografía | Gayola - Punk Rock desde Alicante",
@@ -140,7 +136,6 @@ export default function discografiaLogic() {
       fecha: "2017",
       portada: "/discografia/gayola.webp",
     },
-    // Añade más discos aquí
   ];
 
   return { discos };

@@ -12,7 +12,9 @@
     v-if="isMobile"
   />
   <div class="section fondo-imagen">
-    <router-view />
+    <ErrorBoundary>
+      <router-view />
+    </ErrorBoundary>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import TopBar from "./components/ui/Topbar/TopBar.vue";
 import NavBar from "./components/ui/NavBar/NavBar.vue";
 import MobilMenu from "./components/ui/MobilMenu/MobilMenu.vue";
+import ErrorBoundary from "./components/ErrorBoundary.vue";
 
 const menuOpen = ref(false);
 const isMobile = ref(false);

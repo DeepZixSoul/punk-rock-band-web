@@ -12,7 +12,6 @@
     "@vueuse/head": "^2.0.0",
     "vite-plugin-pwa": "^1.0.3",
     "vue": "^3.5.18",
-    "vue-easy-lightbox": "^1.19.0",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {

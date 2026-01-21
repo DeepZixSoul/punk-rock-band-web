@@ -1,9 +1,5 @@
-// Lógica JS separada para Biografia.vue
 import { useHead } from "@vueuse/head";
-/**
- * Lógica y controladores para el componente Biografia
- * Separa la lógica para mantener el .vue limpio y profesional
- */
+
 export default function biografiaLogic() {
   useHead({
     title: "Biografía | Gayola - Punk Rock desde Alicante",

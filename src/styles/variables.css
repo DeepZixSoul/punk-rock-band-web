@@ -1,10 +1,10 @@
-/* variables.css: variables de colores, fuentes y tamaños para toda la web */
 :root {
   --color-bg: #181818;
-  --color-accent: #ff99ff;
+  --color-accent: #ff66ff;
+  --color-accent-hover: #ffccff;
   --color-text: #fff;
   --color-card: #222;
-  --color-shadow: #ff99ff44;
+  --color-shadow: #ff66ff44;
   --font-title: 'Montserrat', Arial, sans-serif;
   --font-text: 'Roboto', Arial, sans-serif;
   --border-radius: 0.5em;

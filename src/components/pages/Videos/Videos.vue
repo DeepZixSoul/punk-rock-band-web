@@ -24,11 +24,10 @@
                 v-if="showIframe[i]"
                 :src="getYoutubeEmbed(video.id)"
                 frameborder="0"
-                allowfullscreen
                 class="video-frame"
                 :title="`Vídeo ${i + 1}: ${video.titulo}`"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                referrerpolicy="no-referrer"
+                allow="autoplay; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
               ></iframe>
             </transition>
             <div class="video-overlay" aria-hidden="true">
@@ -75,13 +74,12 @@
           <iframe
             :src="getYoutubeEmbed(videos[lightboxIndex].id, true)"
             frameborder="0"
-            allowfullscreen
             class="video-frame-lightbox"
             :title="`Vídeo ${lightboxIndex + 1}: ${
               videos[lightboxIndex].titulo
             }`"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            referrerpolicy="no-referrer"
+            allow="autoplay; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
           ></iframe>
           <button
             class="lightbox-close"
@@ -110,6 +108,7 @@ import {
   shareVideo,
   onVideosMounted
 } from "./Videos.js";
+
 onVideosMounted();
 </script>
 

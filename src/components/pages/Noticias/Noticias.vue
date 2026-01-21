@@ -12,10 +12,15 @@
           <img
             :src="noticia.imagen"
             :alt="noticia.titulo"
-            class="noticia-img"
+            class="noticia-img loading"
+            loading="lazy"
+            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
           />
           <div class="noticia-info">
-            <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
+            <div>
+              <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
+              <p v-if="noticia.fuente" class="noticia-fuente">{{ noticia.fuente }}</p>
+            </div>
             <p class="noticia-pie">{{ noticia.pie }}</p>
             <a
               v-if="noticia.enlace"
@@ -23,7 +28,8 @@
               class="noticia-link"
               target="_blank"
               rel="noopener noreferrer"
-              >Ver más</a
+              :title="`Ver ${noticia.fuente || 'noticia'} completa`"
+              >Ver enlace</a
             >
           </div>
         </div>
@@ -50,8 +56,10 @@ import {
   slideTransitionName,
   cambiarPagina,
   onNoticiasMounted,
-  onNoticiasBeforeUnmount
+  onNoticiasBeforeUnmount,
+  onNoticiasStructured
 } from "./Noticias.js";
+onNoticiasStructured();
 onNoticiasMounted();
 onNoticiasBeforeUnmount();
 </script>

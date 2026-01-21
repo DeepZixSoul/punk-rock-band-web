@@ -74,7 +74,6 @@
 </template>
 
 <script setup>
-// Importa la lógica JS desde archivo externo para mantener el componente limpio y modular
 import discografiaLogic from "./Discografia.js";
 const { discos } = discografiaLogic();
  
