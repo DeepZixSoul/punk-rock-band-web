@@ -25,21 +25,57 @@ export default function galeriaLogic() {
 
   let startX = null;
   let endX = null;
+  let startTime = null;
+  let isPinch = false;
+  let initialDistance = null;
+
+  const getDistance = (touches) => {
+    if (touches.length < 2) return 0;
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
 
   const handleTouchStart = (e) => {
+    // Si hay 2 o más dedos, es un pinch
+    if (e.touches.length >= 2) {
+      isPinch = true;
+      initialDistance = getDistance(e.touches);
+      return;
+    }
+    
+    isPinch = false;
     startX = e.touches[0].clientX;
+    startTime = Date.now();
+    initialDistance = null;
   };
 
   const handleTouchEnd = (e) => {
-    endX = e.changedTouches[0].clientX;
-    if (startX !== null && endX !== null) {
+    // Si fue pinch, ignorar
+    if (isPinch) {
+      isPinch = false;
+      initialDistance = null;
+      return;
+    }
+
+    // Si solo hay 1 toque y tenemos datos válidos
+    if (e.changedTouches.length === 1 && startX !== null) {
+      endX = e.changedTouches[0].clientX;
       const delta = endX - startX;
-      if (Math.abs(delta) > 50) {
-        index.value = delta < 0 ? Math.min(index.value + 1, images.length - 1) : Math.max(index.value - 1, 0);
+      const timeDelta = Date.now() - startTime;
+      
+      // Swipe debe ser: distancia > 60px Y tiempo < 500ms (swipe rápido)
+      if (Math.abs(delta) > 60 && timeDelta < 500) {
+        index.value = delta < 0 
+          ? Math.min(index.value + 1, images.length - 1) 
+          : Math.max(index.value - 1, 0);
       }
     }
+    
     startX = null;
     endX = null;
+    startTime = null;
+    isPinch = false;
   };
 
   onMounted(() => {

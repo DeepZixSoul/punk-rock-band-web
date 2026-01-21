@@ -96,13 +96,14 @@
   justify-content: center;
   z-index: 9999;
   animation: fadeIn 0.3s ease-in;
+  touch-action: pinch-zoom;
 }
 
 .galeria-fullscreen-img {
   max-width: 95vw;
   max-height: 85vh;
   object-fit: contain;
-  touch-action: manipulation;
+  touch-action: pinch-zoom;
   box-shadow: 0 0 40px var(--color-shadow);
 }
 

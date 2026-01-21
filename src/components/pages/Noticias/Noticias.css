@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap");
+
 /* Noticias sección */
 .noticias-section {
   width: 100%;
@@ -63,7 +65,7 @@
   opacity: 1;
 }
 .noticia-img {
-  width: 160px;
+  width: 190px;
   height: 160px;
   object-fit: cover;
   border-radius: 0.6em;
@@ -206,8 +208,8 @@
     padding: 1em 0.5em;
   }
   .noticia-img {
-    width: 98vw;
-    height: 180px;
+    width: 70vw;
+    height: 290px;
     margin-bottom: 0.7em;
   }
   .noticia-info {
@@ -237,8 +239,8 @@
     gap: 0.7em;
   }
   .noticia-img {
-    width: 98vw;
-    height: 120px;
+    width: 70vw;
+    height: 150px;
   }
   .noticia-info {
     width: 100%;
