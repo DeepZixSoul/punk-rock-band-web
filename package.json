@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./reports/lighthouse.html --chrome-flags='--headless --no-sandbox' --throttling.cpuSlowdownMultiplier=1"
   },
   "dependencies": {
     "@vueuse/head": "^2.0.0",
@@ -16,6 +17,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
-    "vite": "^7.1.8"
+    "vite": "^7.1.8",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^7.0.0",
+    "lighthouse": "^11.0.0"
   }
 }

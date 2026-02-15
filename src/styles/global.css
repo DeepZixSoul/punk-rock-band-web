@@ -69,3 +69,11 @@ img.loaded {
   top: calc(50% + 0px) !important;
   left: calc(50% + 0px) !important;
 }
+
+
+
+.footerBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+}
