@@ -9,6 +9,7 @@
         class="logo-navbar"
         @click="goHome(router, props, emit)"
         style="cursor:pointer"
+        loading="lazy"
       />
     </div>
     <button class="menu-btn" v-if="isMobile" @click="handleMenuClick(null, emit)">
@@ -23,6 +24,7 @@
         src="/public/logos/gayola-blanco.webp"
         alt="Gayola blanco"
         class="logo-blanco"
+        loading="lazy"
       />
     </div>
     <SocialBar v-if="!isMobile" />

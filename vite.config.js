@@ -81,5 +81,51 @@ export default defineConfig({
         enabled: true
       }
     })
-  ]
+  ],
+  build: {
+    // Optimize bundle size and asset loading
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
+    rollupOptions: {
+      output: {
+        // Code splitting strategy for better caching and lazy loading
+        manualChunks: {
+          'vendor': ['vue', 'vue-router'],
+          'ui-components': [
+            './src/components/ui/NavBar/NavBar.vue',
+            './src/components/ui/Footer/Footer.vue',
+            './src/components/ui/MobilMenu/MobilMenu.vue',
+            './src/components/ui/Topbar/TopBar.vue',
+            './src/components/ui/SocialBar/SocialBar.vue'
+          ]
+        },
+        // Optimize chunk naming for better long-term caching
+        chunkFileNames: '[name]-[hash].js',
+        entryFileNames: '[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|gif|svg|webp|ico|woff|woff2|ttf|eot/.test(ext)) {
+            return `assets/[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        }
+      }
+    },
+    // Increase chunk size limit to prevent warnings
+    chunkSizeWarningLimit: 600,
+    // Enable CSS code splitting
+    cssCodeSplit: true
+  },
+  // Optimization for development
+  server: {
+    middlewareMode: false,
+    preTransformRequests: true
+  }
 })

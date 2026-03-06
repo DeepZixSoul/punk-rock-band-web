@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Inicio from './components/pages/Inicio/Inicio.vue';
-import Biografia from './components/pages/Biografia/Biografia.vue';
-import Conciertos from './components/pages/Conciertos/Conciertos.vue';
-import Discografia from './components/pages/Discografia/Discografia.vue';
-import Galeria from './components/pages/Galeria/Galeria.vue';
-import Tienda from './components/pages/Tienda/Tienda.vue';
-import Videos from './components/pages/Videos/Videos.vue';
-import Contacto from './components/pages/Contacto/Contacto.vue';
+import { defineAsyncComponent } from 'vue';
+
+// Lazy load all page components for better code splitting
+const Inicio = defineAsyncComponent(() => import('./components/pages/Inicio/Inicio.vue'));
+const Biografia = defineAsyncComponent(() => import('./components/pages/Biografia/Biografia.vue'));
+const Conciertos = defineAsyncComponent(() => import('./components/pages/Conciertos/Conciertos.vue'));
+const Discografia = defineAsyncComponent(() => import('./components/pages/Discografia/Discografia.vue'));
+const Galeria = defineAsyncComponent(() => import('./components/pages/Galeria/Galeria.vue'));
+const Tienda = defineAsyncComponent(() => import('./components/pages/Tienda/Tienda.vue'));
+const Videos = defineAsyncComponent(() => import('./components/pages/Videos/Videos.vue'));
+const Contacto = defineAsyncComponent(() => import('./components/pages/Contacto/Contacto.vue'));
 
 const routes = [
   { path: '/', component: Inicio },

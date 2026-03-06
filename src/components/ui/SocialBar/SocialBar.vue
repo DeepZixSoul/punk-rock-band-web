@@ -7,7 +7,7 @@
       class="social-link"
       aria-label="Instagram"
     >
-      <img src="/public/redes-sociales/instagram.svg" alt="Instagram" class="social-icon" />
+      <img src="/public/redes-sociales/instagram.svg" alt="Instagram" class="social-icon" loading="lazy" />
     </a>
     <a
       href="https://open.spotify.com/intl-es/artist/2UiHDGxR9uKIOfOTvUcZF9"
@@ -15,7 +15,7 @@
       class="social-link"
       aria-label="Spotify"
     >
-      <img src="/public/redes-sociales/spotify.svg" alt="Spotify" class="social-icon" />
+      <img src="/public/redes-sociales/spotify.svg" alt="Spotify" class="social-icon" loading="lazy" />
     </a>
     <a
       href="https://www.facebook.com/Gayolaseriopunk/"
@@ -23,7 +23,7 @@
       class="social-link"
       aria-label="Facebook"
     >
-  <img src="/public/redes-sociales/facebook.webp" alt="Facebook" class="social-icon" />
+  <img src="/public/redes-sociales/facebook.webp" alt="Facebook" class="social-icon" loading="lazy" />
     </a>
     <a
       href="https://www.youtube.com/@gayolaseriopunk"
@@ -31,7 +31,7 @@
       class="social-link"
       aria-label="YouTube"
     >
-  <img src="/public/redes-sociales/youtube.webp" alt="YouTube" class="social-icon" />
+  <img src="/public/redes-sociales/youtube.webp" alt="YouTube" class="social-icon" loading="lazy" />
     </a>
   </div>
 </template>
