@@ -1,5 +1,5 @@
 // Lógica modularizada de Videos.vue
-import { ref, reactive, nextTick, onMounted } from "vue";
+import { ref, reactive, nextTick } from "vue";
 
 // Lista de vídeos de YouTube
 export const videos = [
@@ -33,20 +33,20 @@ export function getYoutubeUrl(id) {
   return `https://www.youtube.com/watch?v=${id}`;
 }
 
-// Devuelve la URL embebida de YouTube
+// Devuelve la URL embebida de YouTube con parámetros correctos
 export function getYoutubeEmbed(id, autoplay = false) {
   let url = `https://www.youtube.com/embed/${id}`;
-  const params = [];
-  
-  params.push("fs=1");
+  const params = [
+    "fs=1",              // Permitir pantalla completa
+    "rel=0",             // No mostrar videos relacionados
+    "modestbranding=1"   // Ocultar logo de YouTube
+  ];
   
   if (autoplay) {
     params.push("autoplay=1");
   }
   
-  if (params.length > 0) {
-    url += "?" + params.join("&");
-  }
+  url += "?" + params.join("&");
   
   return url;
 }
@@ -85,17 +85,18 @@ export function shareVideo(id, event) {
   }
 }
 
-// Accesibilidad: cerrar lightbox con Escape
-export function onVideosMounted() {
-  onMounted(() => {
-    const handleKeydown = (e) => {
-      if (showLightbox.value && e.key === "Escape") {
-        closeLightbox();
-      }
-    };
-    window.addEventListener("keydown", handleKeydown);
-    return () => {
-      window.removeEventListener("keydown", handleKeydown);
-    };
-  });
+// Hook de montaje para añadir listeners de teclado
+export function useVideosMount() {
+  const handleKeydown = (e) => {
+    if (showLightbox.value && e.key === "Escape") {
+      closeLightbox();
+    }
+  };
+  
+  window.addEventListener("keydown", handleKeydown);
+  
+  // Retorna función de limpieza para remover el listener
+  return () => {
+    window.removeEventListener("keydown", handleKeydown);
+  };
 }

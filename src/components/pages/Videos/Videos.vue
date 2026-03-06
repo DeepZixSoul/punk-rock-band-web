@@ -24,6 +24,7 @@
                 v-if="showIframe[i]"
                 :src="getYoutubeEmbed(video.id)"
                 frameborder="0"
+                allowfullscreen
                 class="video-frame"
                 :title="`Vídeo ${i + 1}: ${video.titulo}`"
                 allow="autoplay; fullscreen"
@@ -74,6 +75,7 @@
           <iframe
             :src="getYoutubeEmbed(videos[lightboxIndex].id, true)"
             frameborder="0"
+            allowfullscreen
             class="video-frame-lightbox"
             :title="`Vídeo ${lightboxIndex + 1}: ${
               videos[lightboxIndex].titulo
@@ -96,6 +98,7 @@
 
 <script setup>
 import "./Videos.css";
+import { onMounted } from "vue";
 import {
   videos,
   showLightbox,
@@ -106,10 +109,16 @@ import {
   openLightbox,
   closeLightbox,
   shareVideo,
-  onVideosMounted
+  useVideosMount
 } from "./Videos.js";
 
-onVideosMounted();
+// Hook de montaje para listeners de teclado
+onMounted(() => {
+  const cleanup = useVideosMount();
+  
+  // Retornar función de limpieza para cuando el componente se desmonte
+  return cleanup;
+});
 </script>
 
 
