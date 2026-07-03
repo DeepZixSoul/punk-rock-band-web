@@ -1,6 +1,6 @@
 export default function footerLogic() {
   return {
-    quickLinks: [
+    links: [
       { label: "Inicio", href: "/" },
       { label: "Biografía", href: "/biografia" },
       { label: "Conciertos", href: "/conciertos" },
@@ -9,7 +9,10 @@ export default function footerLogic() {
     ],
     contact: {
       email: "contacto@gayola.com",
-      phone: "+34 XXX XXX XXX",
+    },
+    location: {
+      city: "Aspe",
+      region: "Alicante",
     },
   };
 }
