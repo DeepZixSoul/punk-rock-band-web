@@ -1,5 +1,4 @@
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-import { useHead } from "@vueuse/head";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 export default function conciertosLogic() {
   const carteles = [
@@ -74,31 +73,6 @@ export default function conciertosLogic() {
   onBeforeUnmount(() => {
     window.removeEventListener("keydown", handleKeydown);
     window.removeEventListener("resize", handleResize);
-  });
-
-  useHead({
-    title: "Conciertos | Gayola - Punk Rock desde Alicante",
-    meta: [
-      {
-        name: "description",
-        content:
-          "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
-      },
-      {
-        name: "keywords",
-        content:
-          "gayola, conciertos, punk, rock, eventos, directo, Alicante, banda, España, música, fechas, entradas",
-      },
-      {
-        property: "og:title",
-        content: "Conciertos | Gayola - Punk Rock desde Alicante",
-      },
-      {
-        property: "og:description",
-        content:
-          "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
-      },
-    ],
   });
 
   return { carteles, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };

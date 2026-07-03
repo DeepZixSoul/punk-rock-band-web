@@ -26,7 +26,7 @@
     <!-- Fullscreen modal para carteles -->
     <div
       v-if="visible"
-      class="conciertos-fullscreen"
+      class="modal-overlay"
       @click.self="hideCartel"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
@@ -37,7 +37,7 @@
     >
       <button
         v-if="index > 0 && !isMobile"
-        class="conciertos-arrow conciertos-arrow-left"
+        class="modal-arrow modal-arrow-left"
         @click.stop="prevCartel"
         aria-label="Cartel anterior"
       >
@@ -47,20 +47,20 @@
         :src="carteles[index]"
         :alt="`Cartel número ${index + 1}`"
         :title="`Cartel número ${index + 1} de ${carteles.length}`"
-        class="conciertos-fullscreen-img loading"
+        class="modal-img loading"
         :id="`conciertos-modal-${index}`"
         @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
       />
       <button
         v-if="index < carteles.length - 1 && !isMobile"
-        class="conciertos-arrow conciertos-arrow-right"
+        class="modal-arrow modal-arrow-right"
         @click.stop="nextCartel"
         aria-label="Cartel siguiente"
       >
         &#8594;
       </button>
       <button
-        class="conciertos-close"
+        class="modal-close"
         @click="hideCartel"
         aria-label="Cerrar cartel"
       >
@@ -72,8 +72,35 @@
 
 <script setup>
 import { ref, watch } from 'vue';
+import { useHead } from '@vueuse/head';
 import conciertosLogic from "./Conciertos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
+import "../../../styles/modal-gallery.css";
+
+useHead({
+  title: "Conciertos | Gayola - Punk Rock desde Alicante",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
+    },
+    {
+      name: "keywords",
+      content:
+        "gayola, conciertos, punk, rock, eventos, directo, Alicante, banda, España, música, fechas, entradas",
+    },
+    {
+      property: "og:title",
+      content: "Conciertos | Gayola - Punk Rock desde Alicante",
+    },
+    {
+      property: "og:description",
+      content:
+        "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
+    },
+  ],
+});
 
 const {
   carteles,

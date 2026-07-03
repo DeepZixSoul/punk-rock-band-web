@@ -29,18 +29,19 @@
         <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img vel-img loading" loading="lazy" v-img-load />
       </div>
     </div>
-    <div v-if="visible" class="galeria-fullscreen" @click.self="hideImg"
+    <div v-if="visible" class="modal-overlay" @click.self="hideImg"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd">
-      <button v-if="index > 0 && !isMobile" class="galeria-arrow galeria-arrow-left" @click.stop="prevImg" aria-label="Anterior">&#8592;</button>
-      <img :src="images[index]" class="galeria-fullscreen-img loading" alt="Imagen ampliada" v-img-load />
-      <button v-if="index < images.length - 1 && !isMobile" class="galeria-arrow galeria-arrow-right" @click.stop="nextImg" aria-label="Siguiente">&#8594;</button>
+      <button v-if="index > 0 && !isMobile" class="modal-arrow modal-arrow-left" @click.stop="prevImg" aria-label="Anterior">&#8592;</button>
+      <img :src="images[index]" class="modal-img loading" alt="Imagen ampliada" v-img-load />
+      <button v-if="index < images.length - 1 && !isMobile" class="modal-arrow modal-arrow-right" @click.stop="nextImg" aria-label="Siguiente">&#8594;</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import galeriaLogic from "./Galeria.js";
+import "../../../styles/modal-gallery.css";
 const { images, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg } = galeriaLogic();
  
 </script>

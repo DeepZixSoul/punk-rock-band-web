@@ -1,7 +1,6 @@
 <template>
   <section class="noticias-section">
     <h2 class="noticias-title">Noticias del grupo</h2>
-    <!-- Slide horizontal solo en móviles, fade en desktop -->
     <transition :name="slideTransitionName">
       <div class="noticias-list" :key="paginaActual">
         <div
@@ -41,25 +40,49 @@
         :key="i"
         :class="['noticias-circulo', { activo: paginaActual === i }]"
         @click="cambiarPagina(i)"
-        aria-label="Ir a página de noticias {{ i + 1 }}"
+        :aria-label="`Ir a página de noticias ${i + 1}`"
       ></button>
     </div>
   </section>
 </template>
 
 <script setup>
-import "./Noticias.css";
-import {
+import { onMounted, onBeforeUnmount } from "vue";
+import useNoticias from "./Noticias.js";
+
+const {
   paginaActual,
   totalPaginas,
   noticiasPagina,
   slideTransitionName,
   cambiarPagina,
-  onNoticiasMounted,
-  onNoticiasBeforeUnmount
-} from "./Noticias.js";
-onNoticiasMounted();
-onNoticiasBeforeUnmount();
+  handleTouchStart,
+  handleTouchEnd,
+  handleResize,
+} = useNoticias();
+
+let noticiasSectionEl = null;
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  noticiasSectionEl = document.querySelector(".noticias-section");
+  if (noticiasSectionEl) {
+    noticiasSectionEl.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    noticiasSectionEl.addEventListener("touchend", handleTouchEnd, {
+      passive: true,
+    });
+  }
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", handleResize);
+  if (noticiasSectionEl) {
+    noticiasSectionEl.removeEventListener("touchstart", handleTouchStart);
+    noticiasSectionEl.removeEventListener("touchend", handleTouchEnd);
+  }
+});
 </script>
 
-
+<style src="./Noticias.css" scoped></style>

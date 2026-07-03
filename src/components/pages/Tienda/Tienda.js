@@ -99,7 +99,7 @@ export default function tiendaLogic() {
     const cuerpo = encodeURIComponent(
       `Hola,\n\nEstoy interesado en comprar el producto "${producto.nombre}" (${producto.precio} €).\n\n¿Podéis darme más información?\n\nGracias.`
     );
-    window.location.href = `mailto:contacto@gayola.com?subject=${asunto}&body=${cuerpo}`;
+    window.open(`mailto:contacto@gayola.com?subject=${asunto}&body=${cuerpo}`);
   }
 
   let handleKeydown = null;

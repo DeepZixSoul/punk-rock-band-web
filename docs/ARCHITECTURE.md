@@ -71,11 +71,19 @@ El menú móvil (`MobilMenu`) se despliega bajo el header con los links + Social
 ## Key Conventions
 
 - **Script:** Composition API con `<script setup>`. `.js` solo si la lógica lo justifica
-- **Estilos:** Scoped por componente (`<style src="./Comp.css" scoped></style>`)
+- **`useHead()`:** Solo en `<script setup>` del `.vue`, nunca dentro de funciones `.js`
+- **Enlaces externos:** `window.open()` para `mailto:` y enlaces que no deben interrumpir la navegación
+- **Estado Vue:** Siempre encapsulado en funciones, nunca `ref`/`computed` exportados a nivel de módulo
+- **Estilos:** Scoped por componente (`<style src="./Comp.css" scoped></style>`). Never `import` CSS en `<script>`
+- **Sin duplicación CSS:** Patrones como modal fullscreen, flechas de navegación, etc. se comparten vía CSS global o componente
+- **Nomenclatura:** Nombre del componente = nombre del directorio = PascalCase. Consistente en todo el proyecto
+- **CSS sin propiedades duplicadas:** En una misma regla no puede haber dos `filter:`, dos `background:`, etc.
+- **`100vh` para altura completa:** Nunca valores como `600vh`. Usar `100vh` o `calc(100vh - X)`
 - **Imágenes:** WebP, `loading="lazy"`, directiva global `v-img-load` para shimmer. Assets de `src/assets/` deben importarse (`import logoUrl from '/src/assets/logo.webp'`)
 - **Modales:** Focus trap, Escape cierra, flechas navegan, swipe táctil
 - **SEO:** `useHead()` en cada página, JSON-LD en `index.html` y `utils/schemaOrg.js`
 - **Rendimiento:** Code splitting por ruta, Terser drop console/debugger
+- **Código muerto:** Cada archivo en `utils/` debe tener al menos una función importada desde un componente. Cero archivos no-op.
 
 ## NPM Commands
 

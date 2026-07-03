@@ -55,14 +55,23 @@ On mobile, `MobilMenu` slides down below the header with nav links + `SocialBar`
 **Header height:** 3.5em desktop, 3em mobile, 2.5em small mobile. Content has `padding-top: 4.5em` in `App.vue`.
 
 ## Coding Conventions
-- **Naming:** PascalCase for components, camelCase for variables/functions
+- **Naming:** PascalCase for components, camelCase for variables/functions. Component name = directory name = PascalCase (e.g., `MobileMenu/`, not `MobilMenu/`).
 - **Script:** `<script setup>` with Composition API. Keep `.vue` clean; extract to `.js` only if logic warrants it
-- **Styles:** Scoped via `<style src="./Component.css" scoped></style>`. Use CSS vars. Mobile-first, breakpoint at 900px
+- **`.js` logic files:** Must export a function that encapsulates all state (`ref`, `computed`). Never export `ref`/`computed` at module level — that creates shared state across imports. Never call Vue composables (`useHead`, `onMounted`, etc.) inside `.js` files; those belong in `<script setup>` of the `.vue`.
+- **External links:** Use `window.open()` for links that should not interrupt the current page navigation. Never use `window.location.href = mailto:...` — it replaces the page.
+- **Styles:** Always use `<style src="./Component.css" scoped></style>`. Never import CSS via `import` in `<script>`.
+- **Shared styles:** If a pattern (modal fullscreen, arrows, etc.) appears in ≥2 components, extract to a shared CSS file or a shared component. No duplication.
+- **`useHead()`:** Call only inside `<script setup>` of the `.vue` component, never inside a `.js` function.
 - **Images:** WebP format. Native `loading="lazy"`. Shimmer via class `loading` → `loaded` via `v-img-load` directive (global, defined in `utils/imageDirective.js`)
 - **Assets from `src/assets/`:** Must be imported (e.g., `import logoUrl from '/src/assets/logo.webp'`), not referenced as static `/src/assets/...` paths
 - **Modals:** Focus trap from `utils/focusTrap.js`. Escape closes, arrows navigate, touch swipe support
 - **Cards:** Use `.card` + `.card-hover` utility classes from `global.css`
 - **SEO:** `useHead()` from `@vueuse/head` inside `<script setup>`. JSON-LD in `index.html` and `utils/schemaOrg.js`
+
+## Dead Code Rules
+- Every file in `src/utils/` must have at least one function imported and called from a component. If not, delete it.
+- A `.js` file should not exist if it only exports an empty object or no-op function. Delete on sight.
+- Before adding new code, check if existing code already solves the problem (e.g., `v-img-load` already handles image loading — do not add another image loader).
 
 ## NPM Commands
 | Command | Description |
