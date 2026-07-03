@@ -1,12 +1,10 @@
 <template>
-  <!-- Header semántico: navegación y menú -->
   <header>
-    <TopBar
+    <NavBar
       :isMobile="isMobile"
       :menuOpen="menuOpen"
       @toggle-menu="menuOpen = !menuOpen"
     />
-    <NavBar v-if="!isMobile" />
     <MobilMenu
       :menuOpen="menuOpen"
       :menuItems="menuItems"
@@ -15,20 +13,17 @@
     />
   </header>
 
-  <!-- Main: contenido principal con rol semántico -->
   <main class="section fondo-imagen" role="main">
     <ErrorBoundary>
       <router-view />
     </ErrorBoundary>
   </main>
-  
-  <!-- Footer semántico: información de contacto y enlaces -->
-  <Footer />  
+
+  <Footer />
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import TopBar from "./components/ui/Topbar/TopBar.vue";
 import NavBar from "./components/ui/NavBar/NavBar.vue";
 import MobilMenu from "./components/ui/MobilMenu/MobilMenu.vue";
 import ErrorBoundary from "./components/ErrorBoundary.vue";
@@ -66,6 +61,6 @@ html {
 }
 .section {
   min-height: 60vh;
-  padding: 2em 0;
+  padding: 4.5em 0 2em;
 }
 </style>

@@ -1,9 +1,9 @@
 .mobilmenu-wrapper {
   position: fixed;
-  top: 4em; /* La altura real de tu topbar */
+  top: 3.5em;
   left: 0;
   width: 100vw;
-  height: calc(600vh - 4em); /* Resta la altura del topbar */
+  height: calc(100vh - 3.5em);
   z-index: 9999;
 }
 
@@ -20,7 +20,7 @@
 
 .mobile-navbar {
   position: fixed;
-  top: 1.7em; /* Ajusta según el alto real del topbar */
+  top: 3.5em;
   left: 0;
   width: 100vw;
   height: 60vh;
@@ -46,7 +46,6 @@
 
 .mobile-navbar-list {
   gap: 0.7em;
-
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -73,7 +72,7 @@
   text-align: left;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
-/* El primer elemento tiene más espacio arriba */
+
 .mobile-navbar-item:first-child .mobile-navbar-link {
   padding-top: 0.9em;
 }
@@ -99,9 +98,13 @@
   opacity: 1;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
+  .mobilmenu-wrapper {
+    top: 3em;
+    height: calc(100vh - 3em);
+  }
   .mobile-navbar {
+    top: 3em;
     height: 55vh;
     padding: 0.2em 0.5em;
   }
@@ -109,13 +112,18 @@
     margin-top: 1em;
   }
   .mobile-navbar-link {
-  
     font-size: 0.9em;
     padding: 0.2em 1em;
   }
 }
+
 @media (max-width: 600px) {
+  .mobilmenu-wrapper {
+    top: 2.5em;
+    height: calc(100vh - 2.5em);
+  }
   .mobile-navbar {
+    top: 2.5em;
     height: 55vh;
     padding: 0.2em 0.5em;
   }
@@ -123,7 +131,6 @@
     margin-top: 0.8em;
   }
   .mobile-navbar-link {
-  
     font-size: 0.9em;
     padding: 0.2em 0.5em;
   }

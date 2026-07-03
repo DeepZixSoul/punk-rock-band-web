@@ -101,7 +101,6 @@ export default defineConfig({
             './src/components/ui/NavBar/NavBar.vue',
             './src/components/ui/Footer/Footer.vue',
             './src/components/ui/MobilMenu/MobilMenu.vue',
-            './src/components/ui/Topbar/TopBar.vue',
             './src/components/ui/SocialBar/SocialBar.vue'
           ]
         },

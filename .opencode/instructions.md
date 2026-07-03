@@ -18,7 +18,7 @@ Official website for **Gayola**, a punk rock band from Aspe, Alicante. Static SP
 src/
 ├── components/
 │   ├── pages/          # Route pages (one folder per route)
-│   └── ui/             # Shared: NavBar, MobilMenu, Topbar, Footer, SocialBar
+│   └── ui/             # Shared: NavBar, MobilMenu, Footer, SocialBar
 ├── data/               # Static JS data
 ├── styles/
 │   ├── variables.css   # CSS custom properties
@@ -29,7 +29,7 @@ src/
 └── router.js           # 8 lazy-loaded routes
 ```
 
-Each component folder has: `Component.vue` + `Component.js` (logic) + `Component.css` (scoped styles).
+Component folders have: `Component.vue` + `Component.css` (scoped styles). Optional `.js` for complex logic (e.g., `NavBar.js` was inlined).
 
 ## CSS Custom Properties
 ```
@@ -42,11 +42,24 @@ Each component folder has: `Component.vue` + `Component.js` (logic) + `Component
 --border-radius: 0.5em      --max-width: 1200px
 ```
 
+## Header Architecture
+
+Single unified header (`NavBar.vue`) fixed at top:
+- **Desktop (>900px):** [Logo] [nav links centered] [SocialBar]
+- **Mobile (≤900px):** [Logo] [hamburger button]
+
+`NavBar` handles logo click (`goHome` — scrolls to top or routes to `/`), hamburger toggle, and renders `SocialBar` on desktop. No separate `TopBar` component.
+
+On mobile, `MobilMenu` slides down below the header with nav links + `SocialBar`.
+
+**Header height:** 3.5em desktop, 3em mobile, 2.5em small mobile. Content has `padding-top: 4.5em` in `App.vue`.
+
 ## Coding Conventions
 - **Naming:** PascalCase for components, camelCase for variables/functions
-- **Script:** `<script setup>` with Composition API. Import `.js` for complex logic, keep `.vue` clean
+- **Script:** `<script setup>` with Composition API. Keep `.vue` clean; extract to `.js` only if logic warrants it
 - **Styles:** Scoped via `<style src="./Component.css" scoped></style>`. Use CSS vars. Mobile-first, breakpoint at 900px
 - **Images:** WebP format. Native `loading="lazy"`. Shimmer via class `loading` → `loaded` via `v-img-load` directive (global, defined in `utils/imageDirective.js`)
+- **Assets from `src/assets/`:** Must be imported (e.g., `import logoUrl from '/src/assets/logo.webp'`), not referenced as static `/src/assets/...` paths
 - **Modals:** Focus trap from `utils/focusTrap.js`. Escape closes, arrows navigate, touch swipe support
 - **Cards:** Use `.card` + `.card-hover` utility classes from `global.css`
 - **SEO:** `useHead()` from `@vueuse/head` inside `<script setup>`. JSON-LD in `index.html` and `utils/schemaOrg.js`
