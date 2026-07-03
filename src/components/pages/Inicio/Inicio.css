@@ -1,5 +1,5 @@
 .inicio-content {
-  background: var(--color-card-bg, rgba(20, 20, 20, 0.9));
+  background: var(--color-card);
   padding: 4em 1em;
   box-shadow: 0 0 40px var(--color-shadow, #000a);
   min-height: 60vh;

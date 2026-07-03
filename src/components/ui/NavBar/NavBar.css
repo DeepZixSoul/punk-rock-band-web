@@ -19,7 +19,7 @@
 }
 
 .logo-navbar {
-  height: 2.2em;
+  height: 2.8em;
   width: auto;
   padding: 0.2em 0.3em;
   border-radius: 0.5em;
@@ -117,7 +117,7 @@
     padding: 0.4em 0.8em;
   }
   .logo-navbar {
-    height: 2em;
+    height: 2.4em;
   }
   .navbar {
     display: none !important;
@@ -130,6 +130,6 @@
     min-height: 2.5em;
   }
   .logo-navbar {
-    height: 1.8em;
+    height: 2.2em;
   }
 }

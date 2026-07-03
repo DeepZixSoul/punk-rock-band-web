@@ -10,9 +10,9 @@
 
 /* Fondo y estructura */
 .videos-bg {
-  background: rgba(20, 20, 20, 0.95);
+  background: var(--color-bg);
   padding: 2em 1em;
-  box-shadow: 0 0 40px #000a;
+  box-shadow: 0 0 40px var(--color-shadow);
   min-height: 60vh;
   display: flex;
   flex-direction: column;

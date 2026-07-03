@@ -30,7 +30,7 @@
   width: 100%;
   max-width: 900px;
   margin-bottom: 3em;
-  background: var(--color-card-bg, rgba(20, 20, 20, 0.85));
+  background: var(--color-card);
   border-radius: 1em;
   box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
   padding: 2em;
