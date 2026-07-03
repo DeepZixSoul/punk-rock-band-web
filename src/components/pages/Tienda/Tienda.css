@@ -1,16 +1,16 @@
 .tienda-bg {
-  background: #181818;
+  background: var(--color-bg);
   padding: 2em 1em;
   min-height: 60vh;
   border-radius: 0.3em;
-  box-shadow: 0 0 40px #ff99ff44;
+  box-shadow: 0 0 40px var(--color-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .tienda-title {
   padding-top: 2em;
-  color: #ff99ff;
+  color: var(--color-accent);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
@@ -26,19 +26,10 @@
   margin: 0 auto;
 }
 .producto-item {
-  background: #222;
-  border-radius: 0.7em;
-  box-shadow: 0 0 20px #ff99ff44;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.producto-item:hover {
-  box-shadow: 0 0 40px #ff99ff88;
-  transform: scale(1.03);
 }
 .producto-img {
   width: 100%;
@@ -46,11 +37,11 @@
   object-fit: contain;
   border-radius: 0.4em;
   box-shadow: 0 0 8px #000a;
-  background: #181818;
+  background: var(--color-bg);
   margin-bottom: 0.7em;
 }
 .producto-nombre {
-  color: #ff99ff;
+  color: var(--color-accent);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.1em;
   margin-bottom: 0.3em;
@@ -81,9 +72,9 @@
 }
 .modal-content {
   position: relative;
-  background: #222;
+  background: var(--color-card);
   border-radius: 1em;
-  box-shadow: 0 0 40px #ff99ff88;
+  box-shadow: 0 0 40px var(--color-shadow-hover);
   padding: 2em 1.5em 1.5em 1.5em;
   max-width: 90vw;
   max-height: 85vh;
@@ -98,13 +89,13 @@
   max-width: 80vw;
   max-height: 40vh;
   border-radius: 0.7em;
-  box-shadow: 0 0 20px #ff99ff88;
-  background: #181818;
+  box-shadow: 0 0 20px var(--color-shadow-hover);
+  background: var(--color-bg);
   object-fit: contain;
   margin-bottom: 1em;
 }
 .modal-nombre {
-  color: #ff99ff;
+  color: var(--color-accent);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.3em;
   margin-bottom: 0.5em;
@@ -124,26 +115,26 @@
   text-align: center;
 }
 .modal-comprar {
-  background: #ff99ff;
-  color: #222;
+  background: var(--color-accent);
+  color: var(--color-bg);
   border: none;
   border-radius: 0.5em;
   font-size: 1.1em;
   padding: 0.7em 2em;
   cursor: pointer;
-  box-shadow: 0 0 8px #ff99ff88;
+  box-shadow: 0 0 8px var(--color-shadow-hover);
   transition: background 0.2s;
 }
 .modal-comprar:hover {
   background: #fff;
-  color: #ff99ff;
+  color: var(--color-accent);
 }
 .modal-cerrar {
   position: absolute;
   top: 0.5em;
   right: 0.7em;
-  background: #ff99ff;
-  color: #222;
+  background: var(--color-accent);
+  color: var(--color-bg);
   border: none;
   border-radius: 50%;
   font-size: 1.5em;
@@ -153,7 +144,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 8px #ff99ff88;
+  box-shadow: 0 0 8px var(--color-shadow-hover);
   transition: background 0.2s;
 }
 .modal-cerrar:hover {
@@ -164,7 +155,7 @@
   top: 80%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 1);
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent);
   border: none;
   font-size: 2.5em;
   padding: 0.2em 0.4em;
@@ -174,7 +165,7 @@
   transition: background 0.2s, color 0.2s;
 }
 .modal-arrow:hover {
-  background: var(--color-principal, #ff99ff);
+  background: var(--color-accent);
   color: #fff;
 }
 .modal-arrow-left {

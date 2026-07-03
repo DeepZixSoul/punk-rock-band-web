@@ -8,7 +8,7 @@
       <div
         v-for="(cartel, i) in carteles"
         :key="i"
-        class="cartel-item"
+        class="cartel-item card card-hover"
         @click="showCartel(i)"
         :tabindex="0"
         @keydown.enter.space="showCartel(i)"

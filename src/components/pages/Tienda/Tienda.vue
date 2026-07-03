@@ -5,7 +5,7 @@
       <div
         v-for="(producto, i) in productos"
         :key="producto.nombre"
-        class="producto-item"
+        class="producto-item card card-hover"
         @click="abrirModal(producto)"
       >
         <img

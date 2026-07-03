@@ -1,7 +1,7 @@
 .biografia-title {
   padding-top: 2em;
-  color: var(--color-principal, #ff99ff);
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-accent, #ff99ff);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   font-size: 2.4em;
   text-align: center;
   letter-spacing: 1px;
@@ -17,7 +17,7 @@
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
-  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
 }
 .biografia-main {
   width: 100%;
@@ -31,7 +31,7 @@
 .biografia-text {
   color: var(--color-text, #fff);
   font-size: 1.2em;
-  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
   text-align: justify;
   letter-spacing: 0.5px;
 }
@@ -48,8 +48,8 @@
   box-sizing: border-box;
 }
 .integrantes-title {
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
-  color: var(--color-principal, #ff99ff);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
+  color: var(--color-accent, #ff99ff);
   font-size: 1.7em;
   margin-bottom: 0.7em;
   letter-spacing: 1px;
@@ -95,19 +95,19 @@
   background: rgba(255, 153, 255, 0.12);
   color: var(--color-text, #fff);
   font-size: 1em;
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   letter-spacing: 0.5px;
   margin: 0 0 0.3em 0;
   padding: 0.3em 0.1em;
   border-radius: 0.2em;
   text-align: center;
-  box-shadow: 0 0 6px var(--color-shadow-light, #ff99ff22);
+  box-shadow: 0 0 6px var(--color-shadow-light);
 }
 .rol {
   display: block;
   white-space: pre-line;
   font-size: 0.9em;
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent, #ff99ff);
   font-weight: bold;
   margin-left: 0.3em;
 }
@@ -115,9 +115,9 @@
   margin: 0.3em 0 0 0;
   color: #eee;
   font-size: 0.95em;
-  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
   text-align: left;
-  background: var(--color-table-bg, #191919cc);
+  background: var(--color-table-bg);
   border-radius: 0.5em;
   box-shadow: 0 0 8px var(--color-shadow-light, #ff99ff22);
   padding: 0.8em;

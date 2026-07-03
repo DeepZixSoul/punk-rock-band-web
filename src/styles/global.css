@@ -8,7 +8,7 @@
 .videos-bg,
 .tienda-bg,
 .contacto-bg {
-  animation: topbarFadeIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  animation: fadeSlideIn 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 * {
@@ -35,14 +35,6 @@ a:hover, a:focus {
   text-underline-offset: 2px;
 }
 
-.text-bg-contrast {
-  background: rgba(20, 20, 20, 0.72);
-  color: #fff !important;
-  padding: 0.2em 0.7em;
-  border-radius: 0.4em;
-  display: inline-block;
-  box-shadow: 0 2px 12px #0006;
-}
 img {
   max-width: 100%;
   height: auto;
@@ -65,15 +57,41 @@ img.loaded {
   animation: fadeIn 0.3s ease-in;
 }
 
-.vel-img-wrapper {
-  top: calc(50% + 0px) !important;
-  left: calc(50% + 0px) !important;
+
+
+/* Unified page entrance animation */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
+/* === Card system === */
+.card {
+  background: var(--color-card);
+  border-radius: var(--border-radius);
+  padding: 1em;
+  box-shadow: 0 0 20px var(--color-shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
 
-.footerBox {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  
+.card-hover:hover,
+.card-hover:focus {
+  box-shadow: 0 0 40px var(--color-shadow-hover);
+  transform: scale(1.03);
+}
+
+.card-hover:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

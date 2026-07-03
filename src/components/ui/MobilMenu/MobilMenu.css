@@ -66,7 +66,7 @@
   padding: 0.6em 0.7em;
   color: var(--color-accent, #ff99ff);
   text-decoration: none;
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   border-left: 3px solid transparent;
   width: 100%;
   display: block;
@@ -80,9 +80,9 @@
 
 .mobile-navbar-link:hover,
 .mobile-navbar-link:focus,
-.mobile-navbar-link.active {
+.mobile-navbar-link.router-link-exact-active {
   color: var(--color-text, #fff);
-  border-left: 3px solid var(--color-principal, #ff99ff);
+  border-left: 3px solid var(--color-accent, #ff99ff);
   background: var(--color-card, #232323);
 }
 

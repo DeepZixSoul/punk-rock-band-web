@@ -13,14 +13,9 @@
   justify-content: center;
   border-radius: 0;
   box-shadow: 0 0 40px #000a;
-  animation: navbarFadeIn 0.7s cubic-bezier(.77,0,.18,1);
+  animation: fadeSlideIn 0.7s cubic-bezier(.77,0,.18,1);
   box-sizing: border-box;
   overflow-x: hidden;
-}
-
-@keyframes navbarFadeIn {
-  from { opacity: 0; transform: translateY(-30px);}
-  to { opacity: 1; transform: translateY(0);}
 }
 
 .navbar-list {
@@ -38,7 +33,7 @@
 .navbar-link {
   color: var(--color-accent, #ff99ff);
   text-decoration: none;
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   font-size: 1.1em;
   padding: 0.4em 1em;
   border-left: 3px solid transparent;
@@ -50,8 +45,8 @@
 }
 .navbar-link:hover,
 .navbar-link:focus,
-.navbar-link.active {
-  filter: drop-shadow(0 0 8px var(--color-principal, #ff99ff)) brightness(1.1);
+.navbar-link.router-link-exact-active {
+  filter: drop-shadow(0 0 8px var(--color-accent, #ff99ff)) brightness(1.1);
 }
 
 @media (max-width: 900px) {

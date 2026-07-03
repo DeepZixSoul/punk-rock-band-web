@@ -22,7 +22,7 @@
   color: var(--color-text, #fff);
 }
 .contacto-info {
-  box-shadow: 0 0 25px #ff99ff33;
+  box-shadow: 0 0 25px var(--color-shadow-light);
   border-radius: 1.2em;
 
   display: flex;
@@ -33,42 +33,31 @@
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-  background: var(--color-bg-alt, #181818);
+  background: var(--color-bg);
   border-radius: 0.7em;
   padding: 1em 1.2em;
-  /* box-shadow: 0 0 12px #ff99ff22; */
 }
 .contacto-label {
   font-weight: 500;
   color: var(--color-accent, #ff99ff);
   font-size: 1em;
 }
-.contacto-link {
-  color: var(--color-link, #ff99ff);
-  font-size: 1.05em;
-  word-break: break-all;
-  transition: color 0.2s;
-}
-.contacto-link:hover {
-  color: #fff;
-}
-
 .contacto-btn {
   display: inline-block;
   padding: 0.7em 1.5em;
-  background: var(--color-accent, #ff99ff);
-  color: #181818;
+  background: var(--color-accent);
+  color: var(--color-bg);
   font-weight: 700;
   border: none;
   border-radius: 0.7em;
   font-size: 1.1em;
-  box-shadow: 0 0 12px #ff99ff44;
+  box-shadow: 0 0 12px var(--color-shadow);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 .contacto-btn:hover {
   background: #fff;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
 }
 /* Redes sociales mejoradas */
 .contacto-redes {
@@ -87,26 +76,26 @@
   border-radius: 50%;
   width: 2.7em;
   height: 2.7em;
-  background: #232323;
-  border: 2px solid #ff99ff44;
-  box-shadow: 0 2px 12px #ff99ff22;
+  background: var(--color-card);
+  border: 2px solid var(--color-shadow);
+  box-shadow: 0 2px 12px var(--color-shadow-light);
   transition: background 0.2s, box-shadow 0.2s, border 0.2s;
   outline: none;
 }
 
 .social-link:focus {
-  border: 2px solid var(--color-accent, #ff99ff);
-  box-shadow: 0 0 0 2px #ff99ff88;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-shadow-hover);
 }
 .social-link:hover {
-  background: var(--color-accent, #ff99ff);
-  box-shadow: 0 0 16px #ff99ff88;
+  background: var(--color-accent);
+  box-shadow: 0 0 16px var(--color-shadow-hover);
   border: 2px solid #fff;
 }
 .social-icon {
   width: 1.6em;
   height: 1.6em;
-  filter: drop-shadow(0 0 2px #ff99ff);
+  filter: drop-shadow(0 0 2px var(--color-accent));
   transition: filter 0.2s;
 }
 .centrado-redes {
@@ -134,15 +123,15 @@
 .social-icon-avispero {
   width: 5em;
   height: 5em;
-  filter: drop-shadow(0 0 2px #ff99ff);
+  filter: drop-shadow(0 0 2px var(--color-accent));
   transition: filter 0.2s;
   display: block;
   border-radius: 50%;
-  background: #222;
-  box-shadow: 0 0 12px #ff99ff44;
+  background: var(--color-card);
+  box-shadow: 0 0 12px var(--color-shadow);
 }
 .avispero-link:hover .social-icon-avispero {
-  filter: drop-shadow(0 0 8px #ff99ff) brightness(1.1);
+  filter: drop-shadow(0 0 8px var(--color-accent)) brightness(1.1);
 }
 .avispero-user {
   color: var(--color-accent, #ff99ff);

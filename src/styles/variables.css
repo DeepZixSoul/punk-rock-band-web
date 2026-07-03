@@ -5,6 +5,9 @@
   --color-text: #fff;
   --color-card: #222;
   --color-shadow: #ff66ff44;
+  --color-shadow-hover: #ff66ff88;
+  --color-shadow-light: #ff99ff22;
+  --color-table-bg: #191919cc;
   --font-title: 'Montserrat', Arial, sans-serif;
   --font-text: 'Roboto', Arial, sans-serif;
   --border-radius: 0.5em;

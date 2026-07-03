@@ -9,12 +9,12 @@
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
-  font-family: var(--font-principal, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, "Roboto", Arial, sans-serif);
 }
 .discografia-title {
   padding-top: 2em;
-  color: var(--color-principal, #ff99ff);
-  font-family: var(--font-titulos, "Montserrat", Arial, sans-serif);
+  color: var(--color-accent, #ff99ff);
+  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
   font-size: 2em;
   margin-bottom: 1em;
   letter-spacing: 2px;
@@ -43,7 +43,7 @@
 .disco-info {
   flex: 1 1 45%;
   color: var(--color-text, #fff);
-  font-family: var(--font-principal, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, "Roboto", Arial, sans-serif);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -52,8 +52,8 @@
   min-width: 0;
 }
 .disco-titulo {
-  font-family: var(--font-titulos, "Montserrat", Arial, sans-serif);
-  color: var(--color-principal, #ff99ff);
+  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
+  color: var(--color-accent, #ff99ff);
   font-size: 1.5em;
   margin-bottom: 0.7em;
   text-align: center;
@@ -64,17 +64,11 @@
   letter-spacing: 0.5px;
   margin-bottom: 1.2em;
   padding: 0.3em 0.2em;
-  font-family: var(--font-principal, "Roboto", Arial, sans-serif);
-}
-.disco-canciones {
-  margin: 0 0 1em 0;
-  padding-left: 1.2em;
-  color: #ff99ff;
-  font-size: 1em;
+  font-family: var(--font-text, "Roboto", Arial, sans-serif);
 }
 .disco-fecha {
   font-size: 0.95em;
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent, #ff99ff);
   font-weight: bold;
   margin-top: 0.5em;
 }
@@ -97,7 +91,7 @@
   max-width: 100%;
   border-radius: 1em;
   box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
-  border: 3px solid var(--color-principal-alpha, #ff99ff55);
+  border: 3px solid #ff99ff55;
   background: var(--color-bg, #181818);
   object-fit: contain;
 }
@@ -117,9 +111,9 @@
   box-sizing: border-box;
   position: relative;
   z-index: 2;
-  background: var(--color-table-bg, #191919cc);
+  background: var(--color-table-bg);
   border-radius: 0.5em;
-  box-shadow: 0 0 8px var(--color-shadow-light, #ff99ff22);
+  box-shadow: inset 0 -20px 20px -20px #000a, 0 0 8px var(--color-shadow-light);
   overflow-y: auto;
   max-height: 260px;
   display: block;
@@ -148,24 +142,8 @@
   border-collapse: separate;
   border-spacing: 0 0.2em;
 }
-/* Tabla canciones: th, td, iconos */
-.cancion-nombre-th,
-.cancion-logo-th {
-  font-family: var(--font-titulos, "Montserrat", Arial, sans-serif);
-  color: var(--color-principal, #ff99ff);
-  font-size: 1em;
-  padding-bottom: 0.3em;
-}
-.cancion-nombre-th {
-  text-align: left;
-}
-.cancion-logo-th {
-  text-align: right;
-  width: 60px;
-  padding-right: 0.5em;
-}
 .cancion-nombre {
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent, #ff99ff);
   font-weight: 500;
   font-size: 1em;
   padding: 0.2em 0.5em 0.2em 0.4em;
@@ -175,7 +153,7 @@
   text-align: right;
   vertical-align: middle;
   /* padding: 0.2em  0.2em 0.2em; */
-  filter: drop-shadow(0 0 8px var(--color-principal, #ff99ff));
+  filter: drop-shadow(0 0 8px var(--color-accent, #ff99ff));
 }
 .icono-cancion-img {
   width: 2.6em;
@@ -192,7 +170,7 @@
 }
 .icono-cancion-img:hover {
   transform: scale(1.18);
-  filter: brightness(1.2) drop-shadow(0 0 6px var(--color-principal, #ff99ff));
+  filter: brightness(1.2) drop-shadow(0 0 6px var(--color-accent, #ff99ff));
 }
 /* --- ESTILOS DISCOS Y TABLA DE CANCIONES --- */
 @media (max-width: 900px) {

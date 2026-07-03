@@ -7,7 +7,7 @@
           <div
             v-for="(foto, i) in carrusel"
             :key="i"
-            class="foto-item"
+            class="foto-item card card-hover"
             @click="showImg(idx * 10 + i)"
             :tabindex="0"
             @keydown.enter.space="showImg(idx * 10 + i)"
@@ -21,7 +21,7 @@
       <div
         v-for="(foto, i) in images"
         :key="i"
-        class="foto-item"
+        class="foto-item card card-hover"
         @click="showImg(i)"
         :tabindex="-1"
         @keydown.enter.space="showImg(i)"

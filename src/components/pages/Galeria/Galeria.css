@@ -12,7 +12,7 @@
 
 .galeria-title {
   padding-top: 2em;
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent, #ff99ff);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
@@ -23,7 +23,7 @@
 .galeria-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap);
+  gap: 2em;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -34,7 +34,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: rgba(40, 40, 40, 0.7);
-  color: var(--color-principal, #ff99ff);
+  color: var(--color-accent, #ff99ff);
   border: none;
   font-size: 2.5em;
   padding: 0.2em 0.5em;
@@ -45,7 +45,7 @@
 }
 
 .galeria-arrow:hover {
-  background: var(--color-principal, #ff99ff);
+  background: var(--color-accent, #ff99ff);
   color: #fff;
 }
 
@@ -58,20 +58,10 @@
 }
 
 .foto-item {
-  background: var(--color-card-bg);
-  border-radius: 0.7em;
-  box-shadow: 0 0 20px var(--color-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1em;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.foto-item:hover {
-  box-shadow: 0 0 40px var(--color-shadow-hover);
-  transform: scale(1.03);
 }
 
 .foto-img {
@@ -79,7 +69,7 @@
   max-height: 350px;
   object-fit: contain;
   box-shadow: 0 0 8px var(--color-shadow);
-  background: var(--color-card-bg);
+  background: var(--color-card);
   transition: box-shadow 0.2s, transform 0.2s;
   border-radius: 0.7em;
 }
@@ -180,7 +170,7 @@
     height: 70vw;
     max-height: 75vw;
     border-radius: 1em;
-    background: var(--color-card-bg);
+    background: var(--color-card);
     box-shadow: 0 0 8px var(--color-shadow);
   }
 
@@ -195,14 +185,10 @@
   }
 
   .foto-item.foto-tap {
-    box-shadow: 0 0 24px var(--color-principal);
+    box-shadow: 0 0 24px var(--color-accent);
     transform: scale(0.97);
   }
 
-  .modal-img {
-    max-width: 98vw;
-    max-height: 70vh;
-  }
 }
 
 @media (max-width: 600px) {
@@ -227,8 +213,4 @@
     max-height: 120px;
   }
 
-  .modal-img {
-    max-width: 98vw;
-    max-height: 60vh;
-  }
 }

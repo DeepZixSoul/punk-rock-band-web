@@ -1,10 +1,6 @@
-/* Fuente global coherente */
-:global(html) {
-  font-family: "Montserrat", Arial, sans-serif;
-}
 /* Título de cada vídeo */
 .video-titulo {
-  color: #ff99ff;
+  color: var(--color-accent);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.2em;
   margin-bottom: 1em;
@@ -24,7 +20,7 @@
 }
 .videos-title {
   padding-top: 2em;
-  color: #ff99ff;
+  color: var(--color-accent);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
@@ -40,9 +36,9 @@
   gap: 2em;
 }
 .video-item {
-  background: #222;
+  background: var(--color-card);
   border-radius: 0.7em;
-  box-shadow: 0 0 20px #ff99ff44;
+  box-shadow: 0 0 20px var(--color-shadow);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -54,7 +50,7 @@
   animation: videoFadeIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .video-item:hover {
-  box-shadow: 0 0 40px #ff99ff88;
+  box-shadow: 0 0 40px var(--color-shadow-hover);
   transform: scale(1.03);
 }
 .video-thumb-wrapper {
@@ -62,14 +58,18 @@
   cursor: pointer;
   border-radius: 0.7em;
   overflow: hidden;
-  outline: none;
   box-shadow: 0 0 20px #ff99ff44, 0 0 0 0 #ff99ff;
   background: linear-gradient(135deg, #181818 60%, #ff99ff22 100%);
   transition: box-shadow 0.25s, filter 0.2s;
 }
+
+.video-thumb-wrapper:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 .video-thumb-wrapper:focus,
 .video-thumb-wrapper:hover {
-  box-shadow: 0 0 40px #ff99ffcc, 0 0 0 4px #ff99ff88;
+  box-shadow: 0 0 40px var(--color-shadow-hover), 0 0 0 4px var(--color-shadow-hover);
   filter: brightness(1.08) saturate(1.1);
 }
 .video-thumb-img {
@@ -118,7 +118,7 @@
 }
 .video-play {
   font-size: 3em;
-  color: #ff99ff;
+  color: var(--color-accent);
   text-shadow: 0 0 10px #000a;
   opacity: 0.85;
 }
@@ -162,9 +162,9 @@
   max-width: 900px;
   max-height: 70vh;
   border-radius: 0.5em;
-  background: #181818;
+  background: var(--color-bg);
   border: none;
-  box-shadow: 0 0 40px #ff99ff88;
+  box-shadow: 0 0 40px var(--color-shadow-hover);
 }
 .lightbox-close {
   position: absolute;
@@ -172,7 +172,7 @@
   right: 0.2em;
   background: none;
   border: none;
-  color: #ff99ff;
+  color: var(--color-accent);
   font-size: 2.2em;
   cursor: pointer;
   z-index: 2;

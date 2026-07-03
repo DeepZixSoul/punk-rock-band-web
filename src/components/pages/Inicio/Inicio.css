@@ -6,13 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-principal, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
 }
 
 .inicio-title {
   padding-top: 1em;
-  color: var(--color-principal, #ff99ff);
-  font-family: var(--font-titulos, 'Montserrat', Arial, sans-serif);
+  color: var(--color-accent, #ff99ff);
+  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   font-size: 2.4em;
   padding: 0.5em 1.5em 0.3em 1.5em;
   text-align: center;
