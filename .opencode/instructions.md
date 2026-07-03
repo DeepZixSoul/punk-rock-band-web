@@ -11,7 +11,7 @@ Official website for **Gayola**, a punk rock band from Aspe, Alicante. Static SP
 - **PWA:** `vite-plugin-pwa` (Workbox, auto-update SW)
 - **Styling:** Plain CSS with custom properties (no preprocessors)
 - **Deploy:** Netlify (SPA redirect, 1-year asset caching)
-- No TypeScript, no Pinia/Vuex, no testing, no linter
+- No TypeScript, no Pinia/Vuex, no linter
 
 ## Project Structure
 ```
@@ -78,11 +78,79 @@ On mobile, `MobilMenu` slides down below the header with nav links + `SocialBar`
 |---------|-------------|
 | `npm run dev` | Dev server on `localhost:5173` |
 | `npm run build` | Production build to `dist/` |
+| `npm run test` | Run all tests (single run) |
+| `npm run test:watch` | Run tests in watch mode |
+
+## Testing
+
+**Framework:** Vitest + `@vue/test-utils` + jsdom.
+
+### Donde vivirán los tests
+Tests co-locados con el source: `Foo.test.js` junto a `Foo.js` o `Foo.vue`.
+
+### Naming
+- Archivos: `*.test.js` (no `*.spec.js`)
+- `describe`/`it` en español, presente indicativo
+- `describe` → nombre de la unidad, `it` → comportamiento esperado
+
+### Prioridad de tests
+1. **Composables (`.js` logic)** — JS puro, sin DOM, máximo valor
+   - Estado inicial
+   - Transiciones de estado
+   - Edge cases
+2. **UI Components (`.vue`)** — mount con `@vue/test-utils`
+   - Props, emits, render condicional
+3. **Page components** — integración (baja prioridad)
+
+### Qué NO testear
+- Vue Router, `@vueuse/head`, `vite-plugin-pwa` (son dependencias)
+- CSS, snapshots (nunca usar snapshots)
+- Datos estáticos en `data/` (testear el composable que los consume, no el archivo raw)
+
+### Patterns
+
+**Composable test:**
+```js
+import { describe, it, expect } from 'vitest';
+import fooLogic from './Foo.js';
+
+describe('Foo', () => {
+  it('inicia con X valor', () => {
+    const { x } = fooLogic();
+    expect(x.value).toBe(...);
+  });
+
+  it('toggle cambia X', () => {
+    const { x, toggle } = fooLogic();
+    toggle();
+    expect(x.value).toBe(...);
+  });
+});
+```
+
+**Component test:**
+```js
+import { mount } from '@vue/test-utils';
+import Foo from './Foo.vue';
+
+it('renderiza X elementos', () => {
+  const w = mount(Foo, {
+    global: { stubs: ['router-link'] }
+  });
+  expect(w.findAll('a')).toHaveLength(3);
+});
+```
+
+### Mocking
+- `window`: jsdom lo provee por defecto. Usar `vi.stubGlobal()` para sobreescribir
+- Router: `global.stubs` en `mount options`
+- Lifecycle hooks (`onMounted` etc.): `@vue/test-utils` los ejecuta al montar
 
 ## Constraints
 - No backend, no API — all data is static arrays in `.js` files
 - No TypeScript, no Pinia/Vuex — plain JS + `ref()`/`reactive()` only
-- No test framework or linter configured
+- Testing: Vitest + `@vue/test-utils` + jsdom (see Testing section above)
+- No linter configured
 - No `/public/` prefix in image paths — Vite serves `public/` at root, use `/logos/...` not `/public/logos/...`
 - Dark theme (#181818 bg), pink accent (#ff66ff), Montserrat + Roboto fonts
 - `sitemap.xml` uses clean URLs matching `createWebHistory()` (no hash fragments)

@@ -85,10 +85,53 @@ El menú móvil (`MobilMenu`) se despliega bajo el header con los links + Social
 - **Rendimiento:** Code splitting por ruta, Terser drop console/debugger
 - **Código muerto:** Cada archivo en `utils/` debe tener al menos una función importada desde un componente. Cero archivos no-op.
 
+## Testing
+
+| Aspecto | Decisión |
+|---------|----------|
+| Framework | Vitest |
+| Utilidades | `@vue/test-utils` + jsdom |
+| Ubicación | Tests co-locados: `Foo.test.js` junto a `Foo.js`/`Foo.vue` |
+| Idioma tests | Español (describe/it) |
+
+### Dependencias entre capas
+
+```
+                  ┌──────────┐
+                  │  Vitest   │
+                  └────┬─────┘
+                       │
+         ┌─────────────┼─────────────┐
+         ▼             ▼             ▼
+   Composables    UI Comps     Page Comps
+   (.js files)   (.vue files)  (.vue files)
+         │             │
+         │        ┌────┴────┐
+         │   @vue/test-utils
+         └──────────────────┘
+           jsdom (DOM simulado)
+```
+
+### Flujo de test recomendado
+1. Testear composable en aislamiento (sin DOM)
+2. Testear componente UI montándolo con props/stubs
+3. Testear página integrando composable + template (solo si crítico)
+
+### Configuración (vite.config.js)
+
+```js
+test: {
+  environment: 'jsdom',
+  include: ['src/**/*.test.js'],
+}
+```
+
 ## NPM Commands
 
 ```bash
 npm run dev       # Dev server → localhost:5173
 npm run build     # Build producción → dist/
 npm run preview   # Preview build local
+npm run test      # Run tests (single run)
+npm run test:watch# Run tests (watch mode)
 ```
