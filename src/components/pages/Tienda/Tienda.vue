@@ -13,7 +13,7 @@
           :alt="`Foto de producto: ${producto.nombre}`"
           class="producto-img loading"
           loading="lazy"
-          @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+           v-img-load
         />
   <h3 class="producto-nombre">{{ producto.nombre }}</h3>
         <p class="producto-precio">{{ producto.precio }} €</p>
@@ -37,7 +37,7 @@
           :alt="`Foto ampliada de producto: ${productoModal.nombre}`"
           class="modal-img loading"
           loading="lazy"
-          @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+           v-img-load
         />
         <button v-if="indexProducto < productos.length - 1" class="modal-arrow modal-arrow-right" @click.stop="siguienteProducto" aria-label="Siguiente">></button>
   <h3 class="modal-nombre" id="tienda-modal-title">{{ productoModal.nombre }}</h3>
@@ -56,23 +56,22 @@
 import "./Tienda.css";
 import { useHead } from '@vueuse/head';
 import { ref, watch } from 'vue';
-import {
+import tiendaLogic from "./Tienda.js";
+import { createFocusTrap } from "../../../utils/focusTrap.js";
+
+const {
   productos,
   modalAbierto,
   productoModal,
+  indexProducto,
   abrirModal,
   cerrarModal,
-  enviarEmail,
-  handleTouchStart,
-  handleTouchEnd,
-  indexProducto,
   siguienteProducto,
   productoAnterior,
-  onTiendaMounted
-} from "./Tienda.js";
-import { createFocusTrap } from "../../../utils/focusTrap.js";
-
-onTiendaMounted();
+  handleTouchStart,
+  handleTouchEnd,
+  enviarEmail
+} = tiendaLogic();
 
 let removeFocusTrap = null;
 

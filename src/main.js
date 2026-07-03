@@ -5,6 +5,7 @@ import router from './router';
 import './styles/global.css';
 import './styles/variables.css';
 import { preloadCriticalImages } from './utils/performanceOptimizations.js';
+import { imageLoadDirective } from './utils/imageDirective.js';
 
 const app = createApp(App);
 const head = createHead();
@@ -17,4 +18,5 @@ preloadCriticalImages([
 
 app.use(head);
 app.use(router);
+app.directive('img-load', imageLoadDirective);
 app.mount('#app');

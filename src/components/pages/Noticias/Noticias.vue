@@ -14,7 +14,7 @@
             :alt="noticia.titulo"
             class="noticia-img loading"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
           />
           <div class="noticia-info">
             <div>
@@ -56,10 +56,8 @@ import {
   slideTransitionName,
   cambiarPagina,
   onNoticiasMounted,
-  onNoticiasBeforeUnmount,
-  onNoticiasStructured
+  onNoticiasBeforeUnmount
 } from "./Noticias.js";
-onNoticiasStructured();
 onNoticiasMounted();
 onNoticiasBeforeUnmount();
 </script>

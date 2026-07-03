@@ -1,4 +1,4 @@
-import { onMounted, ref, computed } from "vue";
+import { onMounted, onBeforeUnmount, ref } from "vue";
 
 export default function galeriaLogic() {
   const images = Array.from({ length: 30 }, (_, i) => `/galeria/foto${i + 1}.webp`);
@@ -12,7 +12,7 @@ export default function galeriaLogic() {
   const carruselRefs = ref([]);
   const visible = ref(false);
   const index = ref(0);
-  const isMobile = computed(() => window.innerWidth <= 900);
+  const isMobile = ref(window.innerWidth <= 900);
 
   const showImg = (i) => {
     index.value = i;
@@ -78,7 +78,13 @@ export default function galeriaLogic() {
     isPinch = false;
   };
 
+  const handleResize = () => {
+    isMobile.value = window.innerWidth <= 900;
+  };
+
   onMounted(() => {
+    window.addEventListener("resize", handleResize);
+
     if (isMobile.value && carruselRefs.value.length) {
       carruselRefs.value.forEach(carruselEl => {
         const fotoItems = carruselEl.querySelectorAll('.foto-item');
@@ -88,6 +94,10 @@ export default function galeriaLogic() {
         });
       });
     }
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener("resize", handleResize);
   });
 
   const prevImg = () => {

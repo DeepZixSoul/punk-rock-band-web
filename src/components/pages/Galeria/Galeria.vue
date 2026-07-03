@@ -12,7 +12,7 @@
             :tabindex="0"
             @keydown.enter.space="showImg(idx * 10 + i)"
           >
-            <img :src="foto" :alt="`Foto de Gayola número ${(idx*10)+i+1}`" class="foto-img vel-img loading" loading="lazy" @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')" />
+            <img :src="foto" :alt="`Foto de Gayola número ${(idx*10)+i+1}`" class="foto-img vel-img loading" loading="lazy" v-img-load />
           </div>
         </div>
       </div>
@@ -26,14 +26,14 @@
         :tabindex="-1"
         @keydown.enter.space="showImg(i)"
       >
-        <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img vel-img loading" loading="lazy" @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')" />
+        <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img vel-img loading" loading="lazy" v-img-load />
       </div>
     </div>
     <div v-if="visible" class="galeria-fullscreen" @click.self="hideImg"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd">
       <button v-if="index > 0 && !isMobile" class="galeria-arrow galeria-arrow-left" @click.stop="prevImg" aria-label="Anterior">&#8592;</button>
-      <img :src="images[index]" class="galeria-fullscreen-img loading" alt="Imagen ampliada" @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')" />
+      <img :src="images[index]" class="galeria-fullscreen-img loading" alt="Imagen ampliada" v-img-load />
       <button v-if="index < images.length - 1 && !isMobile" class="galeria-arrow galeria-arrow-right" @click.stop="nextImg" aria-label="Siguiente">&#8594;</button>
     </div>
   </div>

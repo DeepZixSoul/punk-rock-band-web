@@ -7,18 +7,6 @@
       formas de contactar con nosotros.
     </p>
     <div class="contacto-info">
-      <!-- <div class="contacto-item">
-        <span class="contacto-label">Email:</span>
-        <a href="mailto:contacto@gayola.com" class="contacto-link"
-          >contacto@gayola.com</a
-        >
-      </div> -->
-      <!-- <div class="contacto-item">
-        <span class="contacto-label">Teléfono:</span>
-        <a href="tel:+3461234567833" class="contacto-link"
-          >+34 612 34 56 7833</a
-        >
-      </div> -->
       <div class="contacto-item">
         <span class="contacto-label">Representante:</span>
         <div class="avispero-representante">
@@ -29,7 +17,7 @@
             class="avispero-link"
           >
             <img
-              src="/public/logos/avispero-logo.webp"
+              src="/logos/avispero-logo.webp"
               alt="Logo representante Juan El Avispero"
               class="social-icon-avispero"
             />
@@ -47,7 +35,7 @@
             class="social-link"
           >
             <img
-              src="/public/redes-sociales/instagram.svg"
+              src="/redes-sociales/instagram.svg"
               alt="Instagram"
               class="social-icon"
             />
@@ -58,7 +46,7 @@
             rel="noopener noreferrer"
             class="social-link"
           >
-            <img src="/public/redes-sociales/spotify.svg" alt="Spotify" class="social-icon" />
+            <img src="/redes-sociales/spotify.svg" alt="Spotify" class="social-icon" />
           </a>
           <a
             href="https://www.facebook.com/Gayolaseriopunk/"
@@ -67,7 +55,7 @@
             class="social-link"
           >
             <img
-              src="/public/redes-sociales/facebook.webp"
+              src="/redes-sociales/facebook.webp"
               alt="Facebook"
               class="social-icon"
             />
@@ -78,7 +66,7 @@
             rel="noopener noreferrer"
             class="social-link youtube-link"
           >
-            <img src="/public/redes-sociales/youtube.webp" alt="YouTube" class="social-icon social-icon-youtube" />
+            <img src="/redes-sociales/youtube.webp" alt="YouTube" class="social-icon social-icon-youtube" />
           </a>
         </div>
       </div>
@@ -96,9 +84,29 @@
 </template>
 
 <script setup>
-// Importa la lógica JS desde archivo externo para mantener el componente limpio y modular
-import contactoLogic from "./Contacto.js";
-contactoLogic();
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Contacto | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contacta con Gayola para contrataciones, prensa, colaboraciones o cualquier consulta.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, contacto, contrataciones, prensa, colaboraciones, punk, rock, Alicante, banda, España, email'
+    },
+    {
+      property: 'og:title',
+      content: 'Contacto | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Contacta con Gayola para contrataciones, prensa, colaboraciones o cualquier consulta.'
+    }
+  ]
+});
 </script>
 
 <style src="./Contacto.css" scoped></style>

@@ -39,21 +39,6 @@ const isMobile = ref(false);
 const checkMobile = () => {
   isMobile.value = window.innerWidth <= 900;
 };
-const misTitulos = [
-  "Gayola",
-  "Soporte",
-  "Contacto",
-  "Sponsors" 
-]
-
-
-const quickLinks = [
-      { label: "Inicio", href: "/" },
-      { label: "Biografía", href: "/biografia" },
-      { label: "Conciertos", href: "/conciertos" },
-      { label: "Discografía", href: "/discografia" },
-      { label: "Galería", href: "/galeria" },
-    ];
 
 onMounted(() => {
   checkMobile();

@@ -1,4 +1,4 @@
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { useHead } from "@vueuse/head";
 
 export default function conciertosLogic() {
@@ -15,7 +15,7 @@ export default function conciertosLogic() {
   
   const visible = ref(false);
   const index = ref(0);
-  const isMobile = computed(() => window.innerWidth <= 900);
+  const isMobile = ref(window.innerWidth <= 900);
 
   function showCartel(i) {
     index.value = i;
@@ -55,16 +55,25 @@ export default function conciertosLogic() {
     touchEndX = null;
   };
 
-  // Navegación con teclado
+  const handleKeydown = (e) => {
+    if (!visible.value) return;
+    if (e.key === "ArrowLeft") prevCartel();
+    if (e.key === "ArrowRight") nextCartel();
+    if (e.key === "Escape") hideCartel();
+  };
+
+  const handleResize = () => {
+    isMobile.value = window.innerWidth <= 900;
+  };
+
   onMounted(() => {
-    const handleKeydown = (e) => {
-      if (!visible.value) return;
-      if (e.key === "ArrowLeft") prevCartel();
-      if (e.key === "ArrowRight") nextCartel();
-      if (e.key === "Escape") hideCartel();
-    };
     window.addEventListener("keydown", handleKeydown);
-    return () => window.removeEventListener("keydown", handleKeydown);
+    window.addEventListener("resize", handleResize);
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener("keydown", handleKeydown);
+    window.removeEventListener("resize", handleResize);
   });
 
   useHead({

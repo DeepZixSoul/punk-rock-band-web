@@ -98,8 +98,9 @@
 
 <script setup>
 import "./Videos.css";
-import { onMounted } from "vue";
-import {
+import videosLogic from "./Videos.js";
+
+const {
   videos,
   showLightbox,
   lightboxIndex,
@@ -109,16 +110,7 @@ import {
   openLightbox,
   closeLightbox,
   shareVideo,
-  useVideosMount
-} from "./Videos.js";
-
-// Hook de montaje para listeners de teclado
-onMounted(() => {
-  const cleanup = useVideosMount();
-  
-  // Retornar función de limpieza para cuando el componente se desmonte
-  return cleanup;
-});
+} = videosLogic();
 </script>
 
 

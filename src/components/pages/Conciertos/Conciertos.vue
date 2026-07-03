@@ -18,7 +18,7 @@
           :alt="`Cartel de concierto número ${i + 1}`"
           class="cartel-img loading"
           loading="lazy"
-          @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+           v-img-load
         />
       </div>
     </div>

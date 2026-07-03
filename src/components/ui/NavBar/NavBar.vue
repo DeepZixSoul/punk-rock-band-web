@@ -24,18 +24,13 @@
       </li>
       <li class="navbar-item">
         <router-link class="navbar-link" to="/contacto">CONTACTO</router-link>
-      </li>      
-      <!-- <li class="navbar-item">
-        <router-link class="navbar-link" to="/blog">BLOG</router-link>
-      </li> -->
+      </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import navBarLogic from "./NavBar.js";
 import { RouterLink } from 'vue-router';
-navBarLogic();
 </script>
 
 <style src="./NavBar.css" scoped></style>

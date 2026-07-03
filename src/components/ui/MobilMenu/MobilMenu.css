@@ -24,7 +24,7 @@
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: var(--color-bg, #181818) url("/public/punk-texture.webp") repeat;
+  background: var(--color-bg, #181818);
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;
@@ -39,7 +39,7 @@
   transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.35s;
 }
 
-.mobilmenu-wrapper[aria-open="true"] .mobile-navbar {
+.mobilmenu-wrapper.menu-open .mobile-navbar {
   transform: translateY(0);
   opacity: 1;
 }

@@ -24,13 +24,6 @@
       <div class="tabla-scroll-outer">
         <div class="tabla-scroll-wrapper tabla-fullwidth">
           <table class="disco-canciones-table">
-            <thead>
-              <tr>
-                <!-- <th class="cancion-nombre-th">Canción</th>
-                  <th class="cancion-logo-th">YouTube</th>
-                  <th class="cancion-logo-th">Spotify</th> -->
-              </tr>
-            </thead>
             <tbody>
               <tr v-for="(cancion, idx) in disco.canciones" :key="idx">
                 <td class="cancion-nombre">{{ cancion.nombre || cancion }}</td>

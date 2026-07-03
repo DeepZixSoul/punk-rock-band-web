@@ -1,6 +1,6 @@
-<!-- filepath: /home/diego/Escritorio/gayola-web/gayola-web/src/components/layout/MobilMenu.vue -->
+<!-- Componente de navegación móvil -->
 <template>
-  <div v-if="menuOpen" class="mobilmenu-wrapper" aria-open="true">
+  <div v-if="menuOpen" class="mobilmenu-wrapper menu-open">
     <div class="mobile-overlay" @click.self="$emit('close')"></div>
     <nav class="mobile-navbar">
       <ul class="mobile-navbar-list">
@@ -12,7 +12,7 @@
           <router-link
             class="mobile-navbar-link"
             :to="item.href"
-            @click.native="$emit('close')"
+            @click="$emit('close')"
           >
             {{ item.label }}
           </router-link>

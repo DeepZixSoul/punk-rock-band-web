@@ -8,7 +8,6 @@
         alt="Gayola logo"
         class="logo-navbar"
         @click="goHome(router, props, emit)"
-        style="cursor:pointer"
         loading="lazy"
       />
     </div>
@@ -21,7 +20,7 @@
       <img
         v-for="n in 8"
         :key="n"
-        src="/public/logos/gayola-blanco.webp"
+        src="/logos/gayola-blanco.webp"
         alt="Gayola blanco"
         class="logo-blanco"
         loading="lazy"

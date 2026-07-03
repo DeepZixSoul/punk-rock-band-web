@@ -1,8 +1,4 @@
 <template>
-  <!-- <div class="footer-tagline">
-    "Música que rebela, corazones que resuenan" 🎸
-  </div> -->
-
   <footer class="footer">
     <div class="footer-container">
       <!-- Sección 1: Enlaces Rápidos -->
@@ -15,17 +11,7 @@
         </ul>
       </div>
 
-      <!-- Sección 2: Soporte -->
-      <!-- <div class="footer-section">
-        <h3>Soporte</h3>
-        <ul>
-          <li v-for="link in footerData.support" :key="link.href">
-            <router-link :to="link.href">{{ link.label }}</router-link>
-          </li>
-        </ul>
-      </div> -->
-
-      <!-- Sección 3: Contacto -->
+      <!-- Sección 2: Contacto -->
       <div class="footer-section">
         <h3>Contáctanos</h3>
         <div class="footer-contact">
@@ -38,26 +24,14 @@
         </div>
       </div>
 
-      <!-- Sección 4: Sponsors -->
-      <!-- <div class="footer-section">
-        <h3>Sponsors</h3>
-        <ul>
-          <li v-for="sponsor in footerData.sponsors" :key="sponsor.name">
-            <a :href="sponsor.url" target="_blank" rel="noopener noreferrer">
-              {{ sponsor.name }}
-            </a>
-          </li>
-        </ul>
-      </div> -->
-
-      <!-- Footer Bottom: Copyright - Alineado a la derecha -->
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <p class="footer-copyright">
           &copy; 2025 Gayola. Todos los derechos reservados.
         </p>
         <p class="footer-credit">
           Diseñado y desarrollado por
-          <a href="#" title="Nuestro equipo">Equipo Gayola</a>
+          <a href="/" title="Nuestro equipo">Equipo Gayola</a>
         </p>
       </div>
     </div>

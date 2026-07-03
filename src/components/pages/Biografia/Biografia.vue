@@ -23,7 +23,7 @@
             alt="Foto de Dani Mestre, batería de Gayola"
             class="integrante-img loading"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
           />
           <h3 class="integrante-nombre">
             DANI MESTRE <span class="rol">(BATERÍA)</span>
@@ -42,7 +42,7 @@
             alt="Foto de Mendonça, guitarra de Gayola"
             class="integrante-img loading"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
           />
           <h3 class="integrante-nombre">
             MENDONÇA <span class="rol">(GUITARRA)</span>
@@ -61,7 +61,7 @@
             alt="Nacho Brökoly, voz de Gayola punk rock en Alicante"
             class="integrante-img loading"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
           />
           <h3 class="integrante-nombre">
             NACHO “BRÖKOLY” <span class="rol">(VOZ)</span>
@@ -81,7 +81,7 @@
           <img
             src="/miembros/tupa.webp"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
             alt="Alex Tupá, bajo de Gayola punk rock en Alicante"
             class="integrante-img loading"
           />
@@ -101,7 +101,7 @@
           <img
             src="/miembros/ian.webp"
             loading="lazy"
-            @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
+            v-img-load
             alt="Ian Bombilla de Cuero, guitarra de Gayola punk rock en Alicante"
             class="integrante-img loading"
           />
@@ -122,8 +122,29 @@
 </template>
 
 <script setup>
-import biografiaLogic from "./Biografia.js";
-biografiaLogic();
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Biografía | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce la historia de Gayola, grupo de punk rock con base en Aspe (Alicante). Integrantes, trayectoria y espíritu rebelde.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, biografía, punk, rock, grupo musical, integrantes, Alicante, Aspe, Elda, Orihuela, Murcia, historia, banda, España'
+    },
+    {
+      property: 'og:title',
+      content: 'Biografía | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Conoce la historia de Gayola, grupo de punk rock con base en Aspe (Alicante). Integrantes, trayectoria y espíritu rebelde.'
+    }
+  ]
+});
 </script>
 
 <style src="./Biografia.css" scoped></style>
