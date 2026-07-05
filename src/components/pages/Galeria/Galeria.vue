@@ -61,10 +61,33 @@
 
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { useHead } from '@vueuse/head';
 import galeriaLogic from "./Galeria.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
 import "../../../styles/modal-gallery.css";
 const { images, imagesMostradas, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg, cargarMas, tieneMas } = galeriaLogic();
+
+useHead({
+  title: 'Galería | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Galería de fotos de Gayola: conciertos, ensayos y momentos de la banda de punk rock desde Alicante.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, galería, fotos, conciertos, punk, rock, Alicante, banda, imágenes'
+    },
+    {
+      property: 'og:title',
+      content: 'Galería | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Fotos de Gayola en conciertos y sesiones. Punk rock desde Alicante.'
+    }
+  ]
+});
 
 const carruselActivos = ref([0, 0, 0]);
 

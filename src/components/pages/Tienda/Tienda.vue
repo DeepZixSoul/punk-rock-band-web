@@ -55,7 +55,7 @@
 <script setup>
 import "./Tienda.css";
 import { useHead } from '@vueuse/head';
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import tiendaLogic from "./Tienda.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
 
@@ -105,6 +105,23 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
 
+const productStructuredData = computed(() => ({
+  '@context': 'https://schema.org',
+  '@graph': productos.map((p) => ({
+    '@type': 'Product',
+    name: p.nombre,
+    description: p.descripcion,
+    image: `https://gayola.netlify.app${p.imagen}`,
+    offers: {
+      '@type': 'Offer',
+      price: p.precio,
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: 'https://gayola.netlify.app/tienda'
+    }
+  }))
+}));
+
 useHead({
   title: 'Tienda | Gayola - Punk Rock desde Alicante',
   meta: [
@@ -123,6 +140,12 @@ useHead({
     {
       property: 'og:description',
       content: 'Compra merchandising oficial de Gayola: camisetas, discos, tazas y más productos punk rock.'
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: computed(() => JSON.stringify(productStructuredData.value))
     }
   ]
 });

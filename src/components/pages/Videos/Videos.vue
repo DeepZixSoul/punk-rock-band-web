@@ -98,6 +98,7 @@
 
 <script setup>
 import { watch } from 'vue';
+import { useHead } from '@vueuse/head';
 import "./Videos.css";
 import videosLogic from "./Videos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
@@ -113,6 +114,28 @@ const {
   closeLightbox,
   shareVideo,
 } = videosLogic();
+
+useHead({
+  title: 'Vídeos | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Videoclips, actuaciones en directo y vídeos oficiales de Gayola, banda de punk rock desde Alicante.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, vídeos, videoclips, punk, rock, directo, Alicante, YouTube, música'
+    },
+    {
+      property: 'og:title',
+      content: 'Vídeos | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Videoclips y actuaciones de Gayola. Punk rock desde Alicante.'
+    }
+  ]
+});
 
 let removeFocusTrap = null;
 

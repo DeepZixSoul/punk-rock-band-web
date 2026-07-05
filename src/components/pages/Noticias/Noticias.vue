@@ -48,6 +48,7 @@
 
 <script setup>
 import { onMounted, onBeforeUnmount } from "vue";
+import { useHead } from '@vueuse/head';
 import useNoticias from "./Noticias.js";
 
 const {
@@ -60,6 +61,28 @@ const {
   handleTouchEnd,
   handleResize,
 } = useNoticias();
+
+useHead({
+  title: 'Noticias | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Últimas noticias de Gayola: novedades, lanzamientos, entrevistas y todo sobre la banda de punk rock desde Alicante.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, noticias, punk, rock, novedades, lanzamientos, Alicante, banda, entrevistas'
+    },
+    {
+      property: 'og:title',
+      content: 'Noticias | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Últimas noticias de Gayola: novedades, lanzamientos y más. Punk rock desde Alicante.'
+    }
+  ]
+});
 
 let noticiasSectionEl = null;
 

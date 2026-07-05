@@ -80,11 +80,28 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useHead } from '@vueuse/head';
 import conciertosLogic from "./Conciertos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
 import "../../../styles/modal-gallery.css";
+
+const eventStructuredData = computed(() => ({
+  '@context': 'https://schema.org',
+  '@graph': carteles.map((c, i) => ({
+    '@type': 'Event',
+    name: `Concierto de Gayola en ${c.lugar}`,
+    startDate: c.fecha,
+    location: {
+      '@type': 'Place',
+      name: c.lugar,
+      address: { '@type': 'PostalAddress', addressLocality: c.ciudad, addressRegion: c.ciudad, addressCountry: 'ES' }
+    },
+    performer: { '@type': 'MusicGroup', name: 'Gayola' },
+    image: `https://gayola.netlify.app${c.src}`,
+    url: `https://gayola.netlify.app/conciertos`
+  }))
+}));
 
 useHead({
   title: "Conciertos | Gayola - Punk Rock desde Alicante",
@@ -109,6 +126,12 @@ useHead({
         "Próximos conciertos y eventos de Gayola. Fechas, lugares y entradas para ver a la banda en directo.",
     },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: computed(() => JSON.stringify(eventStructuredData.value))
+    }
+  ]
 });
 
 const {

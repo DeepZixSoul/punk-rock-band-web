@@ -67,9 +67,31 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head';
 import discografiaLogic from "./Discografia.js";
 const { discos } = discografiaLogic();
- 
+
+useHead({
+  title: 'Discografía | Gayola - Punk Rock desde Alicante',
+  meta: [
+    {
+      name: 'description',
+      content: 'Discografía completa de Gayola: álbumes, canciones y letras. Punk rock desde Alicante.'
+    },
+    {
+      name: 'keywords',
+      content: 'gayola, discografía, álbumes, canciones, punk, rock, Alicante, música, banda, letras'
+    },
+    {
+      property: 'og:title',
+      content: 'Discografía | Gayola - Punk Rock desde Alicante'
+    },
+    {
+      property: 'og:description',
+      content: 'Discografía completa de Gayola: álbumes, canciones y letras. Punk rock desde Alicante.'
+    }
+  ]
+});
 </script>
 
 <style src="./Discografia.css" scoped></style>
