@@ -9,16 +9,17 @@
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
 }
 .discografia-title {
   padding-top: 2em;
-  color: var(--color-accent, #ff99ff);
-  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
-  font-size: 2em;
+  color: var(--color-accent);
+  font-family: var(--font-title);
+  font-size: 2.5em;
   margin-bottom: 1em;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: 400;
 }
 .disco-container {
   display: flex;
@@ -43,7 +44,7 @@
 .disco-info {
   flex: 1 1 45%;
   color: var(--color-text, #fff);
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -52,7 +53,7 @@
   min-width: 0;
 }
 .disco-titulo {
-  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
+  font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   color: var(--color-accent, #ff99ff);
   font-size: 1.5em;
   margin-bottom: 0.7em;
@@ -64,7 +65,7 @@
   letter-spacing: 0.5px;
   margin-bottom: 1.2em;
   padding: 0.3em 0.2em;
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
 }
 .disco-fecha {
   font-size: 0.95em;

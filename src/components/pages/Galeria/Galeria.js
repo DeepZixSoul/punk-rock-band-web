@@ -1,15 +1,33 @@
-import { onMounted, onBeforeUnmount, ref } from "vue";
+import { onMounted, onBeforeUnmount, ref, computed } from "vue";
 
 export default function galeriaLogic() {
   const images = Array.from({ length: 30 }, (_, i) => `/galeria/foto${i + 1}.webp`);
+  const LOTE = 10;
+  const visibleCount = ref(LOTE);
 
-  const carruseles = [
-    images.slice(0, 10),
-    images.slice(10, 20),
-    images.slice(20, 30)
-  ];
+  const imagesMostradas = computed(() => images.slice(0, visibleCount.value));
+
+  function cargarMas() {
+    visibleCount.value = Math.min(visibleCount.value + LOTE, images.length);
+  }
+
+  function tieneMas() {
+    return visibleCount.value < images.length;
+  }
+
+  const carruseles = computed(() => {
+    const chunk = Math.ceil(imagesMostradas.value.length / 3);
+    return [
+      imagesMostradas.value.slice(0, chunk),
+      imagesMostradas.value.slice(chunk, chunk * 2),
+      imagesMostradas.value.slice(chunk * 2),
+    ];
+  });
 
   const carruselRefs = ref([]);
+  const setCarruselRef = (el) => {
+    if (el) carruselRefs.value.push(el);
+  };
   const visible = ref(false);
   const index = ref(0);
   const isMobile = ref(window.innerWidth <= 900);
@@ -106,5 +124,5 @@ export default function galeriaLogic() {
   const nextImg = () => {
     if (index.value < images.length - 1) index.value++;
   };
-  return { images, carruseles, carruselRefs, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg };
+  return { images, imagesMostradas, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg, cargarMas, tieneMas };
 }

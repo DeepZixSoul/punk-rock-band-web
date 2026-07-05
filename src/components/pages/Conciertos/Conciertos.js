@@ -2,14 +2,14 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 
 export default function conciertosLogic() {
   const carteles = [
-    "/carteles/cartel1.webp",
-    "/carteles/cartel2.webp",
-    "/carteles/cartel3.webp",
-    "/carteles/cartel4.webp",
-    "/carteles/cartel5.webp",
-    "/carteles/cartel6.webp",
-    "/carteles/cartel7.webp",
-    "/carteles/cartel8.webp",
+    { src: "/carteles/cartel1.webp", fecha: "15 Mar 2025", lugar: "Sala Stereo", ciudad: "Alicante" },
+    { src: "/carteles/cartel2.webp", fecha: "22 Mar 2025", lugar: "Rock City", ciudad: "Murcia" },
+    { src: "/carteles/cartel3.webp", fecha: "12 Abr 2025", lugar: "Sala Matisse", ciudad: "Valencia" },
+    { src: "/carteles/cartel4.webp", fecha: "3 May 2025", lugar: "Festival Punkada", ciudad: "Barcelona" },
+    { src: "/carteles/cartel5.webp", fecha: "17 May 2025", lugar: "Sala Wah Wah", ciudad: "Valencia" },
+    { src: "/carteles/cartel6.webp", fecha: "14 Jun 2025", lugar: "La Guarida del Volumen", ciudad: "Madrid" },
+    { src: "/carteles/cartel7.webp", fecha: "5 Jul 2025", lugar: "Sala Intimo", ciudad: "Elche" },
+    { src: "/carteles/cartel8.webp", fecha: "19 Jul 2025", lugar: "Booza Fest", ciudad: "Aspe" },
   ];
   
   const visible = ref(false);

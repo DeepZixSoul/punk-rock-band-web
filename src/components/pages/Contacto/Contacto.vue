@@ -1,6 +1,6 @@
 <template>
   <div class="contacto-bg">
-    <h2 class="contacto-title">Contacto</h2>
+    <h1 class="contacto-title">Contacto</h1>
     <p class="contacto-bienvenida">
       ¡Gracias por tu interés en Gayola! Si quieres contratarnos, colaborar,
       comprar merchandising o simplemente decirnos algo, aquí tienes todas las
@@ -80,10 +80,76 @@
         </a>
       </div>
     </div>
+
+    <form class="contacto-form" @submit.prevent="enviarFormulario" novalidate>
+      <h2 class="contacto-form-title">O escríbenos directamente</h2>
+      <div class="form-grupo">
+        <label for="form-nombre" class="form-label">Nombre</label>
+        <input
+          id="form-nombre"
+          v-model="form.nombre"
+          type="text"
+          class="form-input"
+          :class="{ 'form-error': errores.nombre }"
+          placeholder="Tu nombre"
+          required
+        />
+        <span v-if="errores.nombre" class="form-error-msg">{{ errores.nombre }}</span>
+      </div>
+      <div class="form-grupo">
+        <label for="form-email" class="form-label">Email</label>
+        <input
+          id="form-email"
+          v-model="form.email"
+          type="email"
+          class="form-input"
+          :class="{ 'form-error': errores.email }"
+          placeholder="tu@email.com"
+          required
+        />
+        <span v-if="errores.email" class="form-error-msg">{{ errores.email }}</span>
+      </div>
+      <div class="form-grupo">
+        <label for="form-asunto" class="form-label">Asunto</label>
+        <select
+          id="form-asunto"
+          v-model="form.asunto"
+          class="form-input form-select"
+          :class="{ 'form-error': errores.asunto }"
+          required
+        >
+          <option value="" disabled>Selecciona un asunto</option>
+          <option value="Contratación">Contratación</option>
+          <option value="Prensa">Prensa</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Merchandising">Merchandising</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <span v-if="errores.asunto" class="form-error-msg">{{ errores.asunto }}</span>
+      </div>
+      <div class="form-grupo">
+        <label for="form-mensaje" class="form-label">Mensaje</label>
+        <textarea
+          id="form-mensaje"
+          v-model="form.mensaje"
+          class="form-input form-textarea"
+          :class="{ 'form-error': errores.mensaje }"
+          placeholder="Cuéntanos lo que quieras..."
+          rows="5"
+          required
+        ></textarea>
+        <span v-if="errores.mensaje" class="form-error-msg">{{ errores.mensaje }}</span>
+      </div>
+      <button type="submit" class="form-btn" :disabled="enviando">
+        {{ enviando ? 'Enviando...' : 'Enviar mensaje' }}
+      </button>
+      <p v-if="exito" class="form-exito">Mensaje enviado correctamente. Te responderemos pronto.</p>
+    </form>
   </div>
 </template>
 
 <script setup>
+import { ref, reactive } from 'vue';
 import { useHead } from '@vueuse/head';
 
 useHead({
@@ -107,6 +173,76 @@ useHead({
     }
   ]
 });
+
+const form = reactive({
+  nombre: '',
+  email: '',
+  asunto: '',
+  mensaje: '',
+});
+
+const errores = reactive({
+  nombre: '',
+  email: '',
+  asunto: '',
+  mensaje: '',
+});
+
+const enviando = ref(false);
+const exito = ref(false);
+
+function validar() {
+  let valido = true;
+  errores.nombre = '';
+  errores.email = '';
+  errores.asunto = '';
+  errores.mensaje = '';
+
+  if (!form.nombre.trim()) {
+    errores.nombre = 'El nombre es obligatorio';
+    valido = false;
+  }
+  if (!form.email.trim()) {
+    errores.email = 'El email es obligatorio';
+    valido = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    errores.email = 'Email no válido';
+    valido = false;
+  }
+  if (!form.asunto) {
+    errores.asunto = 'Selecciona un asunto';
+    valido = false;
+  }
+  if (!form.mensaje.trim()) {
+    errores.mensaje = 'El mensaje no puede estar vacío';
+    valido = false;
+  }
+
+  return valido;
+}
+
+function enviarFormulario() {
+  if (!validar()) return;
+
+  enviando.value = true;
+  exito.value = false;
+
+  const asunto = encodeURIComponent(`Contacto Gayola - ${form.asunto}`);
+  const cuerpo = encodeURIComponent(
+    `Nombre: ${form.nombre}\nEmail: ${form.email}\nAsunto: ${form.asunto}\n\n${form.mensaje}`
+  );
+
+  window.location.href = `mailto:contacto@gayola.com?subject=${asunto}&body=${cuerpo}`;
+
+  setTimeout(() => {
+    enviando.value = false;
+    exito.value = true;
+    form.nombre = '';
+    form.email = '';
+    form.asunto = '';
+    form.mensaje = '';
+  }, 500);
+}
 </script>
 
 <style src="./Contacto.css" scoped></style>

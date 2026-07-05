@@ -15,7 +15,7 @@
   width: 1.5em;
   height: 1.5em;
   filter: grayscale(0.2) brightness(1.2);
-  transition: filter 0.2s;
+  transition: filter 0.25s, transform 0.25s;
 }
 
 .social-link[aria-label="YouTube"] .social-icon {
@@ -23,8 +23,9 @@
   height: 1.9em;
 }
 
-.social-icon:hover {
-  filter: drop-shadow(0 0 8px var(--color-accent, #ff99ff)) brightness(1.5);
+.social-link:hover .social-icon {
+  filter: drop-shadow(0 0 12px var(--color-accent, #ff99ff)) brightness(1.8);
+  transform: scale(1.15);
 }
 
 @media (max-width: 900px) {

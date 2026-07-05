@@ -1,49 +1,122 @@
 <template>
   <div class="galeria-bg">
-    <h2 class="galeria-title">Galería</h2>
+    <h1 class="galeria-title">Galería</h1>
     <div v-if="isMobile" class="galeria-multi-carrusel">
       <div v-for="(carrusel, idx) in carruseles" :key="idx" class="galeria-carrusel-outer">
-        <div class="galeria-carrusel" ref="setCarruselRef">
+        <div
+          class="galeria-carrusel"
+          ref="setCarruselRef"
+          :data-carrusel="idx"
+          @scroll="onCarruselScroll($event, idx)"
+        >
           <div
             v-for="(foto, i) in carrusel"
             :key="i"
             class="foto-item card card-hover"
-            @click="showImg(idx * 10 + i)"
+            @click="showImg(galleryIndex(idx, i))"
             :tabindex="0"
-            @keydown.enter.space="showImg(idx * 10 + i)"
+            @keydown.enter.space="showImg(galleryIndex(idx, i))"
           >
-            <img :src="foto" :alt="`Foto de Gayola número ${(idx*10)+i+1}`" class="foto-img vel-img loading" loading="lazy" v-img-load />
+            <img :src="foto" :alt="'Fotografía del grupo Gayola ' + (galleryIndex(idx, i) + 1)" class="foto-img vel-img loading" loading="lazy" v-img-load />
           </div>
+        </div>
+        <div class="carrusel-dots" v-if="carrusel.length > 1">
+          <span
+            v-for="(_, di) in carrusel"
+            :key="di"
+            class="carrusel-dot"
+            :class="{ active: carruselActivos[idx] === di }"
+          ></span>
         </div>
       </div>
     </div>
     <div v-else class="galeria-grid">
       <div
-        v-for="(foto, i) in images"
+        v-for="(foto, i) in imagesMostradas"
         :key="i"
         class="foto-item card card-hover"
         @click="showImg(i)"
-        :tabindex="-1"
+        :tabindex="0"
         @keydown.enter.space="showImg(i)"
       >
-        <img :src="foto" :alt="`Foto de Gayola número ${i+1}`" class="foto-img vel-img loading" loading="lazy" v-img-load />
+        <img :src="foto" :alt="'Fotografía del grupo Gayola ' + (i+1)" class="foto-img vel-img loading" loading="lazy" v-img-load />
       </div>
     </div>
+    <button v-if="tieneMas()" class="galeria-cargar-mas" @click="cargarMas">
+      Cargar más fotos ({{ imagesMostradas.length }} / {{ images.length }})
+    </button>
     <div v-if="visible" class="modal-overlay" @click.self="hideImg"
       @touchstart="handleTouchStart"
-      @touchend="handleTouchEnd">
-      <button v-if="index > 0 && !isMobile" class="modal-arrow modal-arrow-left" @click.stop="prevImg" aria-label="Anterior">&#8592;</button>
-      <img :src="images[index]" class="modal-img loading" alt="Imagen ampliada" v-img-load />
-      <button v-if="index < images.length - 1 && !isMobile" class="modal-arrow modal-arrow-right" @click.stop="nextImg" aria-label="Siguiente">&#8594;</button>
+      @touchend="handleTouchEnd"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Galería de fotos">
+      <button v-if="index > 0 && !isMobile" class="modal-arrow modal-arrow-left" @click.stop="prevImg" aria-label="Foto anterior">&#8592;</button>
+      <img :src="images[index]" class="modal-img loading" :alt="'Foto de Gayola ' + (index + 1) + ' de ' + images.length" v-img-load />
+      <button v-if="index < images.length - 1 && !isMobile" class="modal-arrow modal-arrow-right" @click.stop="nextImg" aria-label="Foto siguiente">&#8594;</button>
+      <button class="modal-close" @click="hideImg" aria-label="Cerrar galería">✕</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import galeriaLogic from "./Galeria.js";
+import { createFocusTrap } from "../../../utils/focusTrap.js";
 import "../../../styles/modal-gallery.css";
-const { images, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg } = galeriaLogic();
- 
+const { images, imagesMostradas, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg, cargarMas, tieneMas } = galeriaLogic();
+
+const carruselActivos = ref([0, 0, 0]);
+
+function galleryIndex(carruselIdx, itemIdx) {
+  let offset = 0;
+  for (let c = 0; c < carruselIdx; c++) {
+    offset += carruseles.value[c].length;
+  }
+  return offset + itemIdx;
+}
+
+function onCarruselScroll(event, idx) {
+  const el = event.target;
+  const itemWidth = el.querySelector('.foto-item')?.offsetWidth || 1;
+  const scrollLeft = el.scrollLeft;
+  const active = Math.round(scrollLeft / (itemWidth + 4));
+  carruselActivos.value[idx] = Math.min(active, carruseles.value[idx].length - 1);
+}
+
+let removeFocusTrap = null;
+
+watch(visible, (newVal) => {
+  if (newVal) {
+    const modal = document.querySelector('.modal-overlay');
+    if (modal) {
+      removeFocusTrap = createFocusTrap(modal);
+      const closeBtn = modal.querySelector('.modal-close');
+      if (closeBtn) {
+        closeBtn.focus();
+      }
+    }
+  } else {
+    if (removeFocusTrap) {
+      removeFocusTrap();
+      removeFocusTrap = null;
+    }
+  }
+});
+
+function handleKeydown(e) {
+  if (e.key === 'Escape' && visible.value) {
+    hideImg();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 <style src="./Galeria.css" scoped></style>

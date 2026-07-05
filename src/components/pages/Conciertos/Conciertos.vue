@@ -1,6 +1,6 @@
 <template>
   <div class="conciertos-bg">
-    <h2 class="conciertos-title" id="conciertos-modal-title">Próximos Conciertos</h2>
+    <h1 class="conciertos-title" id="conciertos-modal-title">Próximos Conciertos</h1>
     <div id="conciertos-modal-desc" style="display: none;">
       Visualizador de carteles de conciertos. Usa las flechas para navegar entre carteles o desliza en móvil.
     </div>
@@ -14,12 +14,17 @@
         @keydown.enter.space="showCartel(i)"
       >
         <img
-          :src="cartel"
-          :alt="`Cartel de concierto número ${i + 1}`"
+          :src="cartel.src"
+          :alt="'Cartel del concierto ' + (i + 1) + ' de Gayola'"
           class="cartel-img loading"
           loading="lazy"
            v-img-load
         />
+        <div class="cartel-meta">
+          <span class="cartel-fecha">{{ cartel.fecha }}</span>
+          <span class="cartel-lugar">{{ cartel.lugar }}</span>
+          <span class="cartel-ciudad">{{ cartel.ciudad }}</span>
+        </div>
       </div>
     </div>
 
@@ -44,13 +49,17 @@
         &#8592;
       </button>
       <img
-        :src="carteles[index]"
-        :alt="`Cartel número ${index + 1}`"
-        :title="`Cartel número ${index + 1} de ${carteles.length}`"
+        :src="carteles[index].src"
+        :alt="'Cartel del concierto ' + (index + 1) + ' de Gayola'"
+        :title="'Cartel ' + (index + 1) + ' de ' + carteles.length"
         class="modal-img loading"
         :id="`conciertos-modal-${index}`"
         @load="$event.target.classList.remove('loading'); $event.target.classList.add('loaded')"
       />
+      <div class="modal-concierto-info">
+        <span class="modal-concierto-fecha">{{ carteles[index].fecha }}</span>
+        <span class="modal-concierto-lugar">{{ carteles[index].lugar }}, {{ carteles[index].ciudad }}</span>
+      </div>
       <button
         v-if="index < carteles.length - 1 && !isMobile"
         class="modal-arrow modal-arrow-right"
@@ -71,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useHead } from '@vueuse/head';
 import conciertosLogic from "./Conciertos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
@@ -119,10 +128,13 @@ let removeFocusTrap = null;
 
 watch(visible, (newVal) => {
   if (newVal) {
-    const modal = document.querySelector('.conciertos-fullscreen');
+    const modal = document.querySelector('.modal-overlay');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
-      modal.querySelector('button')?.focus();
+      const closeBtn = modal.querySelector('.modal-close');
+      if (closeBtn) {
+        closeBtn.focus();
+      }
     }
   } else {
     if (removeFocusTrap) {
@@ -130,6 +142,27 @@ watch(visible, (newVal) => {
       removeFocusTrap = null;
     }
   }
+});
+
+watch(visible, (newVal) => {
+  const mainEl = document.getElementById('main-content');
+  if (mainEl) {
+    mainEl.inert = newVal;
+  }
+});
+
+function handleKeydown(e) {
+  if (e.key === 'Escape' && visible.value) {
+    hideCartel();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
 });
 </script>
 

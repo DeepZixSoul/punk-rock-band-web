@@ -7,7 +7,7 @@
       class="grupo-foto loading"
       src="/src/assets/grupo.webp"
       alt="Foto del grupo Gayola"
-      loading="lazy"
+      fetchpriority="high"
       v-img-load
     />
 

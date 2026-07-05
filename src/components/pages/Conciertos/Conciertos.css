@@ -6,17 +6,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: var(--font-title);
 }
 
 .conciertos-title {
   padding-top: 2em;
   color: var(--color-accent);
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2em;
+  font-family: var(--font-title);
+  font-size: 2.5em;
   margin-bottom: 1em;
   text-align: center;
   letter-spacing: 2px;
+  font-weight: 400;
 }
 
 .carteles-grid {
@@ -30,8 +31,8 @@
 
 .cartel-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   outline: none;
 }
@@ -48,6 +49,54 @@
 
 .cartel-item:hover .cartel-img {
   box-shadow: 0 0 15px var(--color-shadow-hover);
+}
+
+.cartel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4em 1em;
+  margin-top: 0.6em;
+  font-family: var(--font-text);
+  font-size: 0.85em;
+  color: var(--color-text);
+}
+
+.cartel-fecha {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.cartel-lugar {
+  color: var(--color-text);
+}
+
+.cartel-ciudad {
+  color: var(--color-muted);
+}
+
+.modal-concierto-info {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1em;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.6em 1.2em;
+  border-radius: 0.5em;
+  font-family: var(--font-text);
+  font-size: 0.9em;
+  backdrop-filter: blur(4px);
+}
+
+.modal-concierto-fecha {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.modal-concierto-lugar {
+  color: var(--color-text);
 }
 
 .modal-img {
@@ -92,7 +141,7 @@
     border-radius: 0.5em;
   }
   .conciertos-title {
-    font-size: 1.5em;
+    font-size: 1.8em;
     margin-bottom: 0.7em;
     padding: 0.3em 0.5em 0.2em 0.5em;
   }

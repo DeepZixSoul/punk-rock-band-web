@@ -1,6 +1,6 @@
 <template>
   <div class="biografia-bg">
-    <h2 class="biografia-title">Biografía</h2>
+    <h1 class="biografia-title">Biografía</h1>
     <div class="biografia-main">
       <p class="biografia-text">
         “Somos Gayola, primo, no los Stones”. Venidos desde distintos puntos de

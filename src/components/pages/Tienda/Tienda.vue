@@ -1,6 +1,6 @@
 <template>
   <div class="tienda-bg">
-  <h2 class="tienda-title">Tienda Oficial Gayola</h2>
+  <h1 class="tienda-title">Tienda Oficial Gayola</h1>
     <div class="productos-grid">
       <div
         v-for="(producto, i) in productos"
@@ -19,7 +19,7 @@
         <p class="producto-precio">{{ producto.precio }} €</p>
       </div>
     </div>
-    <div v-if="modalAbierto" class="modal-bg" @click.self="cerrarModal"
+    <div v-if="modalAbierto" class="modal-overlay" @click.self="cerrarModal"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
       role="dialog"
@@ -30,7 +30,7 @@
         Detalle del producto. Usa las flechas para navegar entre productos o desliza en móvil. Presiona Escape para cerrar.
       </div>
       <div class="modal-content">
-        <button class="modal-cerrar" @click="cerrarModal" aria-label="Cerrar producto">✕</button>
+        <button class="modal-cerrar modal-close" @click="cerrarModal" aria-label="Cerrar producto">✕</button>
         <button v-if="indexProducto > 0" class="modal-arrow modal-arrow-left" @click.stop="productoAnterior" aria-label="Anterior"> <</button>
         <img
           :src="productoModal.imagen"
@@ -55,7 +55,7 @@
 <script setup>
 import "./Tienda.css";
 import { useHead } from '@vueuse/head';
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import tiendaLogic from "./Tienda.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
 
@@ -77,7 +77,7 @@ let removeFocusTrap = null;
 
 watch(modalAbierto, (newVal) => {
   if (newVal) {
-    const modal = document.querySelector('.modal-bg');
+    const modal = document.querySelector('.modal-overlay');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
       const closeBtn = modal.querySelector('.modal-cerrar');
@@ -89,6 +89,20 @@ watch(modalAbierto, (newVal) => {
       removeFocusTrap = null;
     }
   }
+});
+
+function handleKeydown(e) {
+  if (e.key === 'Escape' && modalAbierto.value) {
+    cerrarModal();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
 });
 
 useHead({

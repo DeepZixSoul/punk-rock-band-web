@@ -15,21 +15,21 @@
 }
 
 .footer-brand-name {
-  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
+  font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   font-size: 1.4em;
   color: var(--color-accent, #ff99ff);
   margin: 0 0 0.3em;
 }
 
 .footer-brand-desc {
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   font-size: 0.8em;
-  color: var(--color-muted, #888);
+  color: var(--color-muted);
   margin: 0;
 }
 
 .footer-section h3 {
-  font-family: var(--font-title, "Montserrat", Arial, sans-serif);
+  font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   font-size: 0.8em;
   color: var(--color-accent, #ff99ff);
   margin-bottom: 0.8em;
@@ -52,7 +52,7 @@
 .footer-contact a {
   color: var(--color-text, #ccc);
   text-decoration: none;
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   font-size: 0.8em;
   transition: color 0.3s ease;
 }
@@ -69,7 +69,7 @@
   margin-bottom: 0.4em;
   font-size: 0.8em;
   color: var(--color-text, #ccc);
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
 }
 
 .footer-social {
@@ -91,18 +91,18 @@
 
 .footer-copyright,
 .footer-credit {
-  font-family: var(--font-text, "Roboto", Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   font-size: 0.7em;
   margin: 0;
   line-height: 1.3;
 }
 
 .footer-copyright {
-  color: var(--color-muted, #888);
+  color: var(--color-muted);
 }
 
 .footer-credit {
-  color: var(--color-muted, #777);
+  color: var(--color-muted);
 }
 
 /* Responsive */

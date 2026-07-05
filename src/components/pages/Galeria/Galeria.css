@@ -6,17 +6,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: var(--font-title);
 }
 
 .galeria-title {
   padding-top: 2em;
-  color: var(--color-accent, #ff99ff);
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2em;
+  color: var(--color-accent);
+  font-family: var(--font-title);
+  font-size: 2.5em;
   margin-bottom: 1em;
   text-align: center;
   letter-spacing: 2px;
+  font-weight: 400;
 }
 
 .galeria-grid {
@@ -83,7 +84,27 @@
   .galeria-carrusel-outer {
     width: 100vw;
     overflow-x: hidden;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .carrusel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.5em 0 1em;
+  }
+
+  .carrusel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-shadow);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .carrusel-dot.active {
+    background: var(--color-accent);
+    transform: scale(1.3);
   }
 
   .galeria-carrusel {
@@ -155,4 +176,23 @@
   .foto-img {
     max-height: 120px;
   }
+}
+
+.galeria-cargar-mas {
+  margin-top: 2em;
+  padding: 0.7em 2em;
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: 0.4em;
+  font-family: var(--font-title);
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.galeria-cargar-mas:hover {
+  background: var(--color-accent);
+  color: #000;
 }

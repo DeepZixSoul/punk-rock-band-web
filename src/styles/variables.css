@@ -8,8 +8,15 @@
   --color-shadow-hover: #ff66ff88;
   --color-shadow-light: #ff99ff22;
   --color-table-bg: #191919cc;
-  --font-title: 'Montserrat', Arial, sans-serif;
-  --font-text: 'Roboto', Arial, sans-serif;
+  --color-muted: #888;
+  --text-hero: 3em;
+  --text-h1: 2.5em;
+  --text-h2: 1.5em;
+  --text-h3: 1.2em;
+  --text-body: 1em;
+  --text-small: 0.85em;
+  --font-title: 'Bebas Neue', 'Arial Black', sans-serif;
+  --font-text: 'Rubik', 'Segoe UI', sans-serif;
   --border-radius: 0.5em;
   --max-width: 1200px;
 }

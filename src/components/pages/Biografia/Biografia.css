@@ -1,10 +1,12 @@
 .biografia-title {
-  padding-top: 2em;
-  color: var(--color-accent, #ff99ff);
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
-  font-size: 2.4em;
+  padding-top: 1.5em;
+  color: var(--color-accent);
+  font-family: var(--font-title);
+  font-size: 2.5em;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  text-shadow: 0 0 20px var(--color-shadow, #ff66ff44);
 }
 
 .biografia-bg {
@@ -17,7 +19,7 @@
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
-  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
 }
 .biografia-main {
   width: 100%;
@@ -31,7 +33,7 @@
 .biografia-text {
   color: var(--color-text, #fff);
   font-size: 1.2em;
-  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   text-align: justify;
   letter-spacing: 0.5px;
 }
@@ -48,11 +50,11 @@
   box-sizing: border-box;
 }
 .integrantes-title {
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
-  color: var(--color-accent, #ff99ff);
-  font-size: 1.7em;
+  font-family: var(--font-title);
+  color: var(--color-accent);
+  font-size: 1.5em;
   margin-bottom: 0.7em;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 .integrantes-list {
   display: flex;
@@ -73,12 +75,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
   border-radius: 0.3em;
+  border: 1px solid rgba(255, 102, 255, 0.08);
 }
 .integrante:hover {
-  box-shadow: 0 0 20px var(--color-shadow-hover, #ff99ff88);
+  box-shadow: 0 0 25px var(--color-shadow-hover, #ff99ff88);
   transform: translateY(-4px) scale(1.03);
+  border-color: rgba(255, 102, 255, 0.3);
 }
 .integrante-img {
   width: 100%;
@@ -92,30 +96,32 @@
 }
 .integrante-nombre {
   width: 100%;
-  background: rgba(255, 153, 255, 0.12);
+  background: linear-gradient(135deg, rgba(255, 102, 255, 0.15), rgba(255, 153, 255, 0.05));
   color: var(--color-text, #fff);
-  font-size: 1em;
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
-  letter-spacing: 0.5px;
+  font-size: 1.2em;
+  font-family: var(--font-title, 'Bebas Neue', 'Arial Black', sans-serif);
+  letter-spacing: 2px;
   margin: 0 0 0.3em 0;
-  padding: 0.3em 0.1em;
-  border-radius: 0.2em;
+  padding: 0.4em 0.2em;
+  border-radius: 0.3em;
   text-align: center;
-  box-shadow: 0 0 6px var(--color-shadow-light);
+  box-shadow: 0 0 12px var(--color-shadow, #ff66ff44);
+  border-left: 3px solid var(--color-accent, #ff66ff);
 }
 .rol {
   display: block;
-  white-space: pre-line;
-  font-size: 0.9em;
+  font-size: 0.6em;
   color: var(--color-accent, #ff99ff);
-  font-weight: bold;
-  margin-left: 0.3em;
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-top: 0.2em;
 }
 .integrante p {
   margin: 0.3em 0 0 0;
   color: #eee;
   font-size: 0.95em;
-  font-family: var(--font-text, 'Roboto', Arial, sans-serif);
+  font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   text-align: left;
   background: var(--color-table-bg);
   border-radius: 0.5em;
@@ -166,7 +172,7 @@
     box-sizing: border-box;
   }
   .biografia-title{
-    font-size: 2em;
+    font-size: 2.2em;
     padding: 0.3em 0.5em 0.2em 0.5em;
   }
   .integrantes-list {
@@ -221,7 +227,7 @@
   }
   .biografia-title,
   .integrantes-title {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 0.5em;
     padding: 0.3em 0.5em 0.2em 0.5em;
   }

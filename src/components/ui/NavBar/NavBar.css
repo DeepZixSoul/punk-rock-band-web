@@ -7,9 +7,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-bg);
+  background: rgba(24, 24, 24, 0.85);
   padding: 0.3em 1em;
   min-height: 3.5em;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.main-header.scrolled {
+  background: rgba(24, 24, 24, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .header-left {
@@ -55,21 +62,40 @@
 .navbar-link {
   color: var(--color-accent);
   text-decoration: none;
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
-  font-size: 1em;
+  font-family: var(--font-title, 'Bebas Neue', 'Arial Black', sans-serif);
+  font-size: 1.2em;
   padding: 0.4em 0.7em;
   border-left: 3px solid transparent;
   border-radius: 0.3em;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  letter-spacing: 1.5px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
   background: transparent;
   display: block;
   white-space: nowrap;
+  position: relative;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.25s ease;
 }
 
 .navbar-link:hover,
 .navbar-link:focus,
 .navbar-link.router-link-exact-active {
   filter: drop-shadow(0 0 8px var(--color-accent)) brightness(1.1);
+}
+
+.navbar-link:hover::after,
+.navbar-link:focus::after,
+.navbar-link.router-link-exact-active::after {
+  width: 100%;
 }
 
 .header-right {
@@ -103,7 +129,7 @@
   color: var(--color-accent);
   padding: 0.15em;
   border-radius: 0.3em;
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
+  font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   transition: background 0.2s, color 0.2s;
 }
 

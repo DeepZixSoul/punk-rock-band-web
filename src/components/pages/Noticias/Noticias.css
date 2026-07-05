@@ -13,9 +13,9 @@
   border: 1px solid #ff99ff22;
 }
 .noticias-title {
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
-  color: var(--color-accent, #ff99ff);
-  font-size: 2em;
+  font-family: var(--font-title);
+  color: var(--color-accent);
+  font-size: 1.5em;
   margin-bottom: 2em;
   text-align: center;
   letter-spacing: 2px;
@@ -85,7 +85,7 @@
   min-width: 0;
 }
 .noticia-titulo {
-  font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
+  font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   color: var(--color-accent, #ff99ff);
   font-size: 1.3em;
   margin-bottom: 0.7em;

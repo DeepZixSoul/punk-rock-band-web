@@ -1,7 +1,7 @@
 <template>
   <div class="error-boundary">
     <div v-if="hasError" class="error-container">
-      <div class="error-icon">⚠️</div>
+      <div class="error-icon" aria-hidden="true">⚠️</div>
       <h3 class="error-title">Algo salió mal</h3>
       <p class="error-message">{{ errorMessage }}</p>
       <button @click="resetError" class="error-button">Intentar de nuevo</button>

@@ -1,6 +1,6 @@
 <template>
   <div class="videos-bg">
-    <h2 class="videos-title">Vídeos Gayola</h2>
+    <h1 class="videos-title">Vídeos Gayola</h1>
     <div class="videos-list">
       <transition-group name="video-fade" tag="div">
         <div v-for="(video, i) in videos" :key="video.id" class="video-item">
@@ -32,7 +32,7 @@
               ></iframe>
             </transition>
             <div class="video-overlay" aria-hidden="true">
-              <span class="video-play">▶</span>
+              <span class="video-play" aria-hidden="true">▶</span>
             </div>
           </div>
           <button
@@ -97,8 +97,10 @@
 </template>
 
 <script setup>
+import { watch } from 'vue';
 import "./Videos.css";
 import videosLogic from "./Videos.js";
+import { createFocusTrap } from "../../../utils/focusTrap.js";
 
 const {
   videos,
@@ -111,6 +113,26 @@ const {
   closeLightbox,
   shareVideo,
 } = videosLogic();
+
+let removeFocusTrap = null;
+
+watch(showLightbox, (newVal) => {
+  if (newVal) {
+    const modal = document.querySelector('.video-lightbox');
+    if (modal) {
+      removeFocusTrap = createFocusTrap(modal);
+      const closeBtn = modal.querySelector('.lightbox-close');
+      if (closeBtn) {
+        closeBtn.focus();
+      }
+    }
+  } else {
+    if (removeFocusTrap) {
+      removeFocusTrap();
+      removeFocusTrap = null;
+    }
+  }
+});
 </script>
 
 

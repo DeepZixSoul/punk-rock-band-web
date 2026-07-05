@@ -1,6 +1,6 @@
 <template>
   <div class="discografia-bg">
-    <h2 class="discografia-title">Discografía</h2>
+    <h1 class="discografia-title">Discografía</h1>
     <div
       v-for="(disco, i) in discos"
       :key="disco.titulo"

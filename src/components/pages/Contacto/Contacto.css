@@ -4,16 +4,16 @@
   padding: 2.5em 2em 2em 2em;
   background: var(--color-bg, #181818);
   color: var(--color-text, #fff);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Rubik', 'Segoe UI', sans-serif;
 }
 .contacto-title {
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 2.2em;
-  font-weight: 700;
-  color: var(--color-accent, #ff99ff);
+  font-family: var(--font-title);
+  font-size: 2.5em;
+  font-weight: 400;
+  color: var(--color-accent);
   margin-bottom: 0.5em;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 .contacto-bienvenida {
   font-size: 1.1em;
@@ -144,6 +144,117 @@
   filter: drop-shadow(0 0 6px #fff);
 }
 
+
+/* Formulario de contacto */
+.contacto-form {
+  margin-top: 2.5em;
+  padding: 2em;
+  background: var(--color-card);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 20px var(--color-shadow-light);
+}
+
+.contacto-form-title {
+  font-family: var(--font-title);
+  font-size: var(--text-h2);
+  color: var(--color-accent);
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 1.2em;
+  font-weight: 400;
+}
+
+.form-grupo {
+  margin-bottom: 1.2em;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  color: var(--color-accent);
+  margin-bottom: 0.3em;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.7em 0.9em;
+  background: var(--color-bg);
+  border: 1px solid var(--color-shadow);
+  border-radius: 0.4em;
+  color: var(--color-text);
+  font-family: var(--font-text);
+  font-size: var(--text-body);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-shadow-hover);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: var(--color-card);
+  color: var(--color-text);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-error {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.3) !important;
+}
+
+.form-error-msg {
+  display: block;
+  color: #ff4444;
+  font-family: var(--font-text);
+  font-size: 0.8em;
+  margin-top: 0.2em;
+}
+
+.form-btn {
+  width: 100%;
+  padding: 0.8em 1.5em;
+  background: var(--color-accent);
+  color: #000;
+  font-family: var(--font-title);
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-weight: 700;
+}
+
+.form-btn:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: scale(1.02);
+}
+
+.form-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-exito {
+  text-align: center;
+  color: #4caf50;
+  font-family: var(--font-text);
+  font-size: 0.9em;
+  margin-top: 1em;
+}
 
 @media (max-width: 600px) {
   .contacto-bg {
