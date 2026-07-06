@@ -97,7 +97,7 @@ html {
   scroll-behavior: smooth;
 }
 .section {
-  min-height: 60vh;
+  flex: 1;
   padding: 4.5em 0 2em;
 }
 
