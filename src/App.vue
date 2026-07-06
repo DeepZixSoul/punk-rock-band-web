@@ -27,7 +27,7 @@
   <main id="main-content" class="section fondo-imagen" role="main">
     <ErrorBoundary>
       <router-view v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
+        <Transition name="page" mode="default">
           <component :is="Component" />
         </Transition>
       </router-view>
@@ -122,7 +122,7 @@ html {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .page-enter-from {
   opacity: 0;
