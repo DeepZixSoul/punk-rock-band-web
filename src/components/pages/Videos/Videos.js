@@ -1,5 +1,8 @@
 import { ref, reactive, onMounted, onUnmounted, nextTick } from "vue";
 
+const sharedIndex = ref(-1);
+let sharedTimeout = null;
+
 export default function videosLogic() {
   const videos = [
     { id: "ij8A73rEoaM", titulo: "PVTA POLICIA (VIDEOCLIP) - GAYOLA" },
@@ -65,9 +68,14 @@ export default function videosLogic() {
     event.stopPropagation();
     const url = `https://youtu.be/${id}`;
     if (navigator.share) {
-      navigator.share({ url, title: "Vídeo Gayola", text: "¡Mira este vídeo de Gayola!" });
+      navigator.share({ url, title: "Vídeo Gayola", text: "¡Mira este vídeo de Gayola!" }).catch(() => {});
     } else {
-      navigator.clipboard.writeText(url);
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = event.currentTarget;
+        sharedIndex.value = videos.findIndex(v => v.id === id);
+        if (sharedTimeout) clearTimeout(sharedTimeout);
+        sharedTimeout = setTimeout(() => { sharedIndex.value = -1; }, 2000);
+      }).catch(() => {});
     }
   }
 
@@ -94,6 +102,7 @@ export default function videosLogic() {
     showLightbox,
     lightboxIndex,
     showIframe,
+    sharedIndex,
     getYoutubeThumb,
     getYoutubeUrl,
     getYoutubeEmbed,

@@ -40,7 +40,10 @@
             @click="shareVideo(video.id, $event)"
             :aria-label="`Compartir vídeo ${i + 1}: ${video.titulo}`"
           >
-            <svg
+            <template v-if="sharedIndex === i">
+              <span class="video-share-texto">Copiado!</span>
+            </template>
+            <svg v-else
               width="22"
               height="22"
               viewBox="0 0 24 24"
@@ -108,6 +111,7 @@ const {
   showLightbox,
   lightboxIndex,
   showIframe,
+  sharedIndex,
   getYoutubeThumb,
   getYoutubeEmbed,
   openLightbox,

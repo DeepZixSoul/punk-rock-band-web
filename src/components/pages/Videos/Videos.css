@@ -134,6 +134,12 @@
 .video-share:hover {
   transform: scale(1.15);
 }
+.video-share-texto {
+  font-family: var(--font-text, 'Rubik', sans-serif);
+  font-size: 0.7em;
+  color: var(--color-accent, #ff99ff);
+  white-space: nowrap;
+}
 
 /* Lightbox modal */
 .video-lightbox {
