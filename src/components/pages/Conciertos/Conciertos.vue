@@ -86,6 +86,19 @@ import conciertosLogic from "./Conciertos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
 import "../../../styles/modal-gallery.css";
 
+const {
+  carteles,
+  visible,
+  index,
+  isMobile,
+  showCartel,
+  hideCartel,
+  prevCartel,
+  nextCartel,
+  handleTouchStart,
+  handleTouchEnd
+} = conciertosLogic();
+
 const eventStructuredData = computed(() => ({
   '@context': 'https://schema.org',
   '@graph': carteles.map((c, i) => ({
@@ -133,19 +146,6 @@ useHead({
     }
   ]
 });
-
-const {
-  carteles,
-  visible,
-  index,
-  isMobile,
-  showCartel,
-  hideCartel,
-  prevCartel,
-  nextCartel,
-  handleTouchStart,
-  handleTouchEnd
-} = conciertosLogic();
 
 let removeFocusTrap = null;
 

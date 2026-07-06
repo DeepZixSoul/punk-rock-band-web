@@ -57,8 +57,4 @@
   to = "/index.html"
   status = 200
 
-# Configuración de Preload
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Link = "</fonts/roboto.woff2>; rel=preload; as=font; crossorigin"
+
