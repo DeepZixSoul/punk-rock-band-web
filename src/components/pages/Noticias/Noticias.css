@@ -21,6 +21,8 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 0 0 10px #ff99ff33;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid rgba(255, 153, 255, 0.15);
 }
 /* Lista y noticia item */
 .noticias-list {
@@ -222,7 +224,7 @@
   .noticias-title {
     font-size: 1.1em;
     margin-bottom: 0.5em;
-    padding: 0.3em 0.5em 0.2em 0.5em;
+    padding: 0 0.5em 0.3em;
   }
   .noticias-section {
     width: 90vw;

@@ -10,7 +10,6 @@
 }
 
 .conciertos-title {
-  padding-top: 2em;
   color: var(--color-accent);
   font-family: var(--font-title);
   font-size: 2.5em;
@@ -18,6 +17,8 @@
   text-align: center;
   letter-spacing: 2px;
   font-weight: 400;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid rgba(255, 153, 255, 0.15);
 }
 
 /* Hero: próximo concierto */
@@ -124,6 +125,7 @@
   background: var(--color-bg);
   transition: box-shadow 0.2s, transform 0.2s;
   border-radius: 0.7em;
+  display: block;
 }
 
 .cartel-item:hover .cartel-img {
@@ -154,43 +156,81 @@
   color: var(--color-muted);
 }
 
+/* Modal Conciertos — Flyer */
 .modal-concierto-info {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 1em;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 0.6em 1.2em;
-  border-radius: 0.5em;
-  font-family: var(--font-text);
-  font-size: 0.9em;
-  backdrop-filter: blur(4px);
+  justify-content: center;
+  gap: 2em;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95) 30%);
+  padding: 2.5em 1.5em 1.5em;
+  font-family: var(--font-title, 'Bebas Neue', sans-serif);
+  pointer-events: none;
 }
 
 .modal-concierto-fecha {
-  color: var(--color-accent);
+  color: var(--color-accent, #ff99ff);
+  font-size: 1.4em;
   font-weight: 700;
+  letter-spacing: 3px;
 }
 
 .modal-concierto-lugar {
-  color: var(--color-text);
+  color: #fff;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+  opacity: 0.85;
 }
 
+/* Full-bleed image */
 .modal-img {
-  animation: slideIn 0.3s ease-out;
+  border-radius: 0;
+  max-width: 100vw;
+  max-height: calc(100vh - 5em);
+  box-shadow: none;
+  animation: flyerIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes flyerIn {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Conciertos: override arrows */
+.modal-arrow {
+  z-index: 10003;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--color-accent, #ff99ff);
+  border-radius: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 2em;
+}
+
+.modal-arrow:hover {
+  background: var(--color-accent, #ff99ff);
+  color: #000;
+  box-shadow: 0 0 30px var(--color-accent, #ff99ff);
+}
+
+/* Conciertos: override close */
+.modal-close {
+  z-index: 10004;
+  border-radius: 0;
+  border-width: 2px;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.2em;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-close:hover {
+  background: var(--color-accent, #ff99ff);
+  color: #000;
+  box-shadow: 0 0 25px var(--color-accent, #ff99ff);
 }
 
 /* Responsive */
@@ -222,7 +262,7 @@
   .conciertos-title {
     font-size: 1.8em;
     margin-bottom: 0.7em;
-    padding: 0.3em 0.5em 0.2em 0.5em;
+    padding: 0 0.5em 0.3em;
   }
   .carteles-grid {
     grid-template-columns: 1fr;

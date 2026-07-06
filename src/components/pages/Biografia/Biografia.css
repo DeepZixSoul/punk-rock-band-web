@@ -1,5 +1,4 @@
 .biografia-title {
-  padding-top: 1.5em;
   color: var(--color-accent);
   font-family: var(--font-title);
   font-size: 2.5em;
@@ -7,6 +6,8 @@
   letter-spacing: 2px;
   font-weight: 400;
   text-shadow: 0 0 20px var(--color-shadow, #ff66ff44);
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid rgba(255, 153, 255, 0.15);
 }
 
 .biografia-bg {
@@ -173,7 +174,7 @@
   }
   .biografia-title{
     font-size: 2.2em;
-    padding: 0.3em 0.5em 0.2em 0.5em;
+    padding: 0 0.5em 0.3em;
   }
   .integrantes-list {
     flex-direction: column;
@@ -225,7 +226,11 @@
   .integrante p {
     max-height: 140px;
   }
-  .biografia-title,
+  .biografia-title {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    padding: 0 0.5em 0.3em;
+  }
   .integrantes-title {
     font-size: 1.5em;
     margin-bottom: 0.5em;

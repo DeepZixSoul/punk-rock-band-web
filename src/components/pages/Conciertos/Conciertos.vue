@@ -194,13 +194,6 @@ watch(visible, (newVal) => {
   }
 });
 
-watch(visible, (newVal) => {
-  const mainEl = document.getElementById('main-content');
-  if (mainEl) {
-    mainEl.inert = newVal;
-  }
-});
-
 function handleKeydown(e) {
   if (e.key === 'Escape' && visible.value) {
     hideCartel();
