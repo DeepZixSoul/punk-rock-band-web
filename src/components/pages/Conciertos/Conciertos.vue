@@ -4,18 +4,43 @@
     <div id="conciertos-modal-desc" style="display: none;">
       Visualizador de carteles de conciertos. Usa las flechas para navegar entre carteles o desliza en móvil.
     </div>
-    <div class="carteles-grid">
+
+    <!-- Hero: próximo concierto -->
+    <div class="proximo-hero">
+      <span class="proximo-badge">PRÓXIMO CONCIERTO</span>
       <div
-        v-for="(cartel, i) in carteles"
-        :key="i"
+        class="proximo-card card card-hover"
+        @click="showCartel(0)"
+        tabindex="0"
+        @keydown.enter.space="showCartel(0)"
+      >
+        <img
+          :src="proximoConcierto.src"
+          :alt="'Cartel del próximo concierto de Gayola'"
+          class="proximo-img loading"
+          v-img-load
+        />
+        <div class="proximo-info">
+          <span class="proximo-fecha">{{ proximoConcierto.fecha }}</span>
+          <span class="proximo-lugar">{{ proximoConcierto.lugar }}, {{ proximoConcierto.ciudad }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid: resto de conciertos -->
+    <h2 class="conciertos-subtitle">Más conciertos</h2>
+    <div v-if="otrosConciertos.length" class="carteles-grid">
+      <div
+        v-for="(cartel, i) in otrosConciertos"
+        :key="i + 1"
         class="cartel-item card card-hover"
-        @click="showCartel(i)"
+        @click="showCartel(i + 1)"
         :tabindex="0"
-        @keydown.enter.space="showCartel(i)"
+        @keydown.enter.space="showCartel(i + 1)"
       >
         <img
           :src="cartel.src"
-          :alt="'Cartel del concierto ' + (i + 1) + ' de Gayola'"
+          :alt="'Cartel del concierto ' + (i + 2) + ' de Gayola'"
           class="cartel-img loading"
           loading="lazy"
            v-img-load
@@ -88,6 +113,8 @@ import "../../../styles/modal-gallery.css";
 
 const {
   carteles,
+  proximoConcierto,
+  otrosConciertos,
   visible,
   index,
   isMobile,

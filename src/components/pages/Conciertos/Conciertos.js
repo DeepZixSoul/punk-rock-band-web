@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 export default function conciertosLogic() {
   const carteles = [
@@ -11,6 +11,9 @@ export default function conciertosLogic() {
     { src: "/carteles/cartel7.webp", fecha: "5 Jul 2025", lugar: "Sala Intimo", ciudad: "Elche" },
     { src: "/carteles/cartel8.webp", fecha: "19 Jul 2025", lugar: "Booza Fest", ciudad: "Aspe" },
   ];
+
+  const proximoConcierto = computed(() => carteles[0]);
+  const otrosConciertos = computed(() => carteles.slice(1));
   
   const visible = ref(false);
   const index = ref(0);
@@ -75,5 +78,5 @@ export default function conciertosLogic() {
     window.removeEventListener("resize", handleResize);
   });
 
-  return { carteles, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
+  return { carteles, proximoConcierto, otrosConciertos, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
 }

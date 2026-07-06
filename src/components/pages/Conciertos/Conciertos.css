@@ -20,6 +20,85 @@
   font-weight: 400;
 }
 
+/* Hero: próximo concierto */
+.proximo-hero {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proximo-badge {
+  display: inline-block;
+  background: var(--color-accent, #ff99ff);
+  color: #000;
+  font-family: var(--font-title, 'Bebas Neue', sans-serif);
+  font-size: 0.85em;
+  letter-spacing: 3px;
+  padding: 0.4em 1.2em;
+  margin-bottom: 0.8em;
+  border-radius: 0.3em;
+  font-weight: 700;
+}
+
+.proximo-card {
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 0.7em;
+  overflow: hidden;
+  box-shadow: 0 0 30px var(--color-shadow, #ff99ff44);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.proximo-card:hover,
+.proximo-card:focus-visible {
+  box-shadow: 0 0 50px var(--color-shadow-hover, #ff99ff88), 0 0 100px var(--color-shadow, #ff99ff44);
+  transform: scale(1.02);
+}
+
+.proximo-img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+  background: var(--color-bg, #181818);
+}
+
+.proximo-info {
+  background: var(--color-card, #222);
+  padding: 1em 1.2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em 1.5em;
+  font-family: var(--font-text, 'Rubik', sans-serif);
+}
+
+.proximo-fecha {
+  font-size: 1.3em;
+  color: var(--color-accent, #ff99ff);
+  font-weight: 700;
+}
+
+.proximo-lugar {
+  font-size: 1em;
+  color: var(--color-text, #ccc);
+}
+
+.conciertos-subtitle {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 1em;
+  font-family: var(--font-title, 'Bebas Neue', sans-serif);
+  font-size: 1.5em;
+  color: var(--color-text, #ccc);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
 .carteles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
