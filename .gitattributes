@@ -1,0 +1,27 @@
+# Normalizar saltos de línea
+* text=auto eol=lf
+
+# Source code
+*.js text
+*.ts text
+*.vue text
+*.css text
+*.html text
+*.json text
+*.yml text
+*.yaml text
+*.toml text
+*.md text
+
+# Binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
