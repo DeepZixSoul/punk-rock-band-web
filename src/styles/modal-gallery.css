@@ -120,8 +120,7 @@
 
 @media (max-width: 600px) {
   .modal-overlay {
-    align-items: flex-start;
-    padding-top: 2rem;
+    padding: 1rem;
   }
 
   .modal-img {
