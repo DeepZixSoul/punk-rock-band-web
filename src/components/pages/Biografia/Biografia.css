@@ -5,13 +5,13 @@
   text-align: center;
   letter-spacing: 2px;
   font-weight: 400;
-  text-shadow: 0 0 20px var(--color-shadow, #ff66ff44);
+  text-shadow: 0 0 20px var(--color-shadow);
   padding-bottom: 0.3em;
   border-bottom: 2px solid rgba(255, 153, 255, 0.15);
 }
 
 .biografia-bg {
-  background: var(--color-bg, #181818);
+  background: var(--color-bg);
   padding: 2em 0.5em;
   min-height: 90vh;
   display: flex;
@@ -32,7 +32,7 @@
   box-sizing: border-box;
 }
 .biografia-text {
-  color: var(--color-text, #fff);
+  color: var(--color-text);
   font-size: 1.2em;
   font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   text-align: justify;
@@ -41,8 +41,8 @@
 .integrantes-section {
   width: 100%;
   max-width: 1200px;
-  background: var(--color-bg, #181818);
-  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
+  background: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-shadow);
   padding: 1.2em 0.7em;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@
   min-width: 180px;
   max-width: 220px;
   background: var(--color-card);
-  box-shadow: 0 0 10px var(--color-shadow, #ff99ff44);
+  box-shadow: 0 0 10px var(--color-shadow);
   padding: 0.7em 0.7em 1.2em 0.7em;
   margin: 0;
   display: flex;
@@ -81,7 +81,7 @@
   border: 1px solid rgba(255, 102, 255, 0.08);
 }
 .integrante:hover {
-  box-shadow: 0 0 25px var(--color-shadow-hover, #ff99ff88);
+  box-shadow: 0 0 25px var(--color-shadow-hover);
   transform: translateY(-4px) scale(1.03);
   border-color: rgba(255, 102, 255, 0.3);
 }
@@ -90,15 +90,16 @@
   max-width: 140px;
   height: 220px;
   object-fit: contain;
+  display: block;
   border-radius: 0.3em;
-  box-shadow: 0 0 8px var(--color-shadow, #ff99ff44);
+  box-shadow: 0 0 8px var(--color-shadow);
   margin-bottom: 0.7em;
-  background: var(--color-bg, #181818);
+  background: var(--color-bg);
 }
 .integrante-nombre {
   width: 100%;
   background: linear-gradient(135deg, rgba(255, 102, 255, 0.15), rgba(255, 153, 255, 0.05));
-  color: var(--color-text, #fff);
+  color: var(--color-text);
   font-size: 1.2em;
   font-family: var(--font-title, 'Bebas Neue', 'Arial Black', sans-serif);
   letter-spacing: 2px;
@@ -106,13 +107,13 @@
   padding: 0.4em 0.2em;
   border-radius: 0.3em;
   text-align: center;
-  box-shadow: 0 0 12px var(--color-shadow, #ff66ff44);
-  border-left: 3px solid var(--color-accent, #ff66ff);
+  box-shadow: 0 0 12px var(--color-shadow);
+  border-left: 3px solid var(--color-accent);
 }
 .rol {
   display: block;
   font-size: 0.6em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   letter-spacing: 3px;
   font-weight: 500;
@@ -126,7 +127,7 @@
   text-align: left;
   background: var(--color-table-bg);
   border-radius: 0.5em;
-  box-shadow: 0 0 8px var(--color-shadow-light, #ff99ff22);
+  box-shadow: 0 0 8px var(--color-shadow-light);
   padding: 0.8em;
   max-height: 210px;
   overflow-y: auto;

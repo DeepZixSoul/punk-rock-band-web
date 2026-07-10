@@ -138,7 +138,7 @@
 .video-share-texto {
   font-family: var(--font-text, 'Rubik', sans-serif);
   font-size: 0.7em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   white-space: nowrap;
 }
 

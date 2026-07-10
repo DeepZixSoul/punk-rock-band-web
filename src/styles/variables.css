@@ -1,11 +1,11 @@
 :root {
   --color-bg: #181818;
-  --color-accent: #ff66ff;
+  --color-accent: #ff99ff;
   --color-accent-hover: #ffccff;
-  --color-text: #fff;
+  --color-text: #ccc;
   --color-card: #222;
-  --color-shadow: #ff66ff44;
-  --color-shadow-hover: #ff66ff88;
+  --color-shadow: #ff99ff44;
+  --color-shadow-hover: #ff99ff88;
   --color-shadow-light: #ff99ff22;
   --color-table-bg: #191919cc;
   --color-muted: #888;

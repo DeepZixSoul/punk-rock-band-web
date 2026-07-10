@@ -1,8 +1,8 @@
 .discografia-bg {
-  background: var(--color-bg, #181818);
+  background: var(--color-bg);
   padding: 2em 1em;
   min-height: 60vh;
-  box-shadow: 0 0 40px var(--color-shadow, #ff99ff44);
+  box-shadow: 0 0 40px var(--color-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
   margin-bottom: 3em;
   background: var(--color-card);
   border-radius: 1em;
-  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
+  box-shadow: 0 0 20px var(--color-shadow);
   padding: 2em;
   transition: flex-direction 0.3s;
   box-sizing: border-box;
@@ -44,7 +44,7 @@
 }
 .disco-info {
   flex: 1 1 45%;
-  color: var(--color-text, #fff);
+  color: var(--color-text);
   font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@
 }
 .disco-titulo {
   font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-size: 1.5em;
   margin-bottom: 0.7em;
   text-align: center;
@@ -70,7 +70,7 @@
 }
 .disco-fecha {
   font-size: 0.95em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-weight: bold;
   margin-top: 0.5em;
 }
@@ -92,9 +92,10 @@
   width: 320px;
   max-width: 100%;
   border-radius: 1em;
-  box-shadow: 0 0 20px var(--color-shadow, #ff99ff44);
+  display: block;
+  box-shadow: 0 0 20px var(--color-shadow);
   border: 3px solid #ff99ff55;
-  background: var(--color-bg, #181818);
+  background: var(--color-bg);
   object-fit: contain;
 }
 
@@ -145,7 +146,7 @@
   border-spacing: 0 0.2em;
 }
 .cancion-nombre {
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-weight: 500;
   font-size: 1em;
   padding: 0.2em 0.5em 0.2em 0.4em;
@@ -155,13 +156,13 @@
   text-align: right;
   vertical-align: middle;
   /* padding: 0.2em  0.2em 0.2em; */
-  filter: drop-shadow(0 0 8px var(--color-accent, #ff99ff));
+  filter: drop-shadow(0 0 8px var(--color-accent));
 }
 .icono-cancion-img {
   width: 2.6em;
   height: 1.9em;
   object-fit: contain;
-  filter: drop-shadow(0 0 2px var(--color-shadow, #ff99ff44));
+  filter: drop-shadow(0 0 2px var(--color-shadow));
   transition: transform 0.15s, filter 0.15s;
   cursor: pointer;
   filter: grayscale(0.2) brightness(1.2);
@@ -172,7 +173,7 @@
 }
 .icono-cancion-img:hover {
   transform: scale(1.18);
-  filter: brightness(1.2) drop-shadow(0 0 6px var(--color-accent, #ff99ff));
+  filter: brightness(1.2) drop-shadow(0 0 6px var(--color-accent));
 }
 /* --- ESTILOS DISCOS Y TABLA DE CANCIONES --- */
 @media (max-width: 900px) {

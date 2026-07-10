@@ -2,8 +2,8 @@
   max-width: 700px;
   margin: 2.5em auto 2em auto;
   padding: 2.5em 2em 2em 2em;
-  background: var(--color-bg, #181818);
-  color: var(--color-text, #fff);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: 'Rubik', 'Segoe UI', sans-serif;
 }
 .contacto-title {
@@ -21,7 +21,7 @@
   font-size: 1.1em;
   margin-bottom: 2em;
   text-align: center;
-  color: var(--color-text, #fff);
+  color: var(--color-text);
 }
 .contacto-info {
   box-shadow: 0 0 25px var(--color-shadow-light);
@@ -41,7 +41,7 @@
 }
 .contacto-label {
   font-weight: 500;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-size: 1em;
 }
 .contacto-btn {
@@ -136,7 +136,7 @@
   filter: drop-shadow(0 0 8px var(--color-accent)) brightness(1.1);
 }
 .avispero-user {
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-weight: 600;
   font-size: 1.1em;
   margin-top: 0.3em;

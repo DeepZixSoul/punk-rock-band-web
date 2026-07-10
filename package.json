@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/generate-sitemap.js",
     "preview": "vite preview",
     "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./reports/lighthouse.html --chrome-flags='--headless --no-sandbox' --throttling.cpuSlowdownMultiplier=1",
     "test": "vitest run",

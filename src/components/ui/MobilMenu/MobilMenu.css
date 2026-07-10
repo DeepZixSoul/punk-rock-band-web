@@ -24,7 +24,7 @@
   left: 0;
   width: 100vw;
   height: 60vh;
-  background: var(--color-bg, #181818);
+  background: var(--color-bg);
   z-index: 9999;
   border-radius: 0 0 1em 1em;
   display: flex;
@@ -32,7 +32,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1em 0.5em 0.5em 0.5em;
-  box-shadow: 0 0 40px var(--color-shadow, #000a);
+  box-shadow: 0 0 40px var(--color-shadow);
   overflow: hidden;
   transform: translateY(-40px);
   opacity: 0;
@@ -63,7 +63,7 @@
 .mobile-navbar-link {
   font-size: 0.9em;
   padding: 0.6em 0.7em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   text-decoration: none;
   font-family: var(--font-title, 'Bebas Neue', 'Arial Black', sans-serif);
   letter-spacing: 1.5px;
@@ -81,9 +81,9 @@
 .mobile-navbar-link:hover,
 .mobile-navbar-link:focus,
 .mobile-navbar-link.router-link-exact-active {
-  color: var(--color-text, #fff);
-  border-left: 3px solid var(--color-accent, #ff99ff);
-  background: var(--color-card, #232323);
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-card);
 }
 
 .mobile-social-bar {

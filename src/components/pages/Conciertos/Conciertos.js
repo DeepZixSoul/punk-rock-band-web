@@ -1,5 +1,11 @@
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
+function parseFecha(fechaStr) {
+  const meses = { Ene:0, Feb:1, Mar:2, Abr:3, May:4, Jun:5, Jul:6, Ago:7, Sep:8, Oct:9, Nov:10, Dic:11 };
+  const [dia, mes, anio] = fechaStr.split(' ');
+  return new Date(parseInt(anio), meses[mes], parseInt(dia));
+}
+
 export default function conciertosLogic() {
   const carteles = [
     { src: "/carteles/cartel1.webp", fecha: "15 Mar 2025", lugar: "Sala Stereo", ciudad: "Alicante" },
@@ -12,9 +18,35 @@ export default function conciertosLogic() {
     { src: "/carteles/cartel8.webp", fecha: "19 Jul 2025", lugar: "Booza Fest", ciudad: "Aspe" },
   ];
 
-  const proximoConcierto = computed(() => carteles[0]);
-  const otrosConciertos = computed(() => carteles.slice(1));
-  
+  const cartelesConIndice = carteles.map((c, i) => ({ ...c, dateObj: parseFecha(c.fecha), idx: i }));
+
+  const hoy = computed(() => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  });
+
+  const conciertosFuturos = computed(() =>
+    cartelesConIndice.filter(c => c.dateObj >= hoy.value).sort((a, b) => a.dateObj - b.dateObj)
+  );
+  const conciertosPasados = computed(() =>
+    cartelesConIndice.filter(c => c.dateObj < hoy.value).sort((a, b) => b.dateObj - a.dateObj)
+  );
+
+  const proximoConcierto = computed(() => conciertosFuturos.value[0] || null);
+
+  const otrosConciertos = computed(() => {
+    const items = [];
+    const futurosRest = conciertosFuturos.value.slice(1);
+    const pasados = conciertosPasados.value;
+    items.push(...futurosRest);
+    if (pasados.length > 0) {
+      items.push({ separador: true, tipo: 'pasados' });
+      items.push(...pasados);
+    }
+    return items;
+  });
+
   const visible = ref(false);
   const index = ref(0);
   const isMobile = ref(window.innerWidth <= 900);
@@ -28,7 +60,6 @@ export default function conciertosLogic() {
     visible.value = false;
   }
 
-  // Navegación con flechas
   const prevCartel = () => {
     if (index.value > 0) index.value--;
   };
@@ -37,7 +68,6 @@ export default function conciertosLogic() {
     if (index.value < carteles.length - 1) index.value++;
   };
 
-  // Swipe en móvil
   let touchStartX = null;
   let touchEndX = null;
 
@@ -78,5 +108,5 @@ export default function conciertosLogic() {
     window.removeEventListener("resize", handleResize);
   });
 
-  return { carteles, proximoConcierto, otrosConciertos, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
+  return { carteles, conciertosFuturos, proximoConcierto, otrosConciertos, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
 }

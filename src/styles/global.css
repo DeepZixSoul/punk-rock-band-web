@@ -39,11 +39,11 @@ body {
   background: #111;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent, #ff66ff);
+  background: var(--color-accent);
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-hover, #ffccff);
+  background: var(--color-accent-hover);
 }
 a {
   color: #ff66ff;

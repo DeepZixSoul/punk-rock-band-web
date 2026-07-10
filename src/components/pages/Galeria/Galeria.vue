@@ -64,6 +64,7 @@ import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useHead } from '@vueuse/head';
 import galeriaLogic from "./Galeria.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
+import { useScrollLock } from "../../../utils/useScrollLock.js";
 import "../../../styles/modal-gallery.css";
 const { images, imagesMostradas, carruseles, carruselRefs, setCarruselRef, visible, index, isMobile, showImg, hideImg, handleTouchStart, handleTouchEnd, prevImg, nextImg, cargarMas, tieneMas } = galeriaLogic();
 
@@ -108,9 +109,13 @@ function onCarruselScroll(event, idx) {
 }
 
 let removeFocusTrap = null;
+let savedFocus = null;
+const { lock: lockScroll, unlock: unlockScroll } = useScrollLock();
 
 watch(visible, (newVal) => {
   if (newVal) {
+    savedFocus = document.activeElement;
+    lockScroll();
     const modal = document.querySelector('.modal-overlay');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
@@ -120,10 +125,13 @@ watch(visible, (newVal) => {
       }
     }
   } else {
+    unlockScroll();
     if (removeFocusTrap) {
       removeFocusTrap();
       removeFocusTrap = null;
     }
+    savedFocus?.focus({ preventScroll: true });
+    savedFocus = null;
   }
 });
 

@@ -1,6 +1,6 @@
 .footer {
-  background-color: var(--color-bg, #181818);
-  border-top: 1px solid var(--color-shadow, #ff99ff44);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-shadow);
   padding: 2.5em 2em 0;
   margin-top: 0;
 }
@@ -17,7 +17,7 @@
 .footer-brand-name {
   font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   font-size: 1.4em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   margin: 0 0 0.3em;
 }
 
@@ -31,7 +31,7 @@
 .footer-section h3 {
   font-family: var(--font-title, 'Bebas Neue', Arial, sans-serif);
   font-size: 0.8em;
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   margin-bottom: 0.8em;
   text-transform: uppercase;
   font-weight: 600;
@@ -50,7 +50,7 @@
 
 .footer-section a,
 .footer-contact a {
-  color: var(--color-text, #ccc);
+  color: var(--color-text);
   text-decoration: none;
   font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
   font-size: 0.8em;
@@ -59,7 +59,7 @@
 
 .footer-section a:hover,
 .footer-contact a:hover {
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
 }
 
 .footer-contact {
@@ -68,7 +68,7 @@
   gap: 0.5em;
   margin-bottom: 0.4em;
   font-size: 0.8em;
-  color: var(--color-text, #ccc);
+  color: var(--color-text);
   font-family: var(--font-text, 'Rubik', 'Segoe UI', sans-serif);
 }
 
@@ -79,7 +79,7 @@
 
 /* Bottom */
 .footer-bottom {
-  border-top: 1px solid var(--color-shadow, #ff99ff44);
+  border-top: 1px solid var(--color-shadow);
   margin-top: 2em;
   padding: 1.2em 0;
   text-align: center;

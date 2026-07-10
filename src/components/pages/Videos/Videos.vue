@@ -105,6 +105,7 @@ import { useHead } from '@vueuse/head';
 import "./Videos.css";
 import videosLogic from "./Videos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
+import { useScrollLock } from "../../../utils/useScrollLock.js";
 
 const {
   videos,
@@ -142,9 +143,13 @@ useHead({
 });
 
 let removeFocusTrap = null;
+let savedFocus = null;
+const { lock: lockScroll, unlock: unlockScroll } = useScrollLock();
 
 watch(showLightbox, (newVal) => {
   if (newVal) {
+    savedFocus = document.activeElement;
+    lockScroll();
     const modal = document.querySelector('.video-lightbox');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
@@ -154,10 +159,13 @@ watch(showLightbox, (newVal) => {
       }
     }
   } else {
+    unlockScroll();
     if (removeFocusTrap) {
       removeFocusTrap();
       removeFocusTrap = null;
     }
+    savedFocus?.focus({ preventScroll: true });
+    savedFocus = null;
   }
 });
 </script>

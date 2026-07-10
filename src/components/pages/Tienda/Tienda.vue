@@ -58,6 +58,7 @@ import { useHead } from '@vueuse/head';
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import tiendaLogic from "./Tienda.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
+import { useScrollLock } from "../../../utils/useScrollLock.js";
 
 const {
   productos,
@@ -74,9 +75,13 @@ const {
 } = tiendaLogic();
 
 let removeFocusTrap = null;
+let savedFocus = null;
+const { lock: lockScroll, unlock: unlockScroll } = useScrollLock();
 
 watch(modalAbierto, (newVal) => {
   if (newVal) {
+    savedFocus = document.activeElement;
+    lockScroll();
     const modal = document.querySelector('.modal-overlay');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
@@ -84,10 +89,13 @@ watch(modalAbierto, (newVal) => {
       closeBtn?.focus();
     }
   } else {
+    unlockScroll();
     if (removeFocusTrap) {
       removeFocusTrap();
       removeFocusTrap = null;
     }
+    savedFocus?.focus({ preventScroll: true });
+    savedFocus = null;
   }
 });
 

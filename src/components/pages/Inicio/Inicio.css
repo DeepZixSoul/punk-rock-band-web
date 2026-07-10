@@ -1,7 +1,7 @@
 .inicio-content {
   background: var(--color-card);
   padding: 4em 1em;
-  box-shadow: 0 0 40px var(--color-shadow, #000a);
+  box-shadow: 0 0 40px var(--color-shadow);
   min-height: 60vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .inicio-title {
-  color: var(--color-accent, #ff99ff);
+  color: var(--color-accent);
   font-family: var(--font-title);
   font-size: 3em;
   text-align: center;
@@ -18,7 +18,7 @@
   margin: 0;
   font-weight: 400;
   display: inline-block;
-  text-shadow: 0 0 20px var(--color-shadow, #ff66ff44), 0 0 40px var(--color-shadow, #ff66ff22);
+  text-shadow: 0 0 20px var(--color-shadow), 0 0 40px var(--color-shadow);
   line-height: 1.1;
   position: relative;
   animation: glitch 4s infinite;
@@ -39,14 +39,14 @@
   max-width: 1200px;
   height: 60vh;
   object-fit: cover;
-  box-shadow: 0 0 30px var(--color-shadow, #ff66ff44), 0 0 60px var(--color-shadow-light, #ff99ff11);
+  box-shadow: 0 0 30px var(--color-shadow), 0 0 60px var(--color-shadow-light);
   border-radius: 0.7em;
   display: block;
   transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .grupo-foto:hover {
-  box-shadow: 0 0 40px var(--color-shadow-hover, #ff66ff88), 0 0 80px var(--color-shadow, #ff66ff44);
+  box-shadow: 0 0 40px var(--color-shadow-hover), 0 0 80px var(--color-shadow);
   transform: scale(1.01);
 }
 

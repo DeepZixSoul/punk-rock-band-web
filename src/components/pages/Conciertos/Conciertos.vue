@@ -6,13 +6,13 @@
     </div>
 
     <!-- Hero: próximo concierto -->
-    <div class="proximo-hero">
+    <div v-if="proximoConcierto" class="proximo-hero">
       <span class="proximo-badge">PRÓXIMO CONCIERTO</span>
       <div
         class="proximo-card card card-hover"
-        @click="showCartel(0)"
+        @click="showCartel(proximoConcierto.idx)"
         tabindex="0"
-        @keydown.enter.space="showCartel(0)"
+        @keydown.enter.space="showCartel(proximoConcierto.idx)"
       >
         <img
           :src="proximoConcierto.src"
@@ -28,30 +28,36 @@
     </div>
 
     <!-- Grid: resto de conciertos -->
-    <h2 class="conciertos-subtitle">Más conciertos</h2>
-    <div v-if="otrosConciertos.length" class="carteles-grid">
-      <div
-        v-for="(cartel, i) in otrosConciertos"
-        :key="i + 1"
-        class="cartel-item card card-hover"
-        @click="showCartel(i + 1)"
-        :tabindex="0"
-        @keydown.enter.space="showCartel(i + 1)"
-      >
-        <img
-          :src="cartel.src"
-          :alt="'Cartel del concierto ' + (i + 2) + ' de Gayola'"
-          class="cartel-img loading"
-          loading="lazy"
-           v-img-load
-        />
-        <div class="cartel-meta">
-          <span class="cartel-fecha">{{ cartel.fecha }}</span>
-          <span class="cartel-lugar">{{ cartel.lugar }}</span>
-          <span class="cartel-ciudad">{{ cartel.ciudad }}</span>
-        </div>
+    <template v-if="otrosConciertos.length">
+      <h2 v-if="conciertosFuturos.length > 1" class="conciertos-subtitle">Próximos conciertos</h2>
+      <div class="carteles-grid">
+        <template v-for="(cartel, i) in otrosConciertos" :key="i">
+          <div v-if="cartel.separador" class="carteles-separador">
+            <span v-if="cartel.tipo === 'pasados'" class="separador-texto">Conciertos pasados</span>
+          </div>
+          <div
+            v-else
+            class="cartel-item card card-hover"
+            @click="showCartel(cartel.idx)"
+            :tabindex="0"
+            @keydown.enter.space="showCartel(cartel.idx)"
+          >
+            <img
+              :src="cartel.src"
+              :alt="'Cartel del concierto de Gayola en ' + cartel.lugar"
+              class="cartel-img loading"
+              loading="lazy"
+              v-img-load
+            />
+            <div class="cartel-meta">
+              <span class="cartel-fecha">{{ cartel.fecha }}</span>
+              <span class="cartel-lugar">{{ cartel.lugar }}</span>
+              <span class="cartel-ciudad">{{ cartel.ciudad }}</span>
+            </div>
+          </div>
+        </template>
       </div>
-    </div>
+    </template>
 
     <!-- Fullscreen modal para carteles -->
     <div
@@ -109,10 +115,12 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useHead } from '@vueuse/head';
 import conciertosLogic from "./Conciertos.js";
 import { createFocusTrap } from "../../../utils/focusTrap.js";
+import { useScrollLock } from "../../../utils/useScrollLock.js";
 import "../../../styles/modal-gallery.css";
 
 const {
   carteles,
+  conciertosFuturos,
   proximoConcierto,
   otrosConciertos,
   visible,
@@ -128,7 +136,7 @@ const {
 
 const eventStructuredData = computed(() => ({
   '@context': 'https://schema.org',
-  '@graph': carteles.map((c, i) => ({
+  '@graph': conciertosFuturos.value.map((c) => ({
     '@type': 'Event',
     name: `Concierto de Gayola en ${c.lugar}`,
     startDate: c.fecha,
@@ -175,9 +183,13 @@ useHead({
 });
 
 let removeFocusTrap = null;
+let savedFocus = null;
+const { lock: lockScroll, unlock: unlockScroll } = useScrollLock();
 
 watch(visible, (newVal) => {
   if (newVal) {
+    savedFocus = document.activeElement;
+    lockScroll();
     const modal = document.querySelector('.modal-overlay');
     if (modal) {
       removeFocusTrap = createFocusTrap(modal);
@@ -187,10 +199,13 @@ watch(visible, (newVal) => {
       }
     }
   } else {
+    unlockScroll();
     if (removeFocusTrap) {
       removeFocusTrap();
       removeFocusTrap = null;
     }
+    savedFocus?.focus({ preventScroll: true });
+    savedFocus = null;
   }
 });
 

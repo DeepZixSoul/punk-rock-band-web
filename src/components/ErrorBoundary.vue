@@ -76,7 +76,7 @@ provide('resetError', resetError);
 }
 
 .error-button {
-  background: linear-gradient(135deg, #ff66ff 0%, #ff99ff 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
   color: #fff;
   border: none;
   padding: 0.7em 1.5em;

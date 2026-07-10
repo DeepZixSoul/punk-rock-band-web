@@ -40,12 +40,24 @@
 <script setup>
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
+import { useHead } from '@vueuse/head';
 import NavBar from "./components/ui/NavBar/NavBar.vue";
 import MobilMenu from "./components/ui/MobilMenu/MobilMenu.vue";
 import ErrorBoundary from "./components/ErrorBoundary.vue";
 import Footer from "./components/ui/Footer/Footer.vue";
 
 const route = useRoute();
+
+useHead({
+  titleTemplate: (title) => title ? `${title} | Gayola - Punk Rock desde Alicante` : 'Gayola - Punk Rock Oficial desde Alicante | Conciertos, Música y Tienda',
+  meta: [
+    {
+      name: 'description',
+      content: 'Gayola es una banda de punk rock desde Alicante. Descubre nuestros conciertos, discografía, galería de fotos, tienda oficial y últimas noticias.'
+    }
+  ]
+});
+
 const routeAnnouncement = ref("");
 
 watch(
@@ -107,7 +119,7 @@ html {
   left: 0;
   z-index: 10002;
   padding: 0.5em 1em;
-  background: var(--color-accent, #ff66ff);
+  background: var(--color-accent);
   color: #000;
   font-family: var(--font-title, 'Montserrat', Arial, sans-serif);
   font-weight: 700;
