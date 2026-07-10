@@ -8,14 +8,14 @@ function parseFecha(fechaStr) {
 
 export default function conciertosLogic() {
   const carteles = [
-    { src: "/carteles/cartel1.webp", fecha: "15 Mar 2025", lugar: "Sala Stereo", ciudad: "Alicante" },
-    { src: "/carteles/cartel2.webp", fecha: "22 Mar 2025", lugar: "Rock City", ciudad: "Murcia" },
-    { src: "/carteles/cartel3.webp", fecha: "12 Abr 2025", lugar: "Sala Matisse", ciudad: "Valencia" },
-    { src: "/carteles/cartel4.webp", fecha: "3 May 2025", lugar: "Festival Punkada", ciudad: "Barcelona" },
-    { src: "/carteles/cartel5.webp", fecha: "17 May 2025", lugar: "Sala Wah Wah", ciudad: "Valencia" },
-    { src: "/carteles/cartel6.webp", fecha: "14 Jun 2025", lugar: "La Guarida del Volumen", ciudad: "Madrid" },
-    { src: "/carteles/cartel7.webp", fecha: "5 Jul 2025", lugar: "Sala Intimo", ciudad: "Elche" },
-    { src: "/carteles/cartel8.webp", fecha: "19 Jul 2025", lugar: "Booza Fest", ciudad: "Aspe" },
+    { src: "/carteles/cartel1.webp", fecha: "15 May 2026", lugar: "Sala Stereo", ciudad: "Alicante" },
+    { src: "/carteles/cartel2.webp", fecha: "22 May 2026", lugar: "Rock City", ciudad: "Murcia" },
+    { src: "/carteles/cartel3.webp", fecha: "12 Jun 2026", lugar: "Sala Matisse", ciudad: "Valencia" },
+    { src: "/carteles/cartel4.webp", fecha: "28 Jun 2026", lugar: "Festival Punkada", ciudad: "Barcelona" },
+    { src: "/carteles/cartel5.webp", fecha: "17 Sep 2026", lugar: "Sala Wah Wah", ciudad: "Valencia" },
+    { src: "/carteles/cartel6.webp", fecha: "14 Oct 2026", lugar: "La Guarida del Volumen", ciudad: "Madrid" },
+    { src: "/carteles/cartel7.webp", fecha: "5 Nov 2026", lugar: "Sala Intimo", ciudad: "Elche" },
+    { src: "/carteles/cartel8.webp", fecha: "19 Nov 2026", lugar: "Booza Fest", ciudad: "Aspe" },
   ];
 
   const cartelesConIndice = carteles.map((c, i) => ({ ...c, dateObj: parseFecha(c.fecha), idx: i }));
@@ -43,6 +43,18 @@ export default function conciertosLogic() {
     if (pasados.length > 0) {
       items.push({ separador: true, tipo: 'pasados' });
       items.push(...pasados);
+    }
+    return items;
+  });
+
+  const conciertosCombinados = computed(() => {
+    const items = [];
+    conciertosFuturos.value.forEach((c, i) => {
+      items.push({ ...c, badge: i === 0 ? 'PRÓXIMO CONCIERTO' : null });
+    });
+    if (conciertosPasados.value.length > 0) {
+      items.push({ separador: true, tipo: 'pasados' });
+      items.push(...conciertosPasados.value);
     }
     return items;
   });
@@ -108,5 +120,5 @@ export default function conciertosLogic() {
     window.removeEventListener("resize", handleResize);
   });
 
-  return { carteles, conciertosFuturos, proximoConcierto, otrosConciertos, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
+  return { carteles, conciertosFuturos, proximoConcierto, otrosConciertos, conciertosCombinados, visible, index, isMobile, showCartel, hideCartel, prevCartel, nextCartel, handleTouchStart, handleTouchEnd };
 }

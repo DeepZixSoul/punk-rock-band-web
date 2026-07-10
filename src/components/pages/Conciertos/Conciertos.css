@@ -284,7 +284,7 @@
 
 @media (max-width: 600px) {
   .conciertos-bg {
-    padding: 1em 0.2em;
+    padding: 1em 0;
     border-radius: 0.5em;
   }
   .conciertos-title {
@@ -292,12 +292,102 @@
     margin-bottom: 0.7em;
     padding: 0 0.5em 0.3em;
   }
-  .carteles-grid {
-    grid-template-columns: 1fr;
-    gap: 0.7em;
-    max-width: 100%;
+
+  /* Scroll horizontal */
+  .carteles-scroll {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1em;
+    padding: 0.5em 1em 1em;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .cartel-img {
-    max-height: 120px;
+  .carteles-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-card {
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0.7em;
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--color-shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .scroll-card:hover,
+  .scroll-card:focus-visible {
+    box-shadow: 0 0 40px var(--color-shadow-hover);
+    transform: scale(1.02);
+  }
+  .scroll-badge {
+    position: absolute;
+    top: 0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background: var(--color-accent);
+    color: #000;
+    font-family: var(--font-title);
+    font-size: 0.75em;
+    letter-spacing: 2px;
+    padding: 0.3em 1em;
+    border-radius: 0.3em;
+    font-weight: 700;
+  }
+  .scroll-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: var(--color-bg);
+  }
+  .scroll-info {
+    background: var(--color-card);
+    padding: 0.8em 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em 1em;
+    font-family: var(--font-text);
+    font-size: 0.85em;
+  }
+  .scroll-fecha {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+  .scroll-lugar {
+    color: var(--color-text);
+  }
+  .scroll-separador {
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    position: relative;
+  }
+  .scroll-separador::before {
+    content: '';
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    top: 50%;
+    height: 1px;
+    background: var(--color-shadow);
+  }
+  .scroll-separador-texto {
+    background: var(--color-bg);
+    padding: 0 1em;
+    color: var(--color-muted);
+    font-family: var(--font-title);
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
   }
 }

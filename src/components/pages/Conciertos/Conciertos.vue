@@ -5,54 +5,85 @@
       Visualizador de carteles de conciertos. Usa las flechas para navegar entre carteles o desliza en móvil.
     </div>
 
-    <!-- Hero: próximo concierto -->
-    <div v-if="proximoConcierto" class="proximo-hero">
-      <span class="proximo-badge">PRÓXIMO CONCIERTO</span>
-      <div
-        class="proximo-card card card-hover"
-        @click="showCartel(proximoConcierto.idx)"
-        tabindex="0"
-        @keydown.enter.space="showCartel(proximoConcierto.idx)"
-      >
-        <img
-          :src="proximoConcierto.src"
-          :alt="'Cartel del próximo concierto de Gayola'"
-          class="proximo-img loading"
-          v-img-load
-        />
-        <div class="proximo-info">
-          <span class="proximo-fecha">{{ proximoConcierto.fecha }}</span>
-          <span class="proximo-lugar">{{ proximoConcierto.lugar }}, {{ proximoConcierto.ciudad }}</span>
+    <!-- Desktop: hero + grid -->
+    <template v-if="!isMobile">
+      <div v-if="proximoConcierto" class="proximo-hero">
+        <span class="proximo-badge">PRÓXIMO CONCIERTO</span>
+        <div
+          class="proximo-card card card-hover"
+          @click="showCartel(proximoConcierto.idx)"
+          tabindex="0"
+          @keydown.enter.space="showCartel(proximoConcierto.idx)"
+        >
+          <img
+            :src="proximoConcierto.src"
+            :alt="'Cartel del próximo concierto de Gayola'"
+            class="proximo-img loading"
+            v-img-load
+          />
+          <div class="proximo-info">
+            <span class="proximo-fecha">{{ proximoConcierto.fecha }}</span>
+            <span class="proximo-lugar">{{ proximoConcierto.lugar }}, {{ proximoConcierto.ciudad }}</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Grid: resto de conciertos -->
-    <template v-if="otrosConciertos.length">
-      <h2 v-if="conciertosFuturos.length > 1" class="conciertos-subtitle">Próximos conciertos</h2>
-      <div class="carteles-grid">
-        <template v-for="(cartel, i) in otrosConciertos" :key="i">
-          <div v-if="cartel.separador" class="carteles-separador">
-            <span v-if="cartel.tipo === 'pasados'" class="separador-texto">Conciertos pasados</span>
+      <template v-if="otrosConciertos.length">
+        <h2 v-if="conciertosFuturos.length > 1" class="conciertos-subtitle">Próximos conciertos</h2>
+        <div class="carteles-grid">
+          <template v-for="(cartel, i) in otrosConciertos" :key="i">
+            <div v-if="cartel.separador" class="carteles-separador">
+              <span v-if="cartel.tipo === 'pasados'" class="separador-texto">Conciertos pasados</span>
+            </div>
+            <div
+              v-else
+              class="cartel-item card card-hover"
+              @click="showCartel(cartel.idx)"
+              :tabindex="0"
+              @keydown.enter.space="showCartel(cartel.idx)"
+            >
+              <img
+                :src="cartel.src"
+                :alt="'Cartel del concierto de Gayola en ' + cartel.lugar"
+                class="cartel-img loading"
+                loading="lazy"
+                v-img-load
+              />
+              <div class="cartel-meta">
+                <span class="cartel-fecha">{{ cartel.fecha }}</span>
+                <span class="cartel-lugar">{{ cartel.lugar }}</span>
+                <span class="cartel-ciudad">{{ cartel.ciudad }}</span>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </template>
+
+    <!-- Mobile: scroll horizontal -->
+    <template v-if="isMobile">
+      <div class="carteles-scroll">
+        <template v-for="(item, i) in conciertosCombinados" :key="i">
+          <div v-if="item.separador" class="scroll-separador">
+            <span v-if="item.tipo === 'pasados'" class="scroll-separador-texto">Conciertos pasados</span>
           </div>
           <div
             v-else
-            class="cartel-item card card-hover"
-            @click="showCartel(cartel.idx)"
+            class="scroll-card card card-hover"
+            @click="showCartel(item.idx)"
             :tabindex="0"
-            @keydown.enter.space="showCartel(cartel.idx)"
+            @keydown.enter.space="showCartel(item.idx)"
           >
+            <div v-if="item.badge" class="scroll-badge">{{ item.badge }}</div>
             <img
-              :src="cartel.src"
-              :alt="'Cartel del concierto de Gayola en ' + cartel.lugar"
-              class="cartel-img loading"
-              loading="lazy"
+              :src="item.src"
+              :alt="'Cartel del concierto de Gayola en ' + item.lugar"
+              class="scroll-img loading"
               v-img-load
             />
-            <div class="cartel-meta">
-              <span class="cartel-fecha">{{ cartel.fecha }}</span>
-              <span class="cartel-lugar">{{ cartel.lugar }}</span>
-              <span class="cartel-ciudad">{{ cartel.ciudad }}</span>
+            <div class="scroll-info">
+              <span class="scroll-fecha">{{ item.fecha }}</span>
+              <span class="scroll-lugar">{{ item.lugar }}, {{ item.ciudad }}</span>
             </div>
           </div>
         </template>
@@ -123,6 +154,7 @@ const {
   conciertosFuturos,
   proximoConcierto,
   otrosConciertos,
+  conciertosCombinados,
   visible,
   index,
   isMobile,
