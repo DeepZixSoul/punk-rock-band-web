@@ -113,7 +113,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  z-index: 10001;
+  z-index: 10003;
   position: relative;
   transition: background 0.4s;
 }

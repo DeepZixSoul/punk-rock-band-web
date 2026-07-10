@@ -1,12 +1,14 @@
 <template>
   <div v-if="menuOpen" class="mobilmenu-wrapper menu-open">
     <div class="mobile-overlay" @click.self="$emit('close')"></div>
+    <div class="mobile-bg" :style="{ backgroundImage: `url(${bgImg})` }" aria-hidden="true"></div>
     <nav class="mobile-navbar" aria-label="Navegación móvil">
-      <ul class="mobile-navbar-list">
+      <TransitionGroup name="menu-item" tag="ul" class="mobile-navbar-list">
         <li
-          class="mobile-navbar-item"
-          v-for="item in menuItems"
+          v-for="(item, i) in menuItems"
           :key="item.href"
+          class="mobile-navbar-item"
+          :style="{ '--i': i }"
         >
           <router-link
             class="mobile-navbar-link"
@@ -17,7 +19,7 @@
             {{ item.label }}
           </router-link>
         </li>
-      </ul>
+      </TransitionGroup>
       <div class="mobile-social-bar">
         <SocialBar />
       </div>
@@ -30,6 +32,8 @@ import { watch } from 'vue';
 import { useRoute } from 'vue-router';
 import SocialBar from "../SocialBar/SocialBar.vue";
 import { createFocusTrap } from '../../../utils/focusTrap.js';
+import { useScrollLock } from '../../../utils/useScrollLock.js';
+import bgImg from '/src/assets/grupo.webp';
 
 const route = useRoute();
 const props = defineProps({
@@ -39,9 +43,11 @@ const props = defineProps({
 const emit = defineEmits(["close"]);
 
 let removeFocusTrap = null;
+const { lock: lockScroll, unlock: unlockScroll } = useScrollLock();
 
 watch(() => props.menuOpen, (open) => {
   if (open) {
+    lockScroll();
     const nav = document.querySelector('.mobile-navbar');
     if (nav) {
       removeFocusTrap = createFocusTrap(nav);
@@ -51,6 +57,7 @@ watch(() => props.menuOpen, (open) => {
       }
     }
   } else {
+    unlockScroll();
     if (removeFocusTrap) {
       removeFocusTrap();
       removeFocusTrap = null;
