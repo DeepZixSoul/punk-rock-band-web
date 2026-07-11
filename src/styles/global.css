@@ -1,4 +1,4 @@
-/* Google Fonts loaded via link tag in index.html for better performance */
+/* Google Fonts cargadas via link tag en index.html para mejor rendimiento */
 
 .inicio-content,
 .biografia-bg,
@@ -31,7 +31,7 @@ body {
   line-height: 1.6;
 }
 
-/* Custom scrollbar */
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -114,7 +114,7 @@ img.error::after {
   border: 0;
 }
 
-/* Unified page entrance animation */
+/* Animación de entrada unificada */
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -131,7 +131,7 @@ img.error::after {
   }
 }
 
-/* === Card system === */
+/* === Sistema de tarjetas === */
 .card {
   background: var(--color-card);
   border-radius: var(--border-radius);

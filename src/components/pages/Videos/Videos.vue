@@ -65,7 +65,7 @@
       </transition-group>
     </div>
 
-    <!-- Lightbox modal -->
+    <!-- Modal de vídeo -->
     <div
       v-if="showLightbox"
       class="video-lightbox"

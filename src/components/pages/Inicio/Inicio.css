@@ -21,17 +21,17 @@
   text-shadow: 0 0 20px var(--color-shadow), 0 0 40px var(--color-shadow);
   line-height: 1.1;
   position: relative;
-  animation: glitch 4s infinite;
+  animation: glitch 8s infinite;
   padding: 0 0.5em 0.3em;
   border-bottom: 2px solid rgba(255, 153, 255, 0.15);
 }
 
 @keyframes glitch {
-  0%, 90%, 100% { transform: translate(0); }
-  92% { transform: translate(-2px, 1px); }
-  94% { transform: translate(2px, -1px); }
-  96% { transform: translate(-1px, -1px); }
-  98% { transform: translate(1px, 2px); }
+  0%, 97%, 100% { transform: translate(0); }
+  97.5% { transform: translate(-2px, 1px); }
+  98% { transform: translate(2px, -1px); }
+  98.5% { transform: translate(-1px, -1px); }
+  99% { transform: translate(1px, 2px); }
 }
 
 .grupo-foto {

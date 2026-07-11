@@ -10,13 +10,11 @@
   background: rgba(24, 24, 24, 0.85);
   padding: 0.3em 1em;
   min-height: 3.5em;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .main-header.scrolled {
-  background: rgba(24, 24, 24, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(24, 24, 24, 0.85);
 }
 
 .header-left {
@@ -26,11 +24,10 @@
 }
 
 .logo-navbar {
-  height: 2.8em;
+  height: 3.2em;
   width: auto;
   padding: 0.2em 0.3em;
   border-radius: 0.5em;
-  filter: drop-shadow(0 0 4px var(--color-shadow));
   transition: filter 0.2s;
   cursor: pointer;
 }
@@ -143,7 +140,7 @@
     padding: 0.4em 0.8em;
   }
   .logo-navbar {
-    height: 2.4em;
+    height: 2.8em;
   }
   .navbar {
     display: none !important;
@@ -156,6 +153,6 @@
     min-height: 2.5em;
   }
   .logo-navbar {
-    height: 2.2em;
+    height: 2.5em;
   }
 }

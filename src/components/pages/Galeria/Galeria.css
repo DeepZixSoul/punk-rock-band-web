@@ -77,7 +77,7 @@
   }
 }
 
-/* Responsive */
+/* Responsivo */
 @media (max-width: 1100px) {
   .galeria-grid {
     grid-template-columns: repeat(2, 1fr);

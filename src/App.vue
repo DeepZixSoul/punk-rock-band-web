@@ -24,7 +24,7 @@
     />
   </header>
 
-  <main id="main-content" class="section fondo-imagen" role="main">
+  <main id="main-content" class="section" role="main">
     <ErrorBoundary>
       <router-view v-slot="{ Component }">
         <Transition name="page" mode="default">
@@ -87,6 +87,18 @@ const checkMobile = () => {
 onMounted(() => {
   checkMobile();
   window.addEventListener("resize", checkMobile);
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      import('./components/pages/Biografia/Biografia.vue');
+      import('./components/pages/Conciertos/Conciertos.vue');
+      import('./components/pages/Galeria/Galeria.vue');
+      import('./components/pages/Videos/Videos.vue');
+      import('./components/pages/Discografia/Discografia.vue');
+      import('./components/pages/Tienda/Tienda.vue');
+      import('./components/pages/Contacto/Contacto.vue');
+      import('./components/pages/Noticias/NoticiasPage.vue');
+    }, { timeout: 3000 });
+  }
 });
 onUnmounted(() => {
   window.removeEventListener("resize", checkMobile);

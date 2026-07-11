@@ -5,7 +5,7 @@
       Visualizador de carteles de conciertos. Usa las flechas para navegar entre carteles o desliza en móvil.
     </div>
 
-    <!-- Desktop: hero + grid -->
+    <!-- Desktop: hero + cuadrícula -->
     <template v-if="!isMobile">
       <div v-if="proximoConcierto" class="proximo-hero">
         <span class="proximo-badge">PRÓXIMO CONCIERTO</span>
@@ -60,7 +60,7 @@
       </template>
     </template>
 
-    <!-- Mobile: scroll horizontal -->
+    <!-- Móvil: scroll horizontal -->
     <template v-if="isMobile">
       <div class="carteles-scroll">
         <template v-for="(item, i) in conciertosCombinados" :key="i">
@@ -90,7 +90,7 @@
       </div>
     </template>
 
-    <!-- Fullscreen modal para carteles -->
+    <!-- Modal pantalla completa para carteles -->
     <div
       v-if="visible"
       class="modal-overlay"

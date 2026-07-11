@@ -142,7 +142,7 @@
   white-space: nowrap;
 }
 
-/* Lightbox modal */
+/* Modal de vídeo */
 .video-lightbox {
   position: fixed;
   top: 0;
@@ -225,7 +225,7 @@
 .lightbox-fade-leave-to {
   opacity: 0;
 }
-/* Responsive */
+/* Responsivo */
 @media (max-width: 900px) {
   .videos-bg {
     padding: 1em 0.2em;

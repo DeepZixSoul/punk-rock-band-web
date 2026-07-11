@@ -1,11 +1,9 @@
-/* === Base shared modal (Galeria, Conciertos) === */
+/* === Modal base compartido (Galería, Conciertos) === */
 
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,13 +16,13 @@
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
-  to { opacity: 1; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes modalFadeOut {
-  from { opacity: 1; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-  to { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .modal-img {
@@ -41,7 +39,7 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Close button */
+/* Botón cerrar */
 .modal-close {
   position: fixed;
   top: 1.2rem;
@@ -68,7 +66,7 @@
   transform: scale(1.1);
 }
 
-/* Navigation arrows */
+/* Flechas de navegación */
 .modal-arrow {
   position: fixed;
   top: 50%;
