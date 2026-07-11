@@ -85,27 +85,27 @@ On mobile, `MobilMenu` slides down below the header with nav links + `SocialBar`
 
 **Framework:** Vitest + `@vue/test-utils` + jsdom.
 
-### Donde vivirán los tests
-Tests co-locados con el source: `Foo.test.js` junto a `Foo.js` o `Foo.vue`.
+### Where tests live
+Tests co-located with source: `Foo.test.js` next to `Foo.js` or `Foo.vue`.
 
 ### Naming
-- Archivos: `*.test.js` (no `*.spec.js`)
-- `describe`/`it` en español, presente indicativo
-- `describe` → nombre de la unidad, `it` → comportamiento esperado
+- Files: `*.test.js` (not `*.spec.js`)
+- `describe`/`it` in Spanish, present indicative
+- `describe` → unit name, `it` → expected behavior
 
-### Prioridad de tests
-1. **Composables (`.js` logic)** — JS puro, sin DOM, máximo valor
-   - Estado inicial
-   - Transiciones de estado
+### Test priority
+1. **Composables (`.js` logic)** — pure JS, no DOM, highest value
+   - Initial state
+   - State transitions
    - Edge cases
-2. **UI Components (`.vue`)** — mount con `@vue/test-utils`
-   - Props, emits, render condicional
-3. **Page components** — integración (baja prioridad)
+2. **UI Components (`.vue`)** — mount with `@vue/test-utils`
+   - Props, emits, conditional render
+3. **Page components** — integration (low priority)
 
-### Qué NO testear
-- Vue Router, `@vueuse/head`, `vite-plugin-pwa` (son dependencias)
-- CSS, snapshots (nunca usar snapshots)
-- Datos estáticos en `data/` (testear el composable que los consume, no el archivo raw)
+### What NOT to test
+- Vue Router, `@vueuse/head`, `vite-plugin-pwa` (dependencies)
+- CSS, snapshots (never use snapshots)
+- Static data in `data/` (test the composable that consumes it, not the raw file)
 
 ### Patterns
 
@@ -115,12 +115,12 @@ import { describe, it, expect } from 'vitest';
 import fooLogic from './Foo.js';
 
 describe('Foo', () => {
-  it('inicia con X valor', () => {
+  it('starts with X value', () => {
     const { x } = fooLogic();
     expect(x.value).toBe(...);
   });
 
-  it('toggle cambia X', () => {
+  it('toggle changes X', () => {
     const { x, toggle } = fooLogic();
     toggle();
     expect(x.value).toBe(...);
@@ -133,7 +133,7 @@ describe('Foo', () => {
 import { mount } from '@vue/test-utils';
 import Foo from './Foo.vue';
 
-it('renderiza X elementos', () => {
+it('renders X elements', () => {
   const w = mount(Foo, {
     global: { stubs: ['router-link'] }
   });
@@ -142,9 +142,9 @@ it('renderiza X elementos', () => {
 ```
 
 ### Mocking
-- `window`: jsdom lo provee por defecto. Usar `vi.stubGlobal()` para sobreescribir
-- Router: `global.stubs` en `mount options`
-- Lifecycle hooks (`onMounted` etc.): `@vue/test-utils` los ejecuta al montar
+- `window`: jsdom provides it by default. Use `vi.stubGlobal()` to override
+- Router: `global.stubs` in `mount options`
+- Lifecycle hooks (`onMounted` etc.): `@vue/test-utils` executes them on mount
 
 ## Constraints
 - No backend, no API — all data is static arrays in `.js` files

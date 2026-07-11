@@ -2,15 +2,15 @@
 
 ## Stack
 - Vue 3 + Vite 7 + Vue Router + @vueuse/head
-- Tipografía: Bebas Neue (títulos), Rubik (cuerpo)
-- Colores: neón acento `#ff99ff`, fondo `#181818`
+- Typography: Bebas Neue (headings), Rubik (body)
+- Colors: neon accent `#ff99ff`, background `#181818`
 
-## Comandos
+## Commands
 - Build: `npm run build`
-- No hay linter ni typecheck configurados
+- No linter or typecheck configured
 
-## Convenciones
-- Español en etiquetas, commits, comentarios
-- CSS por página en `src/components/pages/<Pagina>/<Pagina>.css`
-- Modal base compartido en `src/styles/modal-gallery.css`
-- Los commits se hacen solo cuando el usuario lo pide explícitamente
+## Conventions
+- Spanish for labels, commits, comments
+- Page CSS in `src/components/pages/<Page>/<Page>.css`
+- Shared modal base in `src/styles/modal-gallery.css`
+- Commits are only made when explicitly requested by the user
